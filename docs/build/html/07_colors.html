@@ -1,0 +1,1495 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="./">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="prev" title="skinoptics.refractive_index" href="06_refractive_index.html" />
+
+    <link rel="shortcut icon" href="_static/openmoji_1F506.svg"/><!-- Generated with Sphinx 8.0.2 and Furo 2024.08.06 -->
+        <title>skinoptics.colors module - SkinOptics documentation - version 0.0.1b1</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">SkinOptics documentation - version 0.0.1b1</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  
+  <span class="sidebar-brand-text">SkinOptics documentation - version 0.0.1b1</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="modules.html">skinoptics</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of skinoptics</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01_utils.html">utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_dataframes.html">dataframes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_absorption_coefficient.html">absorption_coefficient</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_scattering_coefficient.html">scattering_coefficient</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05_anisotropy_factor.html">anisotropy_factor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_refractive_index.html">refractive_index</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">colors</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="_sources/07_colors.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="module-skinoptics.colors">
+<span id="skinoptics-colors-module"></span><h1>skinoptics.colors module<a class="headerlink" href="#module-skinoptics.colors" title="Link to this heading">¶</a></h1>
+<div class="line-block">
+<div class="line">SkinOptics</div>
+<div class="line">Copyright (C) 2024 Victor Lima</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">This program is free software: you can redistribute it and/or modify</div>
+<div class="line">it under the terms of the GNU General Public License as published by</div>
+<div class="line">the Free Software Foundation, either version 3 of the License, or</div>
+<div class="line">(at your option) any later version.</div>
+</div>
+<div class="line-block">
+<div class="line">This program is distributed in the hope that it will be useful,</div>
+<div class="line">but WITHOUT ANY WARRANTY; without even the implied warranty of</div>
+<div class="line">MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</div>
+<div class="line">GNU General Public License for more details.</div>
+</div>
+<div class="line-block">
+<div class="line">You should have received a copy of the GNU General Public License</div>
+<div class="line">along with this program.  If not, see &lt;<a class="reference external" href="https://www.gnu.org/licenses/">https://www.gnu.org/licenses/</a>&gt;.</div>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line">Victor Lima</div>
+<div class="line">victorporto&#64;ifsc.usp.br</div>
+<div class="line">victor.lima&#64;ufscar.br</div>
+</div>
+<div class="line-block">
+<div class="line">Release Date:</div>
+<div class="line">October 2024</div>
+<div class="line">Last Modification:</div>
+<div class="line">October 2024</div>
+</div>
+<div class="line-block">
+<div class="line">References:</div>
+</div>
+<div class="line-block">
+<div class="line">[CCH91] Chardon, Cretois &amp; Hourseau 1991.</div>
+<div class="line">Skin colour typology and suntanning pathways.</div>
+<div class="line"><a class="reference external" href="https://doi.org/10.1111/j.1467-2494.1991.tb00561.x">https://doi.org/10.1111/j.1467-2494.1991.tb00561.x</a></div>
+</div>
+<div class="line-block">
+<div class="line">[T*94] Takiwaki, Shirai, Kanno, Watanabe &amp; Arase 1994.</div>
+<div class="line">Quantification of erythema and pigmentation using a videomicroscope and a computer.</div>
+<div class="line"><a class="reference external" href="https://doi.org/10.1111/j.1365-2133.1994.tb08462.x">https://doi.org/10.1111/j.1365-2133.1994.tb08462.x</a></div>
+</div>
+<div class="line-block">
+<div class="line">[F*96] Fullerton, Fischer, Lahti, Wilhelm, Takiwaki &amp; Serup 1996.</div>
+<div class="line">Guidetines for measurement of skin colour and erythema: A report from the Standardization Group of the European Society of Contact Dermatitis.</div>
+<div class="line"><a class="reference external" href="https://doi.org/10.1111/j.1600-0536.1996.tb02258.x">https://doi.org/10.1111/j.1600-0536.1996.tb02258.x</a></div>
+</div>
+<div class="line-block">
+<div class="line">[S*96] Stokes, Anderson, Chandrasekar &amp; Motta 1996.</div>
+<div class="line">A Standard Default Color Space for the Internet - sRGB.</div>
+<div class="line"><a class="reference external" href="https://www.w3.org/Graphics/Color/sRGB.html">https://www.w3.org/Graphics/Color/sRGB.html</a></div>
+</div>
+<div class="line-block">
+<div class="line">[IEC99] IEC 1999.</div>
+<div class="line">Multimedia systems and equipment - Colour measurement and management - Part 2-1: Colour management - Default RGB colour space - sRGB.</div>
+<div class="line">IEC 61966-2-1:1999</div>
+</div>
+<div class="line-block">
+<div class="line">[CIE04] CIE 2004.</div>
+<div class="line">Colorimetry, 3rd edition.</div>
+<div class="line">CIE 15:2004</div>
+</div>
+<div class="line-block">
+<div class="line">[D*06] Del Bino, Sok, Bessac &amp; Bernerd 2006.</div>
+<div class="line">Relationship between skin response to ultraviolet exposure and skin color type.</div>
+<div class="line"><a class="reference external" href="https://doi.org/10.1111/j.1600-0749.2006.00338.x">https://doi.org/10.1111/j.1600-0749.2006.00338.x</a></div>
+</div>
+<div class="line-block">
+<div class="line">[S07] Schanda (editor) 2007.</div>
+<div class="line">Colorimetry: Understanding the CIE System.</div>
+<div class="line"><a class="reference external" href="http://dx.doi.org/10.1002/9780470175637">http://dx.doi.org/10.1002/9780470175637</a></div>
+</div>
+<div class="line-block">
+<div class="line">[HP11] Hunt &amp; Pointer 2011.</div>
+<div class="line">Measuring Colour.</div>
+<div class="line"><a class="reference external" href="https://doi.org/10.1002/9781119975595">https://doi.org/10.1002/9781119975595</a></div>
+</div>
+<div class="line-block">
+<div class="line">[DB13] Del Bino &amp; Bernerd 2013.</div>
+<div class="line">Variations in skin colour and the biological consequences of ultraviolet radiation exposure.</div>
+<div class="line"><a class="reference external" href="https://doi.org/10.1111/bjd.12529">https://doi.org/10.1111/bjd.12529</a></div>
+</div>
+<div class="line-block">
+<div class="line">[WSS13] Wyman, Sloan &amp; Shirley 2013.</div>
+<div class="line">Simple Analytic Approximations to the CIE XYZ Color Matching Functions.</div>
+<div class="line"><a class="reference external" href="https://jcgt.org/published/0002/02/01/">https://jcgt.org/published/0002/02/01/</a></div>
+</div>
+<div class="line-block">
+<div class="line">[CIE18a] CIE 2018.</div>
+<div class="line">CIE standard illuminant A - 1 nm.</div>
+<div class="line"><a class="reference external" href="https://doi.org/10.25039/CIE.DS.8jsxjrsn">https://doi.org/10.25039/CIE.DS.8jsxjrsn</a></div>
+</div>
+<div class="line-block">
+<div class="line">[CIE18b] CIE 2018.</div>
+<div class="line">CIE standard illuminant D55.</div>
+<div class="line"><a class="reference external" href="https://doi.org/10.25039/CIE.DS.qewfb3kp">https://doi.org/10.25039/CIE.DS.qewfb3kp</a></div>
+</div>
+<div class="line-block">
+<div class="line">[CIE18c] CIE 2018.</div>
+<div class="line">CIE standard illuminant D75.</div>
+<div class="line"><a class="reference external" href="https://doi.org/10.25039/CIE.DS.9fvcmrk4">https://doi.org/10.25039/CIE.DS.9fvcmrk4</a></div>
+</div>
+<div class="line-block">
+<div class="line">[CIE19a] CIE 2019.</div>
+<div class="line">CIE 1931 colour-matching functions, 2 degree observer.</div>
+<div class="line"><a class="reference external" href="https://doi.org/10.25039/CIE.DS.xvudnb9b">https://doi.org/10.25039/CIE.DS.xvudnb9b</a></div>
+</div>
+<div class="line-block">
+<div class="line">[CIE19b] CIE 2019.</div>
+<div class="line">CIE 1964 colour-matching functions, 10 degree observer</div>
+<div class="line"><a class="reference external" href="https://doi.org/10.25039/CIE.DS.sqksu2n5">https://doi.org/10.25039/CIE.DS.sqksu2n5</a></div>
+</div>
+<div class="line-block">
+<div class="line">[L*20] Ly, Dyer, Feig, Chien &amp; Del Bino 2020.</div>
+<div class="line">Research Techniques Made Simple: Cutaneous Colorimetry: A Reliable Technique for Objective Skin Color Measurement.</div>
+<div class="line"><a class="reference external" href="https://doi.org/10.1016/j.jid.2019.11.003">https://doi.org/10.1016/j.jid.2019.11.003</a></div>
+</div>
+<div class="line-block">
+<div class="line">[CIE22a] CIE 2022.</div>
+<div class="line">CIE standard illuminant D50.</div>
+<div class="line"><a class="reference external" href="https://doi.org/10.25039/CIE.DS.etgmuqt5">https://doi.org/10.25039/CIE.DS.etgmuqt5</a></div>
+</div>
+<div class="line-block">
+<div class="line">[CIE22b] CIE 2022.</div>
+<div class="line">CIE standard illuminant D65.</div>
+<div class="line"><a class="reference external" href="https://doi.org/10.25039/CIE.DS.hjfjmt59">https://doi.org/10.25039/CIE.DS.hjfjmt59</a></div>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.colors.Delta_E">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.colors.</span></span><span class="sig-name descname"><span class="pre">Delta_E</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">L0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">L1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.colors.Delta_E" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate the color difference <span class="math notranslate nohighlight">\(\Delta E^*\)</span> between between
+a reference color (<span class="math notranslate nohighlight">\(L^*_0\)</span>, <span class="math notranslate nohighlight">\(a^*_0\)</span>, <span class="math notranslate nohighlight">\(b^*_0\)</span>) and
+a test color (<span class="math notranslate nohighlight">\(L^*_1\)</span>, <span class="math notranslate nohighlight">\(a^*_1\)</span>, <span class="math notranslate nohighlight">\(b^*_1\)</span>).</p>
+<p><span class="math notranslate nohighlight">\(\Delta E^* = \sqrt{(L^*_1 - L^*_0)^2 + (a^*_1 - a^*_0)^2 + (b^*_1 - b^*_0)^2}\)</span></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>L0</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – reference color L* coordinate [-]</p></li>
+<li><p><strong>a0</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – reference color a* coordinate [-]</p></li>
+<li><p><strong>b0</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – reference color b* coordinate [-]</p></li>
+<li><p><strong>L1</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – test color L* coordinate [-]</p></li>
+<li><p><strong>a1</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – test color a* coordinate [-]</p></li>
+<li><p><strong>b1</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – test color b* coordinate [-]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>delta_E</strong> (<em>float or np.ndarray</em>) – color difference [-]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.colors.Delta_L">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.colors.</span></span><span class="sig-name descname"><span class="pre">Delta_L</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">L0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">L1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.colors.Delta_L" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate the lightness difference <span class="math notranslate nohighlight">\(\Delta L^*\)</span> between a reference color lightness <span class="math notranslate nohighlight">\(L^*_0\)</span>
+and a test color lightness <span class="math notranslate nohighlight">\(L^*_1\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(\Delta L^* = L^*_1 - L^*_0\)</span></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>L0</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – reference color L* coordinate [-]</p></li>
+<li><p><strong>L1</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – test color L* coordinate [-]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>delta_L</strong> (<em>float or np.ndarray</em>) – lightness difference [-]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.colors.Delta_a">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.colors.</span></span><span class="sig-name descname"><span class="pre">Delta_a</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.colors.Delta_a" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate the difference <span class="math notranslate nohighlight">\(\Delta a^*\)</span> between a reference color <span class="math notranslate nohighlight">\(a^*_0\)</span> coordinate
+and a test color <span class="math notranslate nohighlight">\(a^*_1\)</span> coordinate.</p>
+<p><span class="math notranslate nohighlight">\(\Delta a^* = a^*_1 - a^*_0\)</span></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a0</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – reference color a* coordinate [-]</p></li>
+<li><p><strong>a1</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – test color a* coordinate [-]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>delta_a</strong> (<em>float or np.ndarray</em>) – a* difference [-]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.colors.Delta_b">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.colors.</span></span><span class="sig-name descname"><span class="pre">Delta_b</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.colors.Delta_b" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate the difference <span class="math notranslate nohighlight">\(\Delta b^*\)</span> between a reference color <span class="math notranslate nohighlight">\(b^*_0\)</span> coordinate
+and a test color <span class="math notranslate nohighlight">\(b^*_1\)</span> coordinate.</p>
+<p><span class="math notranslate nohighlight">\(\Delta b^* = b^*_1 - b^*_0\)</span></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>b0</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – reference color b* coordinate [-]</p></li>
+<li><p><strong>b1</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – test color b* coordinate [-]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>delta_b</strong> (<em>float or np.ndarray</em>) – b* difference [-]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.colors.EI">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.colors.</span></span><span class="sig-name descname"><span class="pre">EI</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">R_green</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">R_red</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.colors.EI" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Calculate the Erythema Index (EI) from the reflectances on chosen green </div>
+<div class="line">(usually approx. 568 nm) and red bands (usually approx. 655 nm).</div>
+<div class="line">For details please check Takiwaki et al. 1994 [T*94] and Fullerton et al. 1996 [F*96].</div>
+</div>
+<p><span class="math notranslate nohighlight">\(\mbox{EI} = 100 \mbox{ } [\mbox{log}_{10}(R_\mbox{red}) - \mbox{log}_{10}(R_\mbox{green})]\)</span></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>R_green</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – reflectance on a chosen green band [%]</p></li>
+<li><p><strong>R_red</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – reflectance on a chosen red band [%]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>EI</strong> (<em>float or np.ndarray</em>) – Erythema Index [-]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.colors.ITA">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.colors.</span></span><span class="sig-name descname"><span class="pre">ITA</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">L</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">L0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.colors.ITA" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Calculate the Individual Typology Angle (ITA) from L* and b* coordinates.</div>
+<div class="line">For details please check Chardon, Cretois &amp; Hourseau 1991 [CCH91], Del Bino et al. 2006 [D*06],</div>
+<div class="line">Del Bino &amp; Bernerd 2013 [DB13] and Ly et al. [L*20].</div>
+</div>
+<p><span class="math notranslate nohighlight">\(\mbox{ITA} = \arctan\left(\frac{L^*-L_0^*}{b^*}\right) \times \frac{180}{\pi}\)</span></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>L</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – L* coordinate [-]</p></li>
+<li><p><strong>b</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – b* coordinate [-]</p></li>
+<li><p><strong>L0</strong> (<em>float</em>) – L0 coordinate [-] (default to 50.)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>ITA</strong> (<em>float or np.ndarray</em>) – Individual Typology Angle [degrees]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.colors.ITA_class">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.colors.</span></span><span class="sig-name descname"><span class="pre">ITA_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ITA</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.colors.ITA_class" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Skin color classification based on the Individual Typology Angle <a class="reference internal" href="#skinoptics.colors.ITA" title="skinoptics.colors.ITA"><code class="xref py py-meth docutils literal notranslate"><span class="pre">skinoptics.colors.ITA()</span></code></a>.</div>
+<div class="line">For details please check Chardon, Cretois &amp; Hourseau 1991 [CCH91], Del Bino et al. 2006 [D*06],</div>
+<div class="line">Del Bino &amp; Bernerd 2013 [DB13] and Ly et al. [L*20].</div>
+</div>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>skin color classification</p></th>
+<th class="head"><p>ITA range</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>very light</p></td>
+<td><p>ITA <span class="math notranslate nohighlight">\(&gt; 55^\circ\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>light</p></td>
+<td><p><span class="math notranslate nohighlight">\(41^\circ &lt;\)</span> ITA <span class="math notranslate nohighlight">\(\le 55^\circ\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>intermediate</p></td>
+<td><p><span class="math notranslate nohighlight">\(28^\circ &lt;\)</span> ITA <span class="math notranslate nohighlight">\(\le 41^\circ\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>tan</p></td>
+<td><p><span class="math notranslate nohighlight">\(10^\circ &lt;\)</span> ITA <span class="math notranslate nohighlight">\(\le 28^\circ\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>brown</p></td>
+<td><p><span class="math notranslate nohighlight">\(-30^\circ &lt;\)</span> ITA <span class="math notranslate nohighlight">\(\le 10^\circ\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>dark</p></td>
+<td><p>ITA <span class="math notranslate nohighlight">\(\le -30^\circ\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ITA</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – Individual Typology Angle [degrees] (must be greater than -90 and less than 90)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>ITA_class</strong> (<em>str or np.ndarray</em>) – skin color classification based on the Individual Typology Angle</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.colors.Lab_from_XYZ">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.colors.</span></span><span class="sig-name descname"><span class="pre">Lab_from_XYZ</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">illuminant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'D65'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">observer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'10o'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">K</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.colors.Lab_from_XYZ" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Calculate CIE L*a*b* coordinates from CIE XYZ coordinates.</div>
+<div class="line">CIE XYZ and CIE L*a*b* coordinates must be for the same standard illuminant and standard observer.</div>
+<div class="line">For detailts please check CIE [CIE04], Schanda 2006 [S06] and Hunt &amp; Pointer 2011 [HP11].</div>
+</div>
+<div class="line-block">
+<div class="line"><span class="math notranslate nohighlight">\(L^* = 116 \mbox{ } f(Y/Y_n) - 16\)</span></div>
+<div class="line"><span class="math notranslate nohighlight">\(a^* = 500 \mbox{ } [f(X/X_n) - f(Y/Y_n)]\)</span></div>
+<div class="line"><span class="math notranslate nohighlight">\(b^* = 200 \mbox{ } [f(Y/Y_n) - f(Z/Z_n)]\)</span></div>
+</div>
+<p>in which (<span class="math notranslate nohighlight">\(X_n\)</span>, <span class="math notranslate nohighlight">\(Y_n\)</span>, <span class="math notranslate nohighlight">\(Z_n\)</span>) is the white point and</p>
+<p><span class="math notranslate nohighlight">\(f(u) = \left\{ 
+\begin{matrix}
+\sqrt[3]{u}, &amp; \mbox{if }  u &gt; \left(\frac{6}{29}\right)^3 \\
+\frac{1}{3}\left(\frac{29}{6}\right)^2 u + \frac{4}{29}, &amp; \mbox{if }  u \le \left(\frac{6}{29}\right)^3
+\end{matrix}\right.\)</span></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – X coordinate [-]</p></li>
+<li><p><strong>Y</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – Y coordinate [-]</p></li>
+<li><p><strong>Z</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – Z coordinate [-]</p></li>
+<li><p><strong>illuminant</strong> (<em>str</em>) – the user can choose one of the following… ‘A’, ‘D50’, ‘D55’, ‘D65’ or ‘D75’</p></li>
+<li><p><strong>observer</strong> (<em>str</em>) – the user can choose one of the following… ‘2o’ or ‘10o’</p></li>
+<li><p><strong>K</strong> (<em>float</em>) – scaling factor (usually 1. or 100.) [-] (default to 1.)</p></li>
+</ul>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">‘A’ refers to the CIE standard illuminant A</div>
+<div class="line">‘D50’ refers to the CIE standard illuminant D50</div>
+<div class="line">‘D55’ refers to the CIE standard illuminant D55</div>
+<div class="line">‘D65’ refers to the CIE standard illuminant D65</div>
+<div class="line">‘D75’ refers to the CIE standard illuminant D75</div>
+</div>
+<div class="line-block">
+<div class="line">‘2o’ refers to the CIE 1931 2 degree standard observer</div>
+<div class="line">‘10o’ refers to the CIE 1964 10 degree standard observer</div>
+</div>
+<div class="line-block">
+<div class="line">K = 1. for CIE XYZ coordinates in range [0, 1]</div>
+<div class="line">K = 100. for CIE XYZ coordinates in range [0, 100]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><strong>L</strong> (<em>float or np.ndarray</em>) – L* coordinate [-]</p></li>
+<li><p><strong>a</strong> (<em>float or np.ndarray</em>) – a* coordinate [-]</p></li>
+<li><p><strong>b</strong> (<em>float or np.ndarray</em>) – b* coordinate [-]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.colors.Lab_from_spectrum">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.colors.</span></span><span class="sig-name descname"><span class="pre">Lab_from_spectrum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">all_lambda</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spectrum</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambda_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">360</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambda_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">830</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambda_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">illuminant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'D65'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">observer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'10o'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmfs_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CIE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interp1d_kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cubic'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.colors.Lab_from_spectrum" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Calculate the CIE L*a*b* coordinates from the reflectance or the transmittance spectrum.</div>
+<div class="line">First calculate CIE XYZ coordinates from the spectrum for a chosen standard illuminant</div>
+<div class="line">and standard observer and then calculate CIE L*a*b* coordinates from CIE XYZ coordinates</div>
+<div class="line">(see functions <a class="reference internal" href="#skinoptics.colors.Lab_from_XYZ" title="skinoptics.colors.Lab_from_XYZ"><code class="xref py py-meth docutils literal notranslate"><span class="pre">skinoptics.colors.Lab_from_XYZ()</span></code></a> and <a class="reference internal" href="#skinoptics.colors.XYZ_from_spectrum" title="skinoptics.colors.XYZ_from_spectrum"><code class="xref py py-meth docutils literal notranslate"><span class="pre">skinoptics.colors.XYZ_from_spectrum()</span></code></a>).</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>all_lambda</strong> (<em>np.ndarray</em>) – wavelength array</p></li>
+<li><p><strong>spectrum</strong> (<em>np.ndarray</em>) – reflectance or transmittance spectrum respective to the wavelength array [%]</p></li>
+<li><p><strong>lambda_min</strong> (<em>float</em>) – lower limit of summation/integration (minimum wavelength to take into account) [nm] (default to 360.)</p></li>
+<li><p><strong>lambda_max</strong> (<em>float</em>) – upper limit of summation/integration (maximum wavelength to take into account) [nm] (default to 830.)</p></li>
+<li><p><strong>lambda_step</strong> – summation interval (wavelength step) [nm] (default to 1.)</p></li>
+<li><p><strong>observer</strong> (<em>str</em>) – the user can choose one of the following… ‘2o’ or ‘10o’</p></li>
+<li><p><strong>cmfs_model</strong> (<em>str</em>) – the user can choose one of the following… ‘CIE’, ‘Wyman_singlelobe’ or ‘Wyman_multilobe’ (default to ‘CIE’)</p></li>
+<li><p><strong>interp1d_kind</strong> (<em>str</em>) – kind argument of scipy.interpolation.interp1d (default to ‘cubic’ [CIE04] (see their section 7.2.1.1))</p></li>
+</ul>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">‘A’ refers to the CIE standard illuminant A</div>
+<div class="line">‘D50’ refers to the CIE standard illuminant D50</div>
+<div class="line">‘D55’ refers to the CIE standard illuminant D55</div>
+<div class="line">‘D65’ refers to the CIE standard illuminant D65</div>
+<div class="line">‘D75’ refers to the CIE standard illuminant D75</div>
+</div>
+<div class="line-block">
+<div class="line">‘2o’ refers to the CIE 1931 2 degree standard observer</div>
+<div class="line">‘10o’ refers to the CIE 1964 10 degree standard observer</div>
+</div>
+<div class="line-block">
+<div class="line">‘CIE’ for the linear interpolation of data from CIE datasets [CIE19a] [CIE19b]</div>
+<div class="line">‘Wyman_singlelobe’ for the functions from Wyman, Sloan &amp; Shirley 2013 [WSS13] (section 2.1)</div>
+<div class="line">‘Wyman_multilobe’ for the functions from Wyman, Sloan &amp; Shirley 2013 [WSS13] (section 2.2)</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><strong>L</strong> (<em>float</em>) – L* coordinate [-]</p></li>
+<li><p><strong>a</strong> (<em>float</em>) – a* coordinate [-]</p></li>
+<li><p><strong>b</strong> (<em>float</em>) – b* coordinate [-]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.colors.MI">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.colors.</span></span><span class="sig-name descname"><span class="pre">MI</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">R_red</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.colors.MI" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Calculate the Melanin Index (MI) from the reflectance on a chosen red band</div>
+<div class="line">(usually approx. 655 nm).</div>
+<div class="line">For details please check Takiwaki et al. 1994 [T*94] and Fullerton et al. 1996 [F*96].</div>
+</div>
+<p><span class="math notranslate nohighlight">\(\mbox{MI} = 100 \mbox{ } [-\mbox{log}_{10}(R_\mbox{red})]\)</span></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>R_red</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – reflectance on a chosen red band [%]</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>MI</strong> (<em>float or np.ndarray</em> – Melanin Index [-]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.colors.XYZ_from_Lab">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.colors.</span></span><span class="sig-name descname"><span class="pre">XYZ_from_Lab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">L</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">illuminant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'D65'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">observer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'10o'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">K</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.colors.XYZ_from_Lab" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Calculate CIE XYZ coordinates from CIE L*a*b* coordinates.</div>
+<div class="line">CIE XYZ and CIE L*a*b* coordinates must be for the same standard illuminant and standard observer.</div>
+<div class="line">For detailts please check CIE [CIE04], Schanda 2006 [S06] and Hunt &amp; Pointer 2011 [HP11].</div>
+</div>
+<div class="line-block">
+<div class="line"><span class="math notranslate nohighlight">\(X = f^{-1}[(L^* + 16)/116 + a^*/500] \mbox{ } X_n\)</span></div>
+<div class="line"><span class="math notranslate nohighlight">\(Y = f^{-1}[(L^* + 16)/116] \mbox{ } Y_n\)</span></div>
+<div class="line"><span class="math notranslate nohighlight">\(Z = f^{-1}[(L^* + 16)/116 - b^*/200] \mbox{ } Z_n\)</span></div>
+</div>
+<p>in which (<span class="math notranslate nohighlight">\(X_n\)</span>, <span class="math notranslate nohighlight">\(Y_n\)</span>, <span class="math notranslate nohighlight">\(Z_n\)</span>) is the white point and</p>
+<p><span class="math notranslate nohighlight">\(f^{-1}(u) = \left\{ 
+\begin{matrix}
+u^3, &amp; \mbox{if }  u &gt; \frac{6}{29} \\
+3 \mbox{ } \left(\frac{6}{29}\right)^2\left(u - \frac{4}{29} \right), &amp; \mbox{if } u \le \frac{6}{29}
+\end{matrix}\right.\)</span></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>L</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – L* coordinate [-] (must be in range [0, 100])</p></li>
+<li><p><strong>a</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – a* coordinate [-]</p></li>
+<li><p><strong>b</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – b* coordinate [-]</p></li>
+<li><p><strong>illuminant</strong> (<em>str</em>) – the user can choose one of the following… ‘A’, ‘D50’, ‘D55’, ‘D65’ or ‘D75’</p></li>
+<li><p><strong>observer</strong> (<em>str</em>) – the user can choose one of the following… ‘2o’ or ‘10o’</p></li>
+<li><p><strong>K</strong> (<em>float</em>) – scaling factor (usually 1. or 100.) [-] (default to 1.)</p></li>
+</ul>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">‘A’ refers to the CIE standard illuminant A</div>
+<div class="line">‘D50’ refers to the CIE standard illuminant D50</div>
+<div class="line">‘D55’ refers to the CIE standard illuminant D55</div>
+<div class="line">‘D65’ refers to the CIE standard illuminant D65</div>
+<div class="line">‘D75’ refers to the CIE standard illuminant D75</div>
+</div>
+<div class="line-block">
+<div class="line">‘2o’ refers to the CIE 1931 2 degree standard observer</div>
+<div class="line">‘10o’ refers to the CIE 1964 10 degree standard observer</div>
+</div>
+<div class="line-block">
+<div class="line">K = 1. for CIE XYZ coordinates in range [0, 1]</div>
+<div class="line">K = 100. for CIE XYZ coordinates in range [0, 100]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><strong>X</strong> (<em>float or np.ndarray</em>) – X* coordinate [-]</p></li>
+<li><p><strong>Y</strong> (<em>float or np.ndarray</em>) – Y* coordinate [-]</p></li>
+<li><p><strong>Z</strong> (<em>float or np.ndarray</em>) – Z* coordinate [-]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.colors.XYZ_from_sRGB">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.colors.</span></span><span class="sig-name descname"><span class="pre">XYZ_from_sRGB</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">R</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">G</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">K</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sRGB_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'norm'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.colors.XYZ_from_sRGB" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Calculate CIE XYZ coordinates from sRGB coordinates.</div>
+<div class="line">The obtained CIE XYZ coordinates are respective to the standard illuminant D65 and the</div>
+<div class="line">2 degree standard observer.</div>
+<div class="line">For details please check Stokes et al. [S*96] and IEC [IEC99].</div>
+</div>
+<p><span class="math notranslate nohighlight">\(\begin{bmatrix}
+X \\
+Y \\
+Z
+\end{bmatrix}
+=
+\mathcal{M}^{-1}
+\begin{bmatrix}
+R_{linear} \\
+G_{linear} \\
+B_{linear}
+\end{bmatrix}\)</span></p>
+<p>in which</p>
+<p><span class="math notranslate nohighlight">\(\begin{bmatrix}
+R_{linear} \\
+G_{linear} \\
+B_{linear}
+\end{bmatrix}
+=
+\begin{bmatrix}
+\gamma^{-1}(R) \\
+\gamma^{-1}(G) \\
+\gamma^{-1}(B)
+\end{bmatrix}\)</span></p>
+<p>and</p>
+<p><span class="math notranslate nohighlight">\(\gamma^{-1}(u) =  
+\left \{ \begin{matrix}
+u/12.92, &amp; \mbox{if } u \le 0.04045 \\
+[(u + 0.055)/1.055]^{2.4}, &amp; \mbox{if } u &gt; 0.04045 \\
+\end{matrix} \right.\)</span></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>R</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – R coordinate [-]</p></li>
+<li><p><strong>G</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – G coordinate [-]</p></li>
+<li><p><strong>B</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – B coordinate [-]</p></li>
+<li><p><strong>K</strong> (<em>float</em>) – scaling factor (usually 1. or 100.) [-] (default to 1.)</p></li>
+<li><p><strong>sRGB_scale</strong> – the user can choose one of the following… ‘norm’ or ‘8bit’</p></li>
+</ul>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">K = 1. for CIE XYZ coordinates in range [0, 1]</div>
+<div class="line">K = 100. for CIE XYZ coordinates in range [0, 100]</div>
+</div>
+<div class="line-block">
+<div class="line">‘norm’ for sRGB coordinates in range [0,1] (normalized scale)</div>
+<div class="line">‘8bit’ for sRGB coordinates in range [0, 255] (8-bit scale)</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><strong>X</strong> (<em>float or np.ndarray</em>) – X coordinate [-]</p></li>
+<li><p><strong>Y</strong> (<em>float or np.ndarray</em>) – Y coordinate [-]</p></li>
+<li><p><strong>Z</strong> (<em>float or np.ndarray</em>) – Z coordinate [-]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.colors.XYZ_from_spectrum">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.colors.</span></span><span class="sig-name descname"><span class="pre">XYZ_from_spectrum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">all_lambda</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spectrum</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambda_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">360.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambda_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">830.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambda_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">illuminant</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'D65'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">observer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'10o'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmfs_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CIE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">K</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interp1d_kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cubic'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.colors.XYZ_from_spectrum" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Calculate the CIE XYZ coordinates from the reflectance spectrum <span class="math notranslate nohighlight">\(R(\lambda)\)</span> or the</div>
+<div class="line">transmittance spectrum <span class="math notranslate nohighlight">\(T(\lambda)\)</span> for a chosen standard illuminant and standard observer.</div>
+<div class="line">Integration using the composite trapezoid rule from 360 nm to 830 nm (as default).</div>
+<div class="line">If the wavelength array does not cover the whole region, a constant extrapolation is perfomed.</div>
+<div class="line">For details please check CIE [CIE04] (see their section 7).</div>
+</div>
+<div class="line-block">
+<div class="line"><span class="math notranslate nohighlight">\(X = \frac{K}{N} \int_\lambda \mbox{ } R(\lambda) \mbox{ } S(\lambda) \mbox{ } \bar{x}(\lambda) \mbox{ } d\lambda\)</span></div>
+<div class="line"><span class="math notranslate nohighlight">\(Y = \frac{K}{N} \int_\lambda \mbox{ } R(\lambda) \mbox{ } S(\lambda) \mbox{ } \bar{y}(\lambda) \mbox{ } d\lambda\)</span></div>
+<div class="line"><span class="math notranslate nohighlight">\(Z = \frac{K}{N} \int_\lambda \mbox{ } R(\lambda) \mbox{ } S(\lambda) \mbox{ } \bar{z}(\lambda) \mbox{ } d\lambda\)</span></div>
+</div>
+<p>in which</p>
+<div class="line-block">
+<div class="line"><span class="math notranslate nohighlight">\(N = \int_\lambda \mbox{ } S(\lambda) \mbox{ } \bar{y}(\lambda) \mbox{ } d\lambda\)</span></div>
+</div>
+<p>The reflectance spectrum <span class="math notranslate nohighlight">\(R(\lambda)\)</span> is replaced by the transmittance spectrum
+<span class="math notranslate nohighlight">\(T(\lambda)\)</span> when dealing with color in some cases.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>all_lambda</strong> (<em>np.ndarray</em>) – wavelength array</p></li>
+<li><p><strong>spectrum</strong> (<em>np.ndarray</em>) – reflectance or transmittance spectrum respective to the wavelength array [%]</p></li>
+<li><p><strong>lambda_min</strong> (<em>float</em>) – lower limit of summation/integration (minimum wavelength to take into account) [nm] (default to 360.)</p></li>
+<li><p><strong>lambda_max</strong> (<em>float</em>) – upper limit of summation/integration (maximum wavelength to take into account) [nm] (default to 830.)</p></li>
+<li><p><strong>lambda_step</strong> – summation interval (wavelength step) [nm] (default to 1.)</p></li>
+<li><p><strong>observer</strong> (<em>str</em>) – the user can choose one of the following… ‘2o’ or ‘10o’</p></li>
+<li><p><strong>cmfs_model</strong> (<em>str</em>) – the user can choose one of the following… ‘CIE’, ‘Wyman_singlelobe’ or ‘Wyman_multilobe’ (default to ‘CIE’)</p></li>
+<li><p><strong>K</strong> (<em>float</em>) – scaling factor (usually 1. or 100.) [-] (default to 1.)</p></li>
+<li><p><strong>interp1d_kind</strong> (<em>str</em>) – kind argument of scipy.interpolation.interp1d (default to ‘cubic’ [CIE04] (see their section 7.2.1.1))</p></li>
+</ul>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">‘A’ refers to the CIE standard illuminant A</div>
+<div class="line">‘D50’ refers to the CIE standard illuminant D50</div>
+<div class="line">‘D55’ refers to the CIE standard illuminant D55</div>
+<div class="line">‘D65’ refers to the CIE standard illuminant D65</div>
+<div class="line">‘D75’ refers to the CIE standard illuminant D75</div>
+</div>
+<div class="line-block">
+<div class="line">‘2o’ refers to the CIE 1931 2 degree standard observer</div>
+<div class="line">‘10o’ refers to the CIE 1964 10 degree standard observer</div>
+</div>
+<div class="line-block">
+<div class="line">‘CIE’ for the linear interpolation of data from CIE datasets [CIE19a] [CIE19b]</div>
+<div class="line">‘Wyman_singlelobe’ for the functions from Wyman, Sloan &amp; Shirley 2013 [WSS13] (section 2.1)</div>
+<div class="line">‘Wyman_multilobe’ for the functions from Wyman, Sloan &amp; Shirley 2013 [WSS13] (section 2.2)</div>
+</div>
+<div class="line-block">
+<div class="line">K = 1. for CIE XYZ coordinates in range [0, 1]</div>
+<div class="line">K = 100. for CIE XYZ coordinates in range [0, 100]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><strong>X</strong> (<em>float</em>) – X coordinate [-]</p></li>
+<li><p><strong>Y</strong> (<em>float</em>) – Y coordinate [-]</p></li>
+<li><p><strong>Z</strong> (<em>float</em>) – Z coordinate [-]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.colors.XYZ_wp">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.colors.</span></span><span class="sig-name descname"><span class="pre">XYZ_wp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">illuminant</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">observer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmfs_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CIE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">K</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.colors.XYZ_wp" title="Link to this definition">¶</a></dt>
+<dd><p>The white point CIE XYZ coordinates for a chosen standard illuminant and standard observer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>illuminant</strong> (<em>str</em>) – the user can choose one of the following… ‘A’, ‘D50’, ‘D55’, ‘D65’ or ‘D75’</p></li>
+<li><p><strong>observer</strong> (<em>str</em>) – the user can choose one of the following… ‘2o’ or ‘10o’</p></li>
+<li><p><strong>cmfs_model</strong> (<em>str</em>) – the user can choose one of the following… ‘CIE’, ‘Wyman_singlelobe’ or ‘Wyman_multilobe’ (default to ‘CIE’)</p></li>
+<li><p><strong>K</strong> (<em>float</em>) – scaling factor (usually 1. or 100.) [-] (default to 1.)</p></li>
+</ul>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">‘A’ refers to the CIE standard illuminant A</div>
+<div class="line">‘D50’ refers to the CIE standard illuminant D50</div>
+<div class="line">‘D55’ refers to the CIE standard illuminant D55</div>
+<div class="line">‘D65’ refers to the CIE standard illuminant D65</div>
+<div class="line">‘D75’ refers to the CIE standard illuminant D75</div>
+</div>
+<div class="line-block">
+<div class="line">‘2o’ refers to the CIE 1931 2 degree standard observer</div>
+<div class="line">‘10o’ refers to the CIE 1964 10 degree standard observer</div>
+</div>
+<div class="line-block">
+<div class="line">‘CIE’ for the linear interpolation of data from CIE datasets [CIE19a] [CIE19b]</div>
+<div class="line">‘Wyman_singlelobe’ for the functions from Wyman, Sloan &amp; Shirley 2013 [WSS13] (section 2.1)</div>
+<div class="line">‘Wyman_multilobe’ for the functions from Wyman, Sloan &amp; Shirley 2013 [WSS13] (section 2.2)</div>
+</div>
+<div class="line-block">
+<div class="line">K = 1. for CIE XYZ coordinates in range [0, 1]</div>
+<div class="line">K = 100. for CIE XYZ coordinates in range [0, 100]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><strong>Xn</strong> (<em>float</em>) – white point X coordinate [-]</p></li>
+<li><p><strong>Yn</strong> (<em>float</em>) – white point Y coordinate [-]</p></li>
+<li><p><strong>Zn</strong> (<em>float</em>) – white point Z coordinate [-]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.colors.chroma">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.colors.</span></span><span class="sig-name descname"><span class="pre">chroma</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.colors.chroma" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate the chroma C* from a* and b* coordinates.</p>
+<p><span class="math notranslate nohighlight">\(C^* = \sqrt{a^{*2} + b^{*2}}\)</span></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – a* coordinate [-]</p></li>
+<li><p><strong>b</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – b* coordinate [-]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>chroma</strong> (<em>float or np.ndarray</em>) – chroma [-]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.colors.cmfs">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.colors.</span></span><span class="sig-name descname"><span class="pre">cmfs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lambda0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">observer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmfs_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CIE'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.colors.cmfs" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">The CIE color-matching functions <span class="math notranslate nohighlight">\(\bar{x}(\lambda)\)</span>, <span class="math notranslate nohighlight">\(\bar{y}(\lambda)\)</span> and <span class="math notranslate nohighlight">\(\bar{z}(\lambda)\)</span> for a chosen standard observer</div>
+<div class="line">as a function of wavelength.</div>
+</div>
+<div class="line-block">
+<div class="line">wavelength range: [360 nm, 830 nm] (at 1 nm intervals for cmfs_model = ‘CIE’)</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lambda0</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – wavelength [nm] (must be in range [360., 830.] for cmfs_model = ‘CIE’)</p></li>
+<li><p><strong>observer</strong> (<em>str</em>) – the user can choose one of the following… ‘2o’ or ‘10o’</p></li>
+<li><p><strong>cmfs_model</strong> (<em>str</em>) – the user can choose one of the following… ‘CIE’, ‘Wyman_singlelobe’ or ‘Wyman_multilobe’ (default to ‘CIE’)</p></li>
+</ul>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">‘2o’ refers to the CIE 1931 2 degree standard observer</div>
+<div class="line">‘10o’ refers to the CIE 1964 10 degree standard observer</div>
+</div>
+<div class="line-block">
+<div class="line">‘CIE’ for the linear interpolation of data from CIE datasets [CIE19a] [CIE19b]</div>
+<div class="line">‘Wyman_singlelobe’ for the functions from Wyman, Sloan &amp; Shirley 2013 [WSS13] (section 2.1)</div>
+<div class="line">‘Wyman_multilobe’ for the functions from Wyman, Sloan &amp; Shirley 2013 [WSS13] (section 2.2)</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><strong>xbar</strong> (<em>float or np.ndarray</em>) – <span class="math notranslate nohighlight">\(\bar{x}(\lambda\)</span>) color-matching function [-]</p></li>
+<li><p><strong>ybar</strong> (<em>float or np.ndarray</em>) – <span class="math notranslate nohighlight">\(\bar{y}(\lambda\)</span>) color-matching function [-]</p></li>
+<li><p><strong>zbar</strong> (<em>float or np.ndarray</em>) – <span class="math notranslate nohighlight">\(\bar{z}(\lambda\)</span>) color-matching function [-]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.colors.f_Lab_from_XYZ">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.colors.</span></span><span class="sig-name descname"><span class="pre">f_Lab_from_XYZ</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.colors.f_Lab_from_XYZ" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">The function <span class="math notranslate nohighlight">\(f(u)\)</span> used to calculate CIE L*a*b* coordinates from CIE XYZ coordinates</div>
+<div class="line">(see function <a class="reference internal" href="#skinoptics.colors.Lab_from_XYZ" title="skinoptics.colors.Lab_from_XYZ"><code class="xref py py-meth docutils literal notranslate"><span class="pre">skinoptics.colors.Lab_from_XYZ()</span></code></a>).</div>
+</div>
+<p><span class="math notranslate nohighlight">\(f(u) = \left\{ 
+\begin{matrix}
+\sqrt[3]{u}, &amp; \mbox{if }  u &gt; \left(\frac{6}{29}\right)^3 \\
+\frac{1}{3}\left(\frac{29}{6}\right)^2 u + \frac{4}{29}, &amp; \mbox{if }  u \le \left(\frac{6}{29}\right)^3
+\end{matrix}\right.\)</span></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>u</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – X/Xn, Y/Yn or Z/Zn ratio[-]</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>f</strong> (<em>float or np.ndarray</em>) – evaluated function [-]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.colors.hue">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.colors.</span></span><span class="sig-name descname"><span class="pre">hue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.colors.hue" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate the hue angle h* from a* and b* coordinates.</p>
+<p><span class="math notranslate nohighlight">\(h^* = \mbox{arctan2 } (b^*, a^*) \times \frac{180}{\pi}\)</span></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – a* coordinate [-]</p></li>
+<li><p><strong>b</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – b* coordinate [-]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>hue</strong> (<em>float or np.ndarray</em>) – hue angle [degrees] (in range [0, 360])</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.colors.inv_f_Lab_from_XYZ">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.colors.</span></span><span class="sig-name descname"><span class="pre">inv_f_Lab_from_XYZ</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.colors.inv_f_Lab_from_XYZ" title="Link to this definition">¶</a></dt>
+<dd><p>The <span class="math notranslate nohighlight">\(f^{-1}(u)\)</span> function, i.e. the inverse of the <span class="math notranslate nohighlight">\(f(u)\)</span> function <a class="reference internal" href="#skinoptics.colors.f_Lab_from_XYZ" title="skinoptics.colors.f_Lab_from_XYZ"><code class="xref py py-meth docutils literal notranslate"><span class="pre">skinoptics.colors.f_Lab_from_XYZ()</span></code></a>.</p>
+<p><span class="math notranslate nohighlight">\(f^{-1}(u) = \left\{ 
+\begin{matrix}
+u^3, &amp; \mbox{if }  u &gt; \frac{6}{29} \\
+3 \mbox{ } \left(\frac{6}{29}\right)^2\left(u - \frac{4}{29} \right), &amp; \mbox{if } u \le \frac{6}{29}
+\end{matrix}\right.\)</span></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>u</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – function variable [-]</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>f</strong> (<em>float or np.ndarray</em>) – evaluated function [-]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.colors.inv_nonlinear_corr_sRGB">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.colors.</span></span><span class="sig-name descname"><span class="pre">inv_nonlinear_corr_sRGB</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.colors.inv_nonlinear_corr_sRGB" title="Link to this definition">¶</a></dt>
+<dd><p>The inverse nonlinear correction for sRGB coordinates.</p>
+<p><span class="math notranslate nohighlight">\(\gamma^{-1}(u) =  
+\left \{ \begin{matrix}
+u/12.92, &amp; \mbox{if } u \le 0.04045 \\
+[(u + 0.055)/1.055]^{2.4}, &amp; \mbox{if } u &gt; 0.04045 \\
+\end{matrix} \right.\)</span></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>u</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – nonlinear R, G or B coordinate [-]</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>inv_gamma</strong> (<em>float or np.ndarray</em>) – linear R, G or B coordinate [-]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.colors.nonlinear_corr_sRGB">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.colors.</span></span><span class="sig-name descname"><span class="pre">nonlinear_corr_sRGB</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.colors.nonlinear_corr_sRGB" title="Link to this definition">¶</a></dt>
+<dd><p>The nonlinear correction for sRGB coordinates.</p>
+<p><span class="math notranslate nohighlight">\(\gamma(u) =  
+\left \{ \begin{matrix}
+12.92 \mbox{ } u, &amp; \mbox{if } u \le 0.0031308 \\
+1.055 \mbox{ } u^{1/2.4} - 0.055, &amp; \mbox{if } u &gt; 0.0031308 \\
+\end{matrix} \right.\)</span></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>u</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – linear R, G or B coordinate [-]</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>gamma</strong> (<em>float or np.ndarray</em>) – nonlinear R, G or B coordinate [-]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.colors.rspd">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.colors.</span></span><span class="sig-name descname"><span class="pre">rspd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lambda0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">illuminant</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.colors.rspd" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">The relative spectral power distribution S(<span class="math notranslate nohighlight">\(\lambda\)</span>) of a chosen standard illuminant</div>
+<div class="line">as a function of wavelength.</div>
+<div class="line">Linear interpolation of data from CIE datasets [CIE18a] [CIE22a] [CIE18b] [CIE22b] [CIE18c].</div>
+</div>
+<div class="line-block">
+<div class="line">wavelength range:</div>
+<div class="line">[300 nm, 830 nm] (at 1 nm intervals, for illuminant = ‘A’, ‘D50’ or ‘D65’)</div>
+<div class="line">or [300 nm, 780 nm] (at 5 nm intervals, for illuminant = ‘D55’ or ‘D75’)</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lambda0</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – wavelength [nm] (must be in range [300 nm, 830 nm] or [300 nm, 780 nm])</p></li>
+<li><p><strong>illuminant</strong> (<em>str</em>) – the user can choose one of the following… ‘A’, ‘D50’, ‘D55’, ‘D65’ or ‘D75’</p></li>
+</ul>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">‘A’ refers to the CIE standard illuminant A</div>
+<div class="line">‘D50’ refers to the CIE standard illuminant D50</div>
+<div class="line">‘D55’ refers to the CIE standard illuminant D55</div>
+<div class="line">‘D65’ refers to the CIE standard illuminant D65</div>
+<div class="line">‘D75’ refers to the CIE standard illuminant D75</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><strong>rspd</strong> (<em>float or np.ndarray</em>) – relative spectral power distribution [-]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.colors.sRGB_from_XYZ">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.colors.</span></span><span class="sig-name descname"><span class="pre">sRGB_from_XYZ</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">K</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sRGB_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'norm'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.colors.sRGB_from_XYZ" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Calculate sRGB coordinates from CIE XYZ coordinates.</div>
+<div class="line">CIE XYZ coordinates must be for the standard illuminant D65 and the 2 degree standard observer.</div>
+<div class="line">For details please check Stokes et al. [S*96] and IEC [IEC99].</div>
+</div>
+<p><span class="math notranslate nohighlight">\(\begin{bmatrix}
+R \\
+G \\
+B
+\end{bmatrix}
+=
+\begin{bmatrix}
+\gamma(R_{linear}) \\
+\gamma(G_{linear}) \\
+\gamma(B_{linear})
+\end{bmatrix}\)</span></p>
+<p>in which</p>
+<p><span class="math notranslate nohighlight">\(\begin{bmatrix}
+R_{linear} \\
+G_{linear} \\
+B_{linear}
+\end{bmatrix}
+=
+\mathcal{M}
+\begin{bmatrix}
+X \\
+Y \\
+Z
+\end{bmatrix}\)</span></p>
+<p>and</p>
+<p><span class="math notranslate nohighlight">\(\gamma(u) =  
+\left \{ \begin{matrix}
+12.92 \mbox{ } u, &amp; \mbox{if } u \le 0.0031308 \\
+1.055 \mbox{ } u^{1/2.4} - 0.055, &amp; \mbox{if } u &gt; 0.0031308 \\
+\end{matrix} \right.\)</span></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – X coordinate [-]</p></li>
+<li><p><strong>Y</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – Y coordinate [-]</p></li>
+<li><p><strong>Z</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – Z coordinate [-]</p></li>
+<li><p><strong>K</strong> (<em>float</em>) – scaling factor (usually 1. or 100.) [-] (default to 1.)</p></li>
+<li><p><strong>sRGB_scale</strong> – the user can choose one of the following… ‘norm’ or ‘8bit’</p></li>
+</ul>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">K = 1. for CIE XYZ coordinates in range [0, 1]</div>
+<div class="line">K = 100. for CIE XYZ coordinates in range [0, 100]</div>
+</div>
+<div class="line-block">
+<div class="line">‘norm’ for sRGB coordinates in range [0,1] (normalized scale)</div>
+<div class="line">‘8bit’ for sRGB coordinates in range [0, 255] (8-bit scale)</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><strong>R</strong> (<em>float or np.ndarray</em>) – R coordinate [-]</p></li>
+<li><p><strong>G</strong> (<em>float or np.ndarray</em>) – G coordinate [-]</p></li>
+<li><p><strong>B</strong> (<em>float or np.ndarray</em>) – B coordinate [-]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.colors.sRGB_from_lambda0">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.colors.</span></span><span class="sig-name descname"><span class="pre">sRGB_from_lambda0</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lambda0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmfs_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CIE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sRGB_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'norm'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.colors.sRGB_from_lambda0" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Calculate the sRGB coordinates respective to the color of a monochromatic light</div>
+<div class="line">(single wavelength).</div>
+</div>
+<p>wavelength range: [360 nm, 830 nm]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lambda0</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – wavelength of the monochromatic light [nm]</p></li>
+<li><p><strong>cmfs_model</strong> (<em>str</em>) – the user can choose one of the following… ‘CIE’, ‘Wyman_singlelobe’ or ‘Wyman_multilobe’ (default to ‘CIE’)</p></li>
+<li><p><strong>sRGB_scale</strong> (<em>str</em>) – the user can choose one of the following… ‘norm’ or ‘8bit’ (default to ‘norm’)</p></li>
+</ul>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">‘CIE’ for the linear interpolation of data from CIE datasets [CIE19a] [CIE19b]</div>
+<div class="line">‘Wyman_singlelobe’ for the functions from Wyman, Sloan &amp; Shirley 2013 [WSS13] (section 2.1)</div>
+<div class="line">‘Wyman_multilobe’ for the functions from Wyman, Sloan &amp; Shirley 2013 [WSS13] (section 2.2)    </div>
+</div>
+<div class="line-block">
+<div class="line">‘norm’ for sRGB coordinates in range [0,1] (normalized scale)</div>
+<div class="line">‘8bit’ for sRGB coordinates in range [0, 255] (8-bit scale)</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><strong>R</strong> (<em>float or np.ndarray</em>) – R coordinate [-]</p></li>
+<li><p><strong>G</strong> (<em>float or np.ndarray</em>) – G coordinate [-]</p></li>
+<li><p><strong>B</strong> (<em>float or np.ndarray</em>) – B coordinate [-]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.colors.sRGB_from_spectrum">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.colors.</span></span><span class="sig-name descname"><span class="pre">sRGB_from_spectrum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">all_lambda</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spectrum</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambda_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">360</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambda_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">830</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambda_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmfs_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CIE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interp1d_kind</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cubic'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sRGB_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'norm'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.colors.sRGB_from_spectrum" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Calculate the sRGB coordinates from the reflectance or the transmittance spectrum.</div>
+<div class="line">First calculate CIE XYZ coordinates (respective to the standard illuminant D65 and</div>
+<div class="line">the 2 degree standard observer) from the spectrum and then calculate sRGB coordinates</div>
+<div class="line">from CIE XYZ coordinates (see functions <a class="reference internal" href="#skinoptics.colors.sRGB_from_XYZ" title="skinoptics.colors.sRGB_from_XYZ"><code class="xref py py-meth docutils literal notranslate"><span class="pre">skinoptics.colors.sRGB_from_XYZ()</span></code></a> and</div>
+<div class="line"><a class="reference internal" href="#skinoptics.colors.XYZ_from_spectrum" title="skinoptics.colors.XYZ_from_spectrum"><code class="xref py py-meth docutils literal notranslate"><span class="pre">skinoptics.colors.XYZ_from_spectrum()</span></code></a>).</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>all_lambda</strong> (<em>np.ndarray</em>) – wavelength array</p></li>
+<li><p><strong>spectrum</strong> (<em>np.ndarray</em>) – reflectance or transmittance spectrum respective to the wavelength array [%]</p></li>
+<li><p><strong>lambda_min</strong> (<em>float</em>) – lower limit of summation/integration (minimum wavelength to take into account) [nm] (default to 360.)</p></li>
+<li><p><strong>lambda_max</strong> (<em>float</em>) – upper limit of summation/integration (maximum wavelength to take into account) [nm] (default to 830.)</p></li>
+<li><p><strong>lambda_step</strong> (<em>float</em>) – summation interval (wavelength step) [nm] (default to 1.)</p></li>
+<li><p><strong>cmfs_model</strong> (<em>str</em>) – the user can choose one of the following… ‘CIE’, ‘Wyman_singlelobe’ or ‘Wyman_multilobe’ (default to ‘CIE’)</p></li>
+<li><p><strong>interp1d_kind</strong> (<em>str</em>) – kind argument of scipy.interpolation.interp1d (default to ‘cubic’ [CIE04] (see their section 7.2.1.1))</p></li>
+<li><p><strong>sRGB_scale</strong> (<em>str</em>) – the user can choose one of the following… ‘norm’ or ‘8bit’ (default to ‘norm’)</p></li>
+</ul>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">‘CIE’ for the linear interpolation of data from CIE datasets [CIE19a] [CIE19b]</div>
+<div class="line">‘Wyman_singlelobe’ for the functions from Wyman, Sloan &amp; Shirley 2013 [WSS13] (section 2.1)</div>
+<div class="line">‘Wyman_multilobe’ for the functions from Wyman, Sloan &amp; Shirley 2013 [WSS13] (section 2.2)    </div>
+</div>
+<div class="line-block">
+<div class="line">‘norm’ for sRGB coordinates in range [0,1] (normalized scale)</div>
+<div class="line">‘8bit’ for sRGB coordinates in range [0, 255] (8-bit scale)</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><strong>R</strong> (<em>float</em>) – R coordinate [-]</p></li>
+<li><p><strong>G</strong> (<em>float</em>) – G coordinate [-]</p></li>
+<li><p><strong>B</strong> (<em>float</em>) – B coordinate [-]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.colors.transf_matrix_sRGB_linear_from_XYZ">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.colors.</span></span><span class="sig-name descname"><span class="pre">transf_matrix_sRGB_linear_from_XYZ</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.colors.transf_matrix_sRGB_linear_from_XYZ" title="Link to this definition">¶</a></dt>
+<dd><p>The transformation matrix employed to obtain linear sRGB coordinates from CIE XYZ coordinates.</p>
+<p><span class="math notranslate nohighlight">\(\mathcal{M} = 
+\begin{bmatrix}
+3.24062 &amp; -1.5372 &amp; -0.4986 \\
+-0.9689 &amp; 1.8758 &amp; 0.0415 \\
+0.0557 &amp; -0.2040 &amp; 1.0570
+\end{bmatrix}\)</span></p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><strong>M</strong> (<em>np.ndarray</em>) – transformation matrix</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.colors.xy_from_XYZ">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.colors.</span></span><span class="sig-name descname"><span class="pre">xy_from_XYZ</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.colors.xy_from_XYZ" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Calculate CIE xy chromaticities from CIE XYZ coordinates.</div>
+</div>
+<div class="line-block">
+<div class="line"><span class="math notranslate nohighlight">\(x = \frac{X}{X + Y + Z}\)</span></div>
+<div class="line"><span class="math notranslate nohighlight">\(y = \frac{Y}{X + Y + Z}\)</span></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – X coordinate [-]</p></li>
+<li><p><strong>Y</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – Y coordinate [-]</p></li>
+<li><p><strong>Z</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – Z coordinate [-]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>x</strong> (<em>float or np.ndarray</em>) – x chromaticity [-]</p></li>
+<li><p><strong>y</strong> (<em>float or np.ndarray</em>) – y chromaticity [-]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.colors.xy_wp">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.colors.</span></span><span class="sig-name descname"><span class="pre">xy_wp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">illuminant</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">observer</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.colors.xy_wp" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">The white point CIE xy chromaticities for a chosen standard illuminant and standard observer.</div>
+<div class="line">Calculated from the white point CIE XYZ coordinates (see function <a class="reference internal" href="#skinoptics.colors.XYZ_wp" title="skinoptics.colors.XYZ_wp"><code class="xref py py-meth docutils literal notranslate"><span class="pre">skinoptics.colors.XYZ_wp()</span></code></a>).</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>illuminant</strong> (<em>str</em>) – the user can choose one of the following… ‘A’, ‘D50’, ‘D55’, ‘D65’ or ‘D75’</p></li>
+<li><p><strong>observer</strong> (<em>str</em>) – the user can choose one of the following… ‘2o’ or ‘10o’</p></li>
+</ul>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">‘A’ refers to the CIE standard illuminant A</div>
+<div class="line">‘D50’ refers to the CIE standard illuminant D50</div>
+<div class="line">‘D55’ refers to the CIE standard illuminant D55</div>
+<div class="line">‘D65’ refers to the CIE standard illuminant D65</div>
+<div class="line">‘D75’ refers to the CIE standard illuminant D75</div>
+</div>
+<div class="line-block">
+<div class="line">‘2o’ refers to the CIE 1931 2 degree standard observer</div>
+<div class="line">‘10o’ refers to the CIE 1964 10 degree standard observer</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><strong>xn</strong> (<em>float</em>) – white point CIE x chromaticity [-]</p></li>
+<li><p><strong>yn</strong> (<em>float</em>) – white point CIE y chromaticity [-]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          <a class="prev-page" href="06_refractive_index.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">skinoptics.refractive_index</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2024, Victor Lima
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">skinoptics.colors module</a><ul>
+<li><a class="reference internal" href="#skinoptics.colors.Delta_E"><code class="docutils literal notranslate"><span class="pre">Delta_E()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.colors.Delta_L"><code class="docutils literal notranslate"><span class="pre">Delta_L()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.colors.Delta_a"><code class="docutils literal notranslate"><span class="pre">Delta_a()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.colors.Delta_b"><code class="docutils literal notranslate"><span class="pre">Delta_b()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.colors.EI"><code class="docutils literal notranslate"><span class="pre">EI()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.colors.ITA"><code class="docutils literal notranslate"><span class="pre">ITA()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.colors.ITA_class"><code class="docutils literal notranslate"><span class="pre">ITA_class()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.colors.Lab_from_XYZ"><code class="docutils literal notranslate"><span class="pre">Lab_from_XYZ()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.colors.Lab_from_spectrum"><code class="docutils literal notranslate"><span class="pre">Lab_from_spectrum()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.colors.MI"><code class="docutils literal notranslate"><span class="pre">MI()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.colors.XYZ_from_Lab"><code class="docutils literal notranslate"><span class="pre">XYZ_from_Lab()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.colors.XYZ_from_sRGB"><code class="docutils literal notranslate"><span class="pre">XYZ_from_sRGB()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.colors.XYZ_from_spectrum"><code class="docutils literal notranslate"><span class="pre">XYZ_from_spectrum()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.colors.XYZ_wp"><code class="docutils literal notranslate"><span class="pre">XYZ_wp()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.colors.chroma"><code class="docutils literal notranslate"><span class="pre">chroma()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.colors.cmfs"><code class="docutils literal notranslate"><span class="pre">cmfs()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.colors.f_Lab_from_XYZ"><code class="docutils literal notranslate"><span class="pre">f_Lab_from_XYZ()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.colors.hue"><code class="docutils literal notranslate"><span class="pre">hue()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.colors.inv_f_Lab_from_XYZ"><code class="docutils literal notranslate"><span class="pre">inv_f_Lab_from_XYZ()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.colors.inv_nonlinear_corr_sRGB"><code class="docutils literal notranslate"><span class="pre">inv_nonlinear_corr_sRGB()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.colors.nonlinear_corr_sRGB"><code class="docutils literal notranslate"><span class="pre">nonlinear_corr_sRGB()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.colors.rspd"><code class="docutils literal notranslate"><span class="pre">rspd()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.colors.sRGB_from_XYZ"><code class="docutils literal notranslate"><span class="pre">sRGB_from_XYZ()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.colors.sRGB_from_lambda0"><code class="docutils literal notranslate"><span class="pre">sRGB_from_lambda0()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.colors.sRGB_from_spectrum"><code class="docutils literal notranslate"><span class="pre">sRGB_from_spectrum()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.colors.transf_matrix_sRGB_linear_from_XYZ"><code class="docutils literal notranslate"><span class="pre">transf_matrix_sRGB_linear_from_XYZ()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.colors.xy_from_XYZ"><code class="docutils literal notranslate"><span class="pre">xy_from_XYZ()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.colors.xy_wp"><code class="docutils literal notranslate"><span class="pre">xy_wp()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=6840e26b"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=5fa4622c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    </body>
+</html>

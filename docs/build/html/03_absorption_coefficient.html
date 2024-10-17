@@ -1,0 +1,1478 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="./">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="skinoptics.scattering_coefficient module" href="04_scattering_coefficient.html" /><link rel="prev" title="skinoptics.dataframes module" href="02_dataframes.html" />
+
+    <link rel="shortcut icon" href="_static/openmoji_1F506.svg"/><!-- Generated with Sphinx 8.0.2 and Furo 2024.08.06 -->
+        <title>skinoptics.absorption_coefficient module - SkinOptics documentation - version 0.0.1b1</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">SkinOptics documentation - version 0.0.1b1</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  
+  <span class="sidebar-brand-text">SkinOptics documentation - version 0.0.1b1</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="modules.html">skinoptics</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of skinoptics</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01_utils.html">utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_dataframes.html">dataframes</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">absorption_coefficient</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_scattering_coefficient.html">scattering_coefficient</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05_anisotropy_factor.html">anisotropy_factor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_refractive_index.html">refractive_index</a></li>
+<li class="toctree-l2"><a class="reference internal" href="07_colors.html">colors</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="_sources/03_absorption_coefficient.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="module-skinoptics.absorption_coefficient">
+<span id="skinoptics-absorption-coefficient-module"></span><h1>skinoptics.absorption_coefficient module<a class="headerlink" href="#module-skinoptics.absorption_coefficient" title="Link to this heading">¶</a></h1>
+<div class="line-block">
+<div class="line">SkinOptics</div>
+<div class="line">Copyright (C) 2024 Victor Lima</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">This program is free software: you can redistribute it and/or modify</div>
+<div class="line">it under the terms of the GNU General Public License as published by</div>
+<div class="line">the Free Software Foundation, either version 3 of the License, or</div>
+<div class="line">(at your option) any later version.</div>
+</div>
+<div class="line-block">
+<div class="line">This program is distributed in the hope that it will be useful,</div>
+<div class="line">but WITHOUT ANY WARRANTY; without even the implied warranty of</div>
+<div class="line">MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</div>
+<div class="line">GNU General Public License for more details.</div>
+</div>
+<div class="line-block">
+<div class="line">You should have received a copy of the GNU General Public License</div>
+<div class="line">along with this program.  If not, see &lt;<a class="reference external" href="https://www.gnu.org/licenses/">https://www.gnu.org/licenses/</a>&gt;.</div>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line">Victor Lima</div>
+<div class="line">victorporto&#64;ifsc.usp.br</div>
+<div class="line">victor.lima&#64;ufscar.br</div>
+</div>
+<div class="line-block">
+<div class="line">Release Date:</div>
+<div class="line">October 2024</div>
+<div class="line">Last Modification:</div>
+<div class="line">October 2024</div>
+</div>
+<div class="line-block">
+<div class="line">References:</div>
+</div>
+<div class="line-block">
+<div class="line">[HQ73] Hale &amp; Querry 1973.</div>
+<div class="line">Optical Constants of Water in the 200-nm to 200-μm Wavelength Region.</div>
+<div class="line"><a class="reference external" href="https://doi.org/10.1364/AO.12.000555">https://doi.org/10.1364/AO.12.000555</a></div>
+</div>
+<div class="line-block">
+<div class="line">[S81] Segelstein 1981.</div>
+<div class="line">The complex refractive index of water.</div>
+<div class="line"><a class="reference external" href="https://mospace.umsystem.edu/xmlui/handle/10355/11599">https://mospace.umsystem.edu/xmlui/handle/10355/11599</a></div>
+</div>
+<div class="line-block">
+<div class="line">[AF90] Agati &amp; Fusi 1990.</div>
+<div class="line">New trends in photobiology recent advances in bilirubin photophysics.</div>
+<div class="line"><a class="reference external" href="https://doi.org/10.1016/1011-1344(90)85138-M">https://doi.org/10.1016/1011-1344(90)85138-M</a></div>
+</div>
+<div class="line-block">
+<div class="line">[B90] Billett 1990.</div>
+<div class="line">Hemoglobin and Hematocrit.</div>
+<div class="line"><a class="reference external" href="https://www.ncbi.nlm.nih.gov/books/NBK259/">https://www.ncbi.nlm.nih.gov/books/NBK259/</a></div>
+</div>
+<div class="line-block">
+<div class="line">[v*05] van Veen, Sterenborg, Pifferi, Torricelli, Chikoidze &amp; Cubeddu 2005.</div>
+<div class="line">Determination of visible near-IR absorption coefficients of mammalian fat using time- and spatially resolved</div>
+<div class="line">diffuse reflectance and transmission spectroscopy.</div>
+<div class="line"><a class="reference external" href="https://doi.org/10.1117/1.2085149">https://doi.org/10.1117/1.2085149</a></div>
+</div>
+<div class="line-block">
+<div class="line">[H02] Hecht 2002.</div>
+<div class="line">Optics. (4th Edition)</div>
+</div>
+<div class="line-block">
+<div class="line">[S*06] Salomatina, Jiang, Novak &amp; Yaroslavsky 2006.</div>
+<div class="line">Optical properties of normal and cancerous human skin in the visible and near-infrared spectral range.</div>
+<div class="line"><a class="reference external" href="https://doi.org/10.1117/1.2398928">https://doi.org/10.1117/1.2398928</a></div>
+</div>
+<div class="line-block">
+<div class="line">[SS06] Sarna &amp; Swartz 2006.</div>
+<div class="line">The Physical Properties of Melanins.</div>
+<div class="line"><a class="reference external" href="https://doi.org/10.1002/9780470987100.ch16">https://doi.org/10.1002/9780470987100.ch16</a></div>
+</div>
+<div class="line-block">
+<div class="line">[DJV11] Delgado Atencio, Jacques &amp; Vázquez y Montiel 2011.</div>
+<div class="line">Monte Carlo Modeling of Light Propagation in Neonatal Skin.</div>
+<div class="line"><a class="reference external" href="https://doi.org/10.5772/15853">https://doi.org/10.5772/15853</a></div>
+</div>
+<div class="line-block">
+<div class="line">[J13] Jacques 2013.</div>
+<div class="line">Optical properties of biological tissues: a review.</div>
+<div class="line"><a class="reference external" href="https://doi.org/10.1088/0031-9155/58/14/5007">https://doi.org/10.1088/0031-9155/58/14/5007</a></div>
+</div>
+<div class="line-block">
+<div class="line">[B*14] Bosschaart, Edelman, Aalders, van Leeuwen &amp; Faber 2014.</div>
+<div class="line">A literature review and novel theoretical approach on the optical properties of whole blood.</div>
+<div class="line"><a class="reference external" href="https://doi.org/10.1007/s10103-013-1446-7">https://doi.org/10.1007/s10103-013-1446-7</a></div>
+</div>
+<div class="line-block">
+<div class="line">[G17] Griffiths 2017.</div>
+<div class="line">Introduction to Electrodynamics. (4th Edition)</div>
+<div class="line"><a class="reference external" href="https://doi.org/10.1017/9781108333511">https://doi.org/10.1017/9781108333511</a></div>
+</div>
+<div class="line-block">
+<div class="line">[TL23] Taniguchi &amp; Lindsey 2023.</div>
+<div class="line">Absorption and fluorescence spectra of open-chain tetrapyrrole pigments – bilirubins, biliverdins, phycobilins, and synthetic analogues.</div>
+<div class="line"><a class="reference external" href="https://doi.org/10.1016/j.jphotochemrev.2023.100585">https://doi.org/10.1016/j.jphotochemrev.2023.100585</a></div>
+</div>
+<div class="line-block">
+<div class="line">[S*23] Sá, Bacal, Gomes, Silva, Gonçalves &amp; Malta 2023.</div>
+<div class="line">Blood count reference intervals for the Brazilian adult population: National Health Survey.</div>
+<div class="line"><a class="reference external" href="https://doi.org/10.1590/1980-549720230004.supl.1">https://doi.org/10.1590/1980-549720230004.supl.1</a></div>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.absorption_coefficient.Cmass_from_Cmolar">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.absorption_coefficient.</span></span><span class="sig-name descname"><span class="pre">Cmass_from_Cmolar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Cmolar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">molar_mass</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.absorption_coefficient.Cmass_from_Cmolar" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate the mass concentration from the molar concentration and the molar mass.</p>
+<p><span class="math notranslate nohighlight">\(C_{mass} = M \mbox{ } C_{molar}\)</span></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Cmolar</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – molar concentration [M]</p></li>
+<li><p><strong>molar_mass</strong> (<em>float</em>) – molar mass [g mol^-1]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>Cmass</strong> (<em>float or np.ndarray</em>) – mass concentration [g L^-1]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.absorption_coefficient.Cmolar_from_Cmass">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.absorption_coefficient.</span></span><span class="sig-name descname"><span class="pre">Cmolar_from_Cmass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Cmass</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">molar_mass</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.absorption_coefficient.Cmolar_from_Cmass" title="Link to this definition">¶</a></dt>
+<dd><p>Calculate the molar concentration from the mass concentration and the molar mass.</p>
+<p><span class="math notranslate nohighlight">\(C_{molar} = \frac{C_{mass}}{M}\)</span></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Cmass</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – mass concentration [g L^-1]</p></li>
+<li><p><strong>molar_mass</strong> (<em>float</em>) – molar mass [g mol^-1]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>Cmolar</strong> (<em>float or np.ndarray</em>) – molar concentration [M]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.absorption_coefficient.ext_eum_Sarna">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.absorption_coefficient.</span></span><span class="sig-name descname"><span class="pre">ext_eum_Sarna</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lambda0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.absorption_coefficient.ext_eum_Sarna" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">The extinction coefficient of EUMELANIN in phosphate buffer as a function of wavelength.</div>
+<div class="line">Linear interpolation of data from Sarna &amp; Swartz 2006 [SS06] (see their Fig. 16.3-a)</div>
+<div class="line">graphically deduced by Jacques and publicly available at</div>
+<div class="line">&lt;<a class="reference external" href="https://omlc.org/spectra/melanin/extcoeff.html">https://omlc.org/spectra/melanin/extcoeff.html</a>&gt;.</div>
+</div>
+<div class="line-block">
+<div class="line">wavelength range: [210 nm, 820 nm]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>lambda0</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – wavelength [nm]</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>ext</strong> (<em>float or np.ndarray</em>) – extinction coefficient [cm^-1 mL mg^-1]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.absorption_coefficient.ext_from_Abs_and_Cmass">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.absorption_coefficient.</span></span><span class="sig-name descname"><span class="pre">ext_from_Abs_and_Cmass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Abs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Cmass</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pathlength</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.absorption_coefficient.ext_from_Abs_and_Cmass" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Calculate the extinction coefficient from the absorbance, the mass concentration</div>
+<div class="line">and the pathlength.</div>
+</div>
+<p><span class="math notranslate nohighlight">\(\varepsilon_{mass}(\lambda) = \frac{Abs(\lambda)}{L \mbox{ } C_{mass}}\)</span></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Abs</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – absorbance [-]</p></li>
+<li><p><strong>Cmass</strong> (<em>float</em>) – mass concentration [g L^-1]</p></li>
+<li><p><strong>pathlength</strong> (<em>float</em>) – pathlength [cm]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>ext</strong> (<em>float or np.ndarray</em>) – extinction coefficient [cm^-1 mL mg^-1]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.absorption_coefficient.ext_from_molarext">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.absorption_coefficient.</span></span><span class="sig-name descname"><span class="pre">ext_from_molarext</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">molarext</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">molar_mass</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.absorption_coefficient.ext_from_molarext" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Calculate the extinction coefficient from the molar extinction coefficient</div>
+<div class="line">and the molar mass.</div>
+</div>
+<p><span class="math notranslate nohighlight">\(\varepsilon_{mass}(\lambda) = \frac{\varepsilon_{molar}(\lambda)}{M}\)</span></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>molarext</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – molar extinction coefficient [cm^-1 M^-1]</p></li>
+<li><p><strong>molar_mass</strong> (<em>float</em>) – molar mass [g mol^-1]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>ext</strong> (<em>float or np.ndarray</em>) – extinction coefficient [cm^-1 mL mg^-1]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.absorption_coefficient.ext_from_mua_and_Cmass">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.absorption_coefficient.</span></span><span class="sig-name descname"><span class="pre">ext_from_mua_and_Cmass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mua</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Cmass</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.absorption_coefficient.ext_from_mua_and_Cmass" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Calculate the extinction coefficient from the absorption coefficient</div>
+<div class="line">and the mass concentration.</div>
+<div class="line">For details please check Jacques 2013 [J13].</div>
+</div>
+<p><span class="math notranslate nohighlight">\(\varepsilon_{mass}(\lambda) = \frac{1}{\mbox{ln}(10)}\frac{\mu_a(\lambda)}{C_{mass}}\)</span></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mua</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – absorption coefficient [mm^-1]</p></li>
+<li><p><strong>Cmass</strong> (<em>float</em>) – mass concentration [g L^-1]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>ext</strong> (<em>float or np.ndarray</em>) – extinction coefficient [cm^-1 mL mg^-1]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.absorption_coefficient.ext_phe_Sarna">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.absorption_coefficient.</span></span><span class="sig-name descname"><span class="pre">ext_phe_Sarna</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lambda0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.absorption_coefficient.ext_phe_Sarna" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">The extinction coefficient of PHEOMELANIN in phosphate buffer as a function of wavelength.</div>
+<div class="line">Linear interpolation of data from Sarna &amp; Swartz 2006 [SS06] (see their Fig. 16.3-a)</div>
+<div class="line">graphically deduced by Jacques and publicly available at</div>
+<div class="line">&lt;<a class="reference external" href="https://omlc.org/spectra/melanin/extcoeff.html">https://omlc.org/spectra/melanin/extcoeff.html</a>&gt;.</div>
+</div>
+<div class="line-block">
+<div class="line">wavelength range: [210 nm, 820 nm]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>lambda0</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – wavelength [nm]</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>ext</strong> (<em>float or np.ndarray</em>) – extinction coefficient [cm^-1 mL mg^-1]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.absorption_coefficient.k_from_mua">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.absorption_coefficient.</span></span><span class="sig-name descname"><span class="pre">k_from_mua</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mua</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambda0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.absorption_coefficient.k_from_mua" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Calculate the imaginary part of the complex refractive index from the absorption coefficient</div>
+<div class="line">and the wavelength.</div>
+<div class="line">For details please check Hecht 2002 [H02], Jacques 2013 [J13] and Griffiths 2017 [G17].</div>
+</div>
+<p><span class="math notranslate nohighlight">\(k(\lambda) = \frac{\mu_a(\lambda)}{4\pi}\lambda\)</span></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mua</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – absorption coefficient [mm^-1]</p></li>
+<li><p><strong>lambda0</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – wavelength [nm]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>k</strong> (<em>float or np.ndarray</em>) – imaginary part of the complex refractive index [-]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.absorption_coefficient.k_wat_Hale">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.absorption_coefficient.</span></span><span class="sig-name descname"><span class="pre">k_wat_Hale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lambda0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.absorption_coefficient.k_wat_Hale" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">The imaginary part of the complex refractive index of WATER as a function of wavelength.</div>
+<div class="line">Linear interpolation of data from Hale &amp; Querry 1973 [HQ73] (see their Table I).</div>
+</div>
+<div class="line-block">
+<div class="line">wavelength range: [200 nm, 200 μm]</div>
+<div class="line">temperature: 25 ºC</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>lambda0</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – wavelength [nm]</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>k</strong> (<em>float or np.ndarray</em>) – imaginary part of the complex refractive index [-]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.absorption_coefficient.k_wat_Segelstein">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.absorption_coefficient.</span></span><span class="sig-name descname"><span class="pre">k_wat_Segelstein</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lambda0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.absorption_coefficient.k_wat_Segelstein" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">The imaginary part of the complex refractive index of WATER as a function of wavelength.</div>
+<div class="line">Linear interpolation of data from D. J. Segelstein’s M.S. Thesis 1981 [S81] collected</div>
+<div class="line">by S. Prahl and publicly available at &lt;<a class="reference external" href="https://omlc.org/spectra/water/abs/index.html">https://omlc.org/spectra/water/abs/index.html</a>&gt;.</div>
+</div>
+<div class="line-block">
+<div class="line">wavelength range: [10 nm, 10 m]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>lambda0</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – wavelength [nm]</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>k</strong> (<em>float or np.ndarray</em>) – imaginary part of the complex refractive index [-]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.absorption_coefficient.molarext_bil_Li">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.absorption_coefficient.</span></span><span class="sig-name descname"><span class="pre">molarext_bil_Li</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lambda0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.absorption_coefficient.molarext_bil_Li" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">The molar extinction coefficient of BILIRUBIN in chloroform as a function of wavelength.</div>
+<div class="line">Linear interpolation of experimental data obtained with a Cary 3 by J. Li on 1997,</div>
+<div class="line">scaled to match 55,000 cm^-1 M^-1 at 450.8 nm [AF90] and publicly available by S. Jacques and</div>
+<div class="line">S. Prahl at &lt;<a class="reference external" href="https://omlc.org/spectra/PhotochemCAD/html/119.html">https://omlc.org/spectra/PhotochemCAD/html/119.html</a>&gt;.</div>
+<div class="line">The data is also available at PhotochemCAD [TL23]</div>
+<div class="line">&lt;<a class="reference external" href="https://www.photochemcad.com/databases/common-compounds/oligopyrroles/bilirubin">https://www.photochemcad.com/databases/common-compounds/oligopyrroles/bilirubin</a>&gt;.</div>
+</div>
+<div class="line-block">
+<div class="line">wavelength range: [239.75 nm, 700 nm]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>lambda0</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – wavelength [nm]</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>molarext</strong> (<em>float or np.ndarray</em>) – molar extinction coefficient [cm^-1 M^-1]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.absorption_coefficient.molarext_deo_Prahl">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.absorption_coefficient.</span></span><span class="sig-name descname"><span class="pre">molarext_deo_Prahl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lambda0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.absorption_coefficient.molarext_deo_Prahl" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">The molar extinction coefficient for DEOXYHEMOGLOBIN in water as a function of wavelength.</div>
+<div class="line">Linear interpolation of data from various sources compiled by S. Prahl and publicly</div>
+<div class="line">available at &lt;<a class="reference external" href="https://omlc.org/spectra/hemoglobin/">https://omlc.org/spectra/hemoglobin/</a>&gt;.</div>
+</div>
+<div class="line-block">
+<div class="line">wavelength range: [250 nm, 1000 nm]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>lambda0</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – wavelength [nm]</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>molarext</strong> (<em>float or np.ndarray</em>) – molar extinction coefficient [cm^-1 M^-1]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.absorption_coefficient.molarext_eum_Sarna">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.absorption_coefficient.</span></span><span class="sig-name descname"><span class="pre">molarext_eum_Sarna</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lambda0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.absorption_coefficient.molarext_eum_Sarna" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">The molar extinction coefficient of EUMELANIN in phosphate buffer as a function of wavelength.</div>
+<div class="line">Linear interpolation of data from Sarna &amp; Swartz 2006 [SS06] (see their Fig. 16.3-a)</div>
+<div class="line">graphically deduced by Jacques and publicly available at</div>
+<div class="line">&lt;<a class="reference external" href="https://omlc.org/spectra/melanin/extcoeff.html">https://omlc.org/spectra/melanin/extcoeff.html</a>&gt;.</div>
+</div>
+<div class="line-block">
+<div class="line">wavelength range: [210 nm, 820 nm]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>lambda0</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – wavelength [nm]</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>molarext</strong> (<em>float or np.ndarray</em>) – molar extinction coefficient [cm^-1 M^-1]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.absorption_coefficient.molarext_from_Abs_and_Cmolar">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.absorption_coefficient.</span></span><span class="sig-name descname"><span class="pre">molarext_from_Abs_and_Cmolar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Abs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Cmolar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pathlength</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.absorption_coefficient.molarext_from_Abs_and_Cmolar" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Calculate the molar extinction coefficient from the absorbance, the molar concentration</div>
+<div class="line">and the pathlength.</div>
+</div>
+<p><span class="math notranslate nohighlight">\(\varepsilon_{molar}(\lambda) = \frac{Abs(\lambda)}{L \mbox{ } C_{molar}}\)</span></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Abs</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – absorbance [-]</p></li>
+<li><p><strong>Cmolar</strong> (<em>float</em>) – molar concentration [g L^-1]</p></li>
+<li><p><strong>pathlength</strong> (<em>float</em>) – pathlength [cm]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>molarext</strong> (<em>float or np.ndarray</em>) – molar extinction coefficient [cm^-1 M^-1]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.absorption_coefficient.molarext_from_ext">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.absorption_coefficient.</span></span><span class="sig-name descname"><span class="pre">molarext_from_ext</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ext</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">molar_mass</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.absorption_coefficient.molarext_from_ext" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Calculate the molar extinction coefficient from the extinction coefficient</div>
+<div class="line">and the molar mass.</div>
+</div>
+<p><span class="math notranslate nohighlight">\(\varepsilon_{molar}(\lambda) = M \mbox{ } \varepsilon_{mass}(\lambda)\)</span></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ext</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – extinction coefficient [cm^-1 mL mg^-1]</p></li>
+<li><p><strong>molar_mass</strong> (<em>float</em>) – molar mass [g mol^-1]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>molarext</strong> (<em>float or np.ndarray</em>) – molar extinction coefficient [cm^-1 M^-1]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.absorption_coefficient.molarext_from_mua_Cmolar">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.absorption_coefficient.</span></span><span class="sig-name descname"><span class="pre">molarext_from_mua_Cmolar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mua</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Cmolar</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.absorption_coefficient.molarext_from_mua_Cmolar" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Calculate the molar extinction coefficient from the absorption coefficient</div>
+<div class="line">and the molar concentration.</div>
+<div class="line">For details please check Jacques 2013 [J13].</div>
+</div>
+<p><span class="math notranslate nohighlight">\(\varepsilon_{molar}(\lambda) = \frac{1}{\mbox{ln}(10)}\frac{\mu_a(\lambda)}{C_{molar}}\)</span></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mua</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – absorption coefficient [mm^-1]</p></li>
+<li><p><strong>Cmolar</strong> (<em>float</em>) – molar concentration [M]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>molarext</strong> (<em>float or np.ndarray</em>) – molar extinction coefficient [cm^-1 M^-1]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.absorption_coefficient.molarext_oxy_Prahl">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.absorption_coefficient.</span></span><span class="sig-name descname"><span class="pre">molarext_oxy_Prahl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lambda0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.absorption_coefficient.molarext_oxy_Prahl" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">The molar extinction coefficient of OXYHEMOGLOBIN in water as a function of wavelength.</div>
+<div class="line">Linear interpolation of data from various sources compiled by S. Prahl and publicly</div>
+<div class="line">available at &lt;<a class="reference external" href="https://omlc.org/spectra/hemoglobin/">https://omlc.org/spectra/hemoglobin/</a>&gt;.</div>
+</div>
+<div class="line-block">
+<div class="line">wavelength range: [250 nm, 1000 nm]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>lambda0</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – wavelength [nm]</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>molarext</strong> (<em>float or np.ndarray</em>) – molar extinction coefficient [cm^-1 M^-1]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.absorption_coefficient.molarext_phe_Sarna">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.absorption_coefficient.</span></span><span class="sig-name descname"><span class="pre">molarext_phe_Sarna</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lambda0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.absorption_coefficient.molarext_phe_Sarna" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">The molar extinction coefficient of PHEOMELANIN in phosphate buffer as a function of wavelength.</div>
+<div class="line">Linear interpolation of data from Sarna &amp; Swartz 2006 [SS06] (see their Fig. 16.3-a)</div>
+<div class="line">graphically deduced by Jacques and publicly available at</div>
+<div class="line">&lt;<a class="reference external" href="https://omlc.org/spectra/melanin/extcoeff.html">https://omlc.org/spectra/melanin/extcoeff.html</a>&gt;.</div>
+</div>
+<div class="line-block">
+<div class="line">wavelength range: [210 nm, 820 nm]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>lambda0</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – wavelength [nm]</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>molarext</strong> (<em>float or np.ndarray</em>) – molar extinction coefficient [cm^-1 M^-1]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.absorption_coefficient.mua_DE_Salomatina">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.absorption_coefficient.</span></span><span class="sig-name descname"><span class="pre">mua_DE_Salomatina</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lambda0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.absorption_coefficient.mua_DE_Salomatina" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">The absoption coefficient of human DERMIS as a function of wavelength.</div>
+<div class="line">Linear interpolation of experimental data from Salomatina et al. 2006 [S*06],</div>
+<div class="line">publicly available at &lt;<a class="reference external" href="https://sites.uml.edu/abl/optical-properties-2/">https://sites.uml.edu/abl/optical-properties-2/</a>&gt;.</div>
+</div>
+<div class="line-block">
+<div class="line">wavelength range: [370 nm, 1600 nm]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>lambda0</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – wavelength [nm]</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>mua</strong> (<em>float or np.ndarray</em>) – absorption coefficient [mm^-1]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.absorption_coefficient.mua_EP_Salomatina">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.absorption_coefficient.</span></span><span class="sig-name descname"><span class="pre">mua_EP_Salomatina</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lambda0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.absorption_coefficient.mua_EP_Salomatina" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">The absoption coefficient of human EPIDERMIS as a function of wavelength.</div>
+<div class="line">Linear interpolation of experimental data from Salomatina et al. 2006 [S*06],</div>
+<div class="line">publicly available at &lt;<a class="reference external" href="https://sites.uml.edu/abl/optical-properties-2/">https://sites.uml.edu/abl/optical-properties-2/</a>&gt;.</div>
+</div>
+<div class="line-block">
+<div class="line">wavelength range: [370 nm, 1600 nm]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>lambda0</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – wavelength [nm]</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>mua</strong> (<em>float or np.ndarray</em>) – absorption coefficient [mm^-1]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.absorption_coefficient.mua_HY_Salomatina">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.absorption_coefficient.</span></span><span class="sig-name descname"><span class="pre">mua_HY_Salomatina</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lambda0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.absorption_coefficient.mua_HY_Salomatina" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">The absoption coefficient of human HYPODERMIS as a function of wavelength.</div>
+<div class="line">Linear interpolation of experimental data from Salomatina et al. 2006 [S*06],</div>
+<div class="line">publicly available at &lt;<a class="reference external" href="https://sites.uml.edu/abl/optical-properties-2/">https://sites.uml.edu/abl/optical-properties-2/</a>&gt;.</div>
+</div>
+<div class="line-block">
+<div class="line">wavelength range: [374 nm, 1600 nm]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>lambda0</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – wavelength [nm]</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>mua</strong> (<em>float or np.ndarray</em>) – absorption coefficient [mm^-1]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.absorption_coefficient.mua_SCC_Salomatina">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.absorption_coefficient.</span></span><span class="sig-name descname"><span class="pre">mua_SCC_Salomatina</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lambda0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.absorption_coefficient.mua_SCC_Salomatina" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">The absoption coefficient of SQUAMOUS CELL CARCINOMA as a function of wavelength.</div>
+<div class="line">Linear interpolation of experimental data from Salomatina et al. 2006 [S*06],</div>
+<div class="line">publicly available at &lt;<a class="reference external" href="https://sites.uml.edu/abl/optical-properties-2/">https://sites.uml.edu/abl/optical-properties-2/</a>&gt;.</div>
+</div>
+<div class="line-block">
+<div class="line">wavelength range: [370 nm, 1600 nm]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>lambda0</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – wavelength [nm]</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>mua</strong> (<em>float or np.ndarray</em>) – absorption coefficient [mm^-1]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.absorption_coefficient.mua_baseline">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.absorption_coefficient.</span></span><span class="sig-name descname"><span class="pre">mua_baseline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lambda0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.absorption_coefficient.mua_baseline" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">The baseline absorption coefficient as a function of wavelength.</div>
+<div class="line">Equation proposed by S. Jacques based on data for bloodless rat skin.</div>
+<div class="line">For details please check &lt;<a class="reference external" href="https://omlc.org/news/jan98/skinoptics.html">https://omlc.org/news/jan98/skinoptics.html</a>&gt;.</div>
+</div>
+<p><span class="math notranslate nohighlight">\(\mu_a^{bas}(\lambda) = 0.0244 + 8.53\mbox{ exp}(-(\lambda-154)/66.2)\)</span></p>
+<div class="line-block">
+<div class="line">wavelength range: [350 nm, 1100 nm]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>lambda0</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – wavelength [nm]</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>mua</strong> (<em>float or np.ndarray</em>) – absorption coefficient [mm^-1]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.absorption_coefficient.mua_baseline2">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.absorption_coefficient.</span></span><span class="sig-name descname"><span class="pre">mua_baseline2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lambda0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.absorption_coefficient.mua_baseline2" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">The baseline absorption coefficient as a function of wavelength.</div>
+<div class="line">Equation based on data for neonatal skin.</div>
+<div class="line">For details please check &lt;<a class="reference external" href="https://omlc.org/news/jan98/skinoptics.html">https://omlc.org/news/jan98/skinoptics.html</a>&gt;.</div>
+</div>
+<p><span class="math notranslate nohighlight">\(\mu_a^{bas}(\lambda) = 7.84 \times 10^7 \times \lambda^{-3.255}\)</span></p>
+<div class="line-block">
+<div class="line">wavelength range: [450 nm, 750 nm]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>lambda0</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – wavelength [nm]</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>mua</strong> (<em>float or np.ndarray</em>) – absorption coefficient [mm^-1]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.absorption_coefficient.mua_bil_Li">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.absorption_coefficient.</span></span><span class="sig-name descname"><span class="pre">mua_bil_Li</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lambda0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Cmass_bil</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">molar_mass_bil</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">585</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.absorption_coefficient.mua_bil_Li" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">The absorption coefficient of BILIRUBIN in chloroform as a function of wavelength.</div>
+<div class="line">Calculated from <a class="reference internal" href="#skinoptics.absorption_coefficient.molarext_bil_Li" title="skinoptics.absorption_coefficient.molarext_bil_Li"><code class="xref py py-meth docutils literal notranslate"><span class="pre">skinoptics.absorption_coefficient.molarext_bil_Li()</span></code></a> for a specific</div>
+<div class="line">bilirubin mass concentration.</div>
+</div>
+<div class="line-block">
+<div class="line">wavelength range: [239.75 nm, 700 nm]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lambda0</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – wavelength [nm]</p></li>
+<li><p><strong>Cmass_bil</strong> (<em>float</em>) – bilirubin mass concentration [g/L]</p></li>
+<li><p><strong>molarmass_bil</strong> (<em>float</em>) – molar mass of bilirubin [g/mol] (default to 585. [DJV11])</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>mua</strong> (<em>float or np.ndarray</em>) – absorption coefficient [mm^-1]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.absorption_coefficient.mua_deo_Bosschaart">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.absorption_coefficient.</span></span><span class="sig-name descname"><span class="pre">mua_deo_Bosschaart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lambda0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.absorption_coefficient.mua_deo_Bosschaart" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">The absorption coefficient of DEOXIGENIZED BLOOD (saturation = 0%) as a function of wavelength.</div>
+<div class="line">Linear interpolation of data from Bosschaart et. al. 2014 [B*14].</div>
+</div>
+<div class="line-block">
+<div class="line">wavelength range: [251 nm, 1995 nm]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>lambda0</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – wavelength [nm]</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>mua</strong> (<em>float or np.ndarray</em>) – absorption coefficient [mm^-1]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.absorption_coefficient.mua_deo_Prahl">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.absorption_coefficient.</span></span><span class="sig-name descname"><span class="pre">mua_deo_Prahl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lambda0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Cmass_deo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">150</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">molar_mass_deo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64500</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.absorption_coefficient.mua_deo_Prahl" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">The absorption coefficient of DEOXYHEMOGLOBIN in water as a function of wavelength.</div>
+<div class="line">Calculated from <a class="reference internal" href="#skinoptics.absorption_coefficient.molarext_deo_Prahl" title="skinoptics.absorption_coefficient.molarext_deo_Prahl"><code class="xref py py-meth docutils literal notranslate"><span class="pre">skinoptics.absorption_coefficient.molarext_deo_Prahl()</span></code></a> for a specific</div>
+<div class="line">deoxyhemoglobin mass concentration.</div>
+</div>
+<div class="line-block">
+<div class="line">wavelength range: [250 nm, 1000 nm]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lambda0</strong> (<em>float</em><em> or </em><em>np.ndarray.</em>) – wavelength [nm]</p></li>
+<li><p><strong>Cmass_oxy</strong> (<em>float</em>) – deoxyhemoglobin mass concentration [g/L] (default to 150. [S*23])</p></li>
+<li><p><strong>molar_mass_deo</strong> (<em>float</em>) – molar mass of deoxyhemoglobin [g/mol] (default to 64500. [B90])</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>mua</strong> (<em>float or np.ndarray</em>) – absorption coefficient [mm^-1]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.absorption_coefficient.mua_fat_vanVeen">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.absorption_coefficient.</span></span><span class="sig-name descname"><span class="pre">mua_fat_vanVeen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lambda0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.absorption_coefficient.mua_fat_vanVeen" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">The absorption coefficient of (pig lard) FAT as a function of wavelength.</div>
+<div class="line">Linear interpolation of data from van Veen et al. 2005 [v*05] collected and processed</div>
+<div class="line">by S. Prahl and publicly available at &lt;<a class="reference external" href="https://omlc.org/spectra/fat/">https://omlc.org/spectra/fat/</a>&gt;.</div>
+</div>
+<div class="line-block">
+<div class="line">wavelength range: [429 nm, 1098 nm]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>lambda0</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – wavelength [nm]</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>mua</strong> (<em>float or np.ndarray</em>) – absorption coefficient [mm^-1]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.absorption_coefficient.mua_from_ext_and_Cmass">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.absorption_coefficient.</span></span><span class="sig-name descname"><span class="pre">mua_from_ext_and_Cmass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ext</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Cmass</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.absorption_coefficient.mua_from_ext_and_Cmass" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Calculate the absorption coefficient from the extinction coefficient and the mass concentration.</div>
+<div class="line">For details please check Jacques 2013 [J13].</div>
+</div>
+<p><span class="math notranslate nohighlight">\(\mu_a(\lambda) = \mbox{ln}(10) \mbox{ } C_{mass} \mbox{ } \varepsilon_{mass}(\lambda)\)</span></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ext</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – extinction coefficient [cm^-1 mL mg^-1]</p></li>
+<li><p><strong>Cmass</strong> (<em>float</em>) – mass concentration [g L^-1]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>mua</strong> (<em>float or np.ndarray</em>) – absorption coefficient [mm^-1]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.absorption_coefficient.mua_from_k">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.absorption_coefficient.</span></span><span class="sig-name descname"><span class="pre">mua_from_k</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambda0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.absorption_coefficient.mua_from_k" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Calculate the absorption coefficient from the imaginary part of the complex refractive index</div>
+<div class="line">and the wavelength.</div>
+<div class="line">For details please check Hecht 2002 [H02], Jacques 2013 [J13] and Griffiths 2017 [G17].</div>
+</div>
+<p><span class="math notranslate nohighlight">\(\mu_a(\lambda) = 4\pi \frac{k(\lambda)}{\lambda}\)</span></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>k</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – imaginary part of the complex refractive index [-]</p></li>
+<li><p><strong>lambda0</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – wavelength [nm]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>mua</strong> (<em>float or np.ndarray</em>) – absorption coefficient [mm^-1]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.absorption_coefficient.mua_from_molarext_and_Cmolar">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.absorption_coefficient.</span></span><span class="sig-name descname"><span class="pre">mua_from_molarext_and_Cmolar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">molarext</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Cmolar</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.absorption_coefficient.mua_from_molarext_and_Cmolar" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">Calculate the absorption coefficient from the molar extinction coefficient</div>
+<div class="line">and the molar concentration.</div>
+<div class="line">For details please check Jacques 2013 [J13].</div>
+</div>
+<p><span class="math notranslate nohighlight">\(\mu_a(\lambda) = \mbox{ln}(10) \mbox{ } C_{molar} \mbox{ } \varepsilon_{molar}(\lambda)\)</span></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>molarext</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – molar extinction coefficient [cm^-1 M^-1]</p></li>
+<li><p><strong>Cmolar</strong> (<em>float</em>) – molar concentration [M]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>mua</strong> (<em>float or np.ndarray</em>) – absorption coefficient [mm^-1]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.absorption_coefficient.mua_iBCC_Salomatina">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.absorption_coefficient.</span></span><span class="sig-name descname"><span class="pre">mua_iBCC_Salomatina</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lambda0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.absorption_coefficient.mua_iBCC_Salomatina" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">The absoption coefficient of INFILTRATIVE BASAL CELL CARCINOMA as a function of wavelength.</div>
+<div class="line">Linear interpolation of experimental data from Salomatina et al. 2006 [S*06],</div>
+<div class="line">publicly available at &lt;<a class="reference external" href="https://sites.uml.edu/abl/optical-properties-2/">https://sites.uml.edu/abl/optical-properties-2/</a>&gt;.</div>
+</div>
+<div class="line-block">
+<div class="line">wavelength range: [370 nm, 1600 nm]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>lambda0</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – wavelength [nm]</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>mua</strong> (<em>float or np.ndarray</em>) – absorption coefficient [mm^-1]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.absorption_coefficient.mua_mel_Jacques">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.absorption_coefficient.</span></span><span class="sig-name descname"><span class="pre">mua_mel_Jacques</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lambda0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.absorption_coefficient.mua_mel_Jacques" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">The absoption coefficient of a MELANOSOME as a function of wavelength.</div>
+<div class="line">Equation proposed by S. Jacques based on data from various sources.</div>
+<div class="line">For details please check &lt;<a class="reference external" href="https://omlc.org/news/jan98/skinoptics.html">https://omlc.org/news/jan98/skinoptics.html</a>&gt;.</div>
+</div>
+<p><span class="math notranslate nohighlight">\(\mu_a^{mel} (\lambda) = 6.6 \times 10^{10} \times \lambda^{-3.33}\)</span></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>lambda0</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – wavelength [nm]</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>mua</strong> (<em>float or np.ndarray</em>) – absorption coefficient [mm^-1]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.absorption_coefficient.mua_nBCC_Salomatina">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.absorption_coefficient.</span></span><span class="sig-name descname"><span class="pre">mua_nBCC_Salomatina</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lambda0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.absorption_coefficient.mua_nBCC_Salomatina" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">The absoption coefficient of NODULAR BASAL CELL CARCINOMA as a function of wavelength.</div>
+<div class="line">Linear interpolation of experimental data from Salomatina et al. 2006 [S*06],</div>
+<div class="line">publicly available at &lt;<a class="reference external" href="https://sites.uml.edu/abl/optical-properties-2/">https://sites.uml.edu/abl/optical-properties-2/</a>&gt;.</div>
+</div>
+<div class="line-block">
+<div class="line">wavelength range: [370 nm, 1600 nm]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>lambda0</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – wavelength [nm]</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>mua</strong> (<em>float or np.ndarray</em>) – absorption coefficient [mm^-1]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.absorption_coefficient.mua_oxy_Bosschaart">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.absorption_coefficient.</span></span><span class="sig-name descname"><span class="pre">mua_oxy_Bosschaart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lambda0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.absorption_coefficient.mua_oxy_Bosschaart" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">The absorption coefficient of OXYGENIZED BLOOD (saturation &gt; 98%) as a function of wavelength.</div>
+<div class="line">Linear interpolation of data from Bosschaart et. al. 2014 [B*14].</div>
+</div>
+<div class="line-block">
+<div class="line">wavelength range: [251 nm, 1995 nm]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>lambda0</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – wavelength [nm]</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>mua</strong> (<em>float or np.ndarray</em>) – absorption coefficient [mm^-1]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.absorption_coefficient.mua_oxy_Prahl">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.absorption_coefficient.</span></span><span class="sig-name descname"><span class="pre">mua_oxy_Prahl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lambda0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Cmass_oxy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">150</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">molar_mass_oxy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64500</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.absorption_coefficient.mua_oxy_Prahl" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">The absorption coefficient of OXYHEMOGLOBIN in water as a function of wavelength.</div>
+<div class="line">Calculated from <a class="reference internal" href="#skinoptics.absorption_coefficient.molarext_oxy_Prahl" title="skinoptics.absorption_coefficient.molarext_oxy_Prahl"><code class="xref py py-meth docutils literal notranslate"><span class="pre">skinoptics.absorption_coefficient.molarext_oxy_Prahl()</span></code></a> for a specific</div>
+<div class="line">oxyhemoglobin mass concentration.</div>
+</div>
+<div class="line-block">
+<div class="line">wavelength range: [250 nm, 1000 nm]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lambda0</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – wavelength [nm]</p></li>
+<li><p><strong>Cmass_oxy</strong> (<em>float</em>) – oxyhemoglobin mass concentration [g/L] (default to 150. [S*23])</p></li>
+<li><p><strong>molar_mass_oxy</strong> (<em>float</em>) – molar mass of oxyhemoglobin [g/mol] (default  to 64500. [B90])</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>mua</strong> (<em>float or np.ndarray</em>) – absorption coefficient [mm^-1]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.absorption_coefficient.mua_wat_Hale">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.absorption_coefficient.</span></span><span class="sig-name descname"><span class="pre">mua_wat_Hale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lambda0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.absorption_coefficient.mua_wat_Hale" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">The absorption coefficient of WATER as a function of wavelength.</div>
+<div class="line">Linear interpolation of data from Hale &amp; Querry 1973 [HQ73] collected and processed </div>
+<div class="line">by S. Jacques and S. Prahl and publicly available at</div>
+<div class="line">&lt;<a class="reference external" href="https://omlc.org/spectra/water/abs/index.html">https://omlc.org/spectra/water/abs/index.html</a>&gt;.</div>
+</div>
+<p>wavelength range: [200 nm, 200 μm]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>lambda0</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – wavelength [nm]</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>mua</strong> (<em>float or np.ndarray</em>) – absorption coefficient [mm^-1]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.absorption_coefficient.mua_wat_Segelstein">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.absorption_coefficient.</span></span><span class="sig-name descname"><span class="pre">mua_wat_Segelstein</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lambda0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.absorption_coefficient.mua_wat_Segelstein" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">The absorption coefficient of WATER as a function of wavelength.</div>
+<div class="line">Linear interpolation of data from D. J. Segelstein’s M.S. Thesis 1981 [S81],</div>
+<div class="line">collected by S. Jacques and S. Prahl and publicly available at</div>
+<div class="line">&lt;<a class="reference external" href="https://omlc.org/spectra/water/abs/index.html">https://omlc.org/spectra/water/abs/index.html</a>&gt;.</div>
+</div>
+<div class="line-block">
+<div class="line">wavelength range: [10 nm, 10 m].</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>lambda0</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – wavelength [nm]</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>mua</strong> (<em>float or np.ndarray</em>) – absorption coefficient [mm^-1]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.absorption_coefficient.std_mua_DE_Salomatina">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.absorption_coefficient.</span></span><span class="sig-name descname"><span class="pre">std_mua_DE_Salomatina</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lambda0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.absorption_coefficient.std_mua_DE_Salomatina" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">The standard deviation respective to <a class="reference internal" href="#skinoptics.absorption_coefficient.mua_DE_Salomatina" title="skinoptics.absorption_coefficient.mua_DE_Salomatina"><code class="xref py py-meth docutils literal notranslate"><span class="pre">skinoptics.absorption_coefficient.mua_DE_Salomatina()</span></code></a>.</div>
+<div class="line">Linear interpolation of experimental data from Salomatina et al. 2006 [S*06],</div>
+<div class="line">publicly available at &lt;<a class="reference external" href="https://sites.uml.edu/abl/optical-properties-2/">https://sites.uml.edu/abl/optical-properties-2/</a>&gt;.</div>
+</div>
+<div class="line-block">
+<div class="line">wavelength range: [370 nm, 1600 nm]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>lambda0</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – wavelength [nm]</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>std_mua</strong> (<em>float or np.ndarray</em>) – standard deviation of the absorption coefficient [mm^-1]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.absorption_coefficient.std_mua_EP_Salomatina">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.absorption_coefficient.</span></span><span class="sig-name descname"><span class="pre">std_mua_EP_Salomatina</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lambda0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.absorption_coefficient.std_mua_EP_Salomatina" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">The standard deviation respective to <a class="reference internal" href="#skinoptics.absorption_coefficient.mua_EP_Salomatina" title="skinoptics.absorption_coefficient.mua_EP_Salomatina"><code class="xref py py-meth docutils literal notranslate"><span class="pre">skinoptics.absorption_coefficient.mua_EP_Salomatina()</span></code></a>.</div>
+<div class="line">Linear interpolation of experimental data from Salomatina et al. 2006 [S*06],</div>
+<div class="line">publicly available at &lt;<a class="reference external" href="https://sites.uml.edu/abl/optical-properties-2/">https://sites.uml.edu/abl/optical-properties-2/</a>&gt;.</div>
+</div>
+<div class="line-block">
+<div class="line">wavelength range: [370 nm, 1600 nm]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>lambda0</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – wavelength [nm]</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>std_mua</strong> (<em>float or np.ndarray</em>) – standard deviation of the absorption coefficient [mm^-1]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="skinoptics.absorption_coefficient.std_mua_HY_Salomatina">
+<span class="sig-prename descclassname"><span class="pre">skinoptics.absorption_coefficient.</span></span><span class="sig-name descname"><span class="pre">std_mua_HY_Salomatina</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lambda0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#skinoptics.absorption_coefficient.std_mua_HY_Salomatina" title="Link to this definition">¶</a></dt>
+<dd><div class="line-block">
+<div class="line">The standard deviation respective to <a class="reference internal" href="#skinoptics.absorption_coefficient.mua_HY_Salomatina" title="skinoptics.absorption_coefficient.mua_HY_Salomatina"><code class="xref py py-meth docutils literal notranslate"><span class="pre">skinoptics.absorption_coefficient.mua_HY_Salomatina()</span></code></a>.</div>
+<div class="line">Linear interpolation of experimental data from Salomatina et al. 2006 [S*06],</div>
+<div class="line">publicly available at &lt;<a class="reference external" href="https://sites.uml.edu/abl/optical-properties-2/">https://sites.uml.edu/abl/optical-properties-2/</a>&gt;.</div>
+</div>
+<div class="line-block">
+<div class="line">wavelength range: [370 nm, 1600 nm]</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>lambda0</strong> (<em>float</em><em> or </em><em>np.ndarray</em>) – wavelength [nm]</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>std_mua</strong> (<em>float or np.ndarray</em>) – standard deviation of the absorption coefficient [mm^-1]</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="04_scattering_coefficient.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">skinoptics.scattering_coefficient module</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="02_dataframes.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">skinoptics.dataframes module</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2024, Victor Lima
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">skinoptics.absorption_coefficient module</a><ul>
+<li><a class="reference internal" href="#skinoptics.absorption_coefficient.Cmass_from_Cmolar"><code class="docutils literal notranslate"><span class="pre">Cmass_from_Cmolar()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.absorption_coefficient.Cmolar_from_Cmass"><code class="docutils literal notranslate"><span class="pre">Cmolar_from_Cmass()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.absorption_coefficient.ext_eum_Sarna"><code class="docutils literal notranslate"><span class="pre">ext_eum_Sarna()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.absorption_coefficient.ext_from_Abs_and_Cmass"><code class="docutils literal notranslate"><span class="pre">ext_from_Abs_and_Cmass()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.absorption_coefficient.ext_from_molarext"><code class="docutils literal notranslate"><span class="pre">ext_from_molarext()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.absorption_coefficient.ext_from_mua_and_Cmass"><code class="docutils literal notranslate"><span class="pre">ext_from_mua_and_Cmass()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.absorption_coefficient.ext_phe_Sarna"><code class="docutils literal notranslate"><span class="pre">ext_phe_Sarna()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.absorption_coefficient.k_from_mua"><code class="docutils literal notranslate"><span class="pre">k_from_mua()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.absorption_coefficient.k_wat_Hale"><code class="docutils literal notranslate"><span class="pre">k_wat_Hale()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.absorption_coefficient.k_wat_Segelstein"><code class="docutils literal notranslate"><span class="pre">k_wat_Segelstein()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.absorption_coefficient.molarext_bil_Li"><code class="docutils literal notranslate"><span class="pre">molarext_bil_Li()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.absorption_coefficient.molarext_deo_Prahl"><code class="docutils literal notranslate"><span class="pre">molarext_deo_Prahl()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.absorption_coefficient.molarext_eum_Sarna"><code class="docutils literal notranslate"><span class="pre">molarext_eum_Sarna()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.absorption_coefficient.molarext_from_Abs_and_Cmolar"><code class="docutils literal notranslate"><span class="pre">molarext_from_Abs_and_Cmolar()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.absorption_coefficient.molarext_from_ext"><code class="docutils literal notranslate"><span class="pre">molarext_from_ext()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.absorption_coefficient.molarext_from_mua_Cmolar"><code class="docutils literal notranslate"><span class="pre">molarext_from_mua_Cmolar()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.absorption_coefficient.molarext_oxy_Prahl"><code class="docutils literal notranslate"><span class="pre">molarext_oxy_Prahl()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.absorption_coefficient.molarext_phe_Sarna"><code class="docutils literal notranslate"><span class="pre">molarext_phe_Sarna()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.absorption_coefficient.mua_DE_Salomatina"><code class="docutils literal notranslate"><span class="pre">mua_DE_Salomatina()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.absorption_coefficient.mua_EP_Salomatina"><code class="docutils literal notranslate"><span class="pre">mua_EP_Salomatina()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.absorption_coefficient.mua_HY_Salomatina"><code class="docutils literal notranslate"><span class="pre">mua_HY_Salomatina()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.absorption_coefficient.mua_SCC_Salomatina"><code class="docutils literal notranslate"><span class="pre">mua_SCC_Salomatina()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.absorption_coefficient.mua_baseline"><code class="docutils literal notranslate"><span class="pre">mua_baseline()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.absorption_coefficient.mua_baseline2"><code class="docutils literal notranslate"><span class="pre">mua_baseline2()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.absorption_coefficient.mua_bil_Li"><code class="docutils literal notranslate"><span class="pre">mua_bil_Li()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.absorption_coefficient.mua_deo_Bosschaart"><code class="docutils literal notranslate"><span class="pre">mua_deo_Bosschaart()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.absorption_coefficient.mua_deo_Prahl"><code class="docutils literal notranslate"><span class="pre">mua_deo_Prahl()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.absorption_coefficient.mua_fat_vanVeen"><code class="docutils literal notranslate"><span class="pre">mua_fat_vanVeen()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.absorption_coefficient.mua_from_ext_and_Cmass"><code class="docutils literal notranslate"><span class="pre">mua_from_ext_and_Cmass()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.absorption_coefficient.mua_from_k"><code class="docutils literal notranslate"><span class="pre">mua_from_k()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.absorption_coefficient.mua_from_molarext_and_Cmolar"><code class="docutils literal notranslate"><span class="pre">mua_from_molarext_and_Cmolar()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.absorption_coefficient.mua_iBCC_Salomatina"><code class="docutils literal notranslate"><span class="pre">mua_iBCC_Salomatina()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.absorption_coefficient.mua_mel_Jacques"><code class="docutils literal notranslate"><span class="pre">mua_mel_Jacques()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.absorption_coefficient.mua_nBCC_Salomatina"><code class="docutils literal notranslate"><span class="pre">mua_nBCC_Salomatina()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.absorption_coefficient.mua_oxy_Bosschaart"><code class="docutils literal notranslate"><span class="pre">mua_oxy_Bosschaart()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.absorption_coefficient.mua_oxy_Prahl"><code class="docutils literal notranslate"><span class="pre">mua_oxy_Prahl()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.absorption_coefficient.mua_wat_Hale"><code class="docutils literal notranslate"><span class="pre">mua_wat_Hale()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.absorption_coefficient.mua_wat_Segelstein"><code class="docutils literal notranslate"><span class="pre">mua_wat_Segelstein()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.absorption_coefficient.std_mua_DE_Salomatina"><code class="docutils literal notranslate"><span class="pre">std_mua_DE_Salomatina()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.absorption_coefficient.std_mua_EP_Salomatina"><code class="docutils literal notranslate"><span class="pre">std_mua_EP_Salomatina()</span></code></a></li>
+<li><a class="reference internal" href="#skinoptics.absorption_coefficient.std_mua_HY_Salomatina"><code class="docutils literal notranslate"><span class="pre">std_mua_HY_Salomatina()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=6840e26b"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=5fa4622c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    </body>
+</html>

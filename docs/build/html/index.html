@@ -1,0 +1,526 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="./">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="skinoptics" href="modules.html" />
+
+    <link rel="shortcut icon" href="_static/openmoji_1F506.svg"/><!-- Generated with Sphinx 8.0.2 and Furo 2024.08.06 -->
+        <title>SkinOptics documentation - version 0.0.1b1</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="#"><div class="brand">SkinOptics documentation - version 0.0.1b1</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="#">
+  
+  
+  <span class="sidebar-brand-text">SkinOptics documentation - version 0.0.1b1</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="modules.html">skinoptics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of skinoptics</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="01_utils.html">utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_dataframes.html">dataframes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_absorption_coefficient.html">absorption_coefficient</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_scattering_coefficient.html">scattering_coefficient</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05_anisotropy_factor.html">anisotropy_factor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_refractive_index.html">refractive_index</a></li>
+<li class="toctree-l2"><a class="reference internal" href="07_colors.html">colors</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="_sources/index.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="skinoptics-documentation">
+<h1>SkinOptics documentation<a class="headerlink" href="#skinoptics-documentation" title="Link to this heading">¶</a></h1>
+<div class="line-block">
+<div class="line"><strong>SkinOptics</strong> is an open source Python package with tools for building human skin computational</div>
+<div class="line">models for Monte Carlo simulations of light transport, as well as tools for analyzing simulation</div>
+<div class="line">outputs. It can also be used for teaching and exploring about Optical Properties and Colorimetry.</div>
+</div>
+<p><strong>SkinOptics</strong> is under continuos development.</p>
+<p>New features may be available in the future.</p>
+<p>Please remember that <strong>SkinOptics</strong> is available without any warranty.</p>
+<section id="api-reference-toolbox">
+<h2>API reference (Toolbox)<a class="headerlink" href="#api-reference-toolbox" title="Link to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">skinoptics</a></li>
+</ul>
+</div>
+</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading">¶</a></h2>
+<div class="line-block">
+<div class="line"><strong>SkinOptics</strong> can be easily installed using <code class="docutils literal notranslate"><span class="pre">pip</span></code> (the package installer for Python).</div>
+<div class="line">To do so, write the following line in the command prompt:</div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>skinoptics
+</pre></div>
+</div>
+</section>
+<section id="prerequisite-packages">
+<h2>Prerequisite Packages<a class="headerlink" href="#prerequisite-packages" title="Link to this heading">¶</a></h2>
+<div class="line-block">
+<div class="line"><strong>SkinOptics</strong> is structured based on other Python packages.</div>
+<div class="line">In order to be able to properly run it, please also install all of the following:</div>
+</div>
+<ul class="simple">
+<li><p><a class="reference external" href="https://numpy.org/">NumPy</a></p></li>
+<li><p><a class="reference external" href="https://scipy.org/">SciPy</a></p></li>
+<li><p><a class="reference external" href="https://pandas.pydata.org/">pandas</a></p></li>
+</ul>
+</section>
+<section id="modules">
+<h2>Modules<a class="headerlink" href="#modules" title="Link to this heading">¶</a></h2>
+<p><strong>SkinOptics</strong> is currently composed of seven modules:</p>
+<div class="line-block">
+<div class="line">1- <strong>utils.py</strong></div>
+<div class="line">Module with mathematical and auxiliary functions.</div>
+</div>
+<div class="line-block">
+<div class="line">2- <strong>dataframes.py</strong></div>
+<div class="line">Module with pandas DataFrames of the txt and csv files stored at the datasets folder.</div>
+</div>
+<div class="line-block">
+<div class="line">3- <strong>absorption_coefficient.py</strong></div>
+<div class="line">Module with functions for modeling the absorption coefficient and its related quantities.</div>
+</div>
+<div class="line-block">
+<div class="line">4- <strong>scattering_cofficient.py</strong></div>
+<div class="line">Module with functions for modeling the scattering coefficient and its related quantities.</div>
+</div>
+<div class="line-block">
+<div class="line">5- <strong>anisotropy_factor.py</strong></div>
+<div class="line">Module with functions for modeling the anisotropy factor and its related quantities.</div>
+</div>
+<div class="line-block">
+<div class="line">6- <strong>refractive_index.py</strong></div>
+<div class="line">Module with functions for modeling the refractive index and its related quantities.</div>
+</div>
+<div class="line-block">
+<div class="line">7- <strong>colors.py</strong></div>
+<div class="line">Module with functions for Colorimetry.</div>
+</div>
+</section>
+<section id="jupyter-notebooks">
+<h2>Jupyter Notebooks<a class="headerlink" href="#jupyter-notebooks" title="Link to this heading">¶</a></h2>
+<p>Some ipynb files with usage examples will be available soon.</p>
+</section>
+<section id="source-code">
+<h2>Source Code<a class="headerlink" href="#source-code" title="Link to this heading">¶</a></h2>
+<p><strong>SkinOptics</strong> scripts are publicly available in a <a class="reference external" href="https://github.com/victorportog/skinoptics">GitHub repository</a>.</p>
+</section>
+<section id="license">
+<h2>License<a class="headerlink" href="#license" title="Link to this heading">¶</a></h2>
+<p><strong>SkinOptics</strong> is released under GNU General Public License v3.0:</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">This program is free software: you can redistribute it and/or modify</div>
+<div class="line">it under the terms of the GNU General Public License as published by</div>
+<div class="line">the Free Software Foundation, either version 3 of the License, or</div>
+<div class="line">(at your option) any later version.</div>
+</div>
+<div class="line-block">
+<div class="line">This program is distributed in the hope that it will be useful,</div>
+<div class="line">but WITHOUT ANY WARRANTY; without even the implied warranty of</div>
+<div class="line">MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</div>
+<div class="line">GNU General Public License for more details.</div>
+</div>
+<div class="line-block">
+<div class="line">You should have received a copy of the GNU General Public License</div>
+<div class="line">along with this program.  If not, see &lt;<a class="reference external" href="https://www.gnu.org/licenses/">https://www.gnu.org/licenses/</a>&gt;.</div>
+</div>
+</div></blockquote>
+</section>
+<section id="citing-skinoptics">
+<h2>Citing SkinOptics<a class="headerlink" href="#citing-skinoptics" title="Link to this heading">¶</a></h2>
+<p>If <strong>SkinOptics</strong> is being useful for a presentation, publication or other purpose, please consider citing it.</p>
+<p>Suggestion:</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">V. P. G., Lima. “SkinOptics documentation,” (2024).</div>
+<div class="line">Available at &lt;<a class="reference external" href="https://skinoptics.readthedocs.io/">https://skinoptics.readthedocs.io/</a>&gt;.</div>
+</div>
+</div></blockquote>
+<p>BibTex entry:</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">&#64;misc{Lima2024,</div>
+<div class="line-block">
+<div class="line">author = {V. P. G. Lima},</div>
+<div class="line">title = {{SkinOptics documentation}},</div>
+<div class="line">year  = {2024},</div>
+<div class="line">url   = {<a class="reference external" href="https://skinoptics.readthedocs.io/">https://skinoptics.readthedocs.io/</a>}</div>
+</div>
+<div class="line">}</div>
+</div>
+</div></blockquote>
+</section>
+<section id="credits">
+<h2>Credits<a class="headerlink" href="#credits" title="Link to this heading">¶</a></h2>
+<div class="line-block">
+<div class="line">This documentation is written in reStructuredText and was built with <a class="reference external" href="https://www.sphinx-doc.org/en/master/">Sphinx</a>.</div>
+<div class="line">It is displayed using the <a class="reference external" href="https://github.com/pradyunsg/furo">Furo Theme</a> and is hosted in the plataform <a class="reference external" href="https://about.readthedocs.com/">Read the Docs</a>.</div>
+<div class="line">The favicon image is from <a class="reference external" href="https://openmoji.org/">OpenMoji</a>.</div>
+</div>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">¶</a></h2>
+<div class="line-block">
+<div class="line">References that were used to implement <strong>SkinOptics</strong> tools are stated in the <a class="reference external" href="modules.html">API reference</a>.</div>
+</div>
+</section>
+<section id="author-information">
+<h2>Author Information<a class="headerlink" href="#author-information" title="Link to this heading">¶</a></h2>
+<div class="line-block">
+<div class="line">Victor Porto Gontijo de Lima</div>
+<div class="line">Brazilian 🟩 🟨 🟦 ⬜</div>
+<div class="line">Research, Development &amp; Innovation</div>
+</div>
+<div class="line-block">
+<div class="line">MSc student in Theoretical and Experimental Physics</div>
+<div class="line">São Carlos Institute of Physics (IFSC)</div>
+<div class="line">University of São Paulo (USP)</div>
+<div class="line">contact e-mail: victorporto&#64;ifsc.usp.br</div>
+</div>
+<div class="line-block">
+<div class="line">Physicist (Technician)</div>
+<div class="line">Núcleo de Formação de Professores (NFP)</div>
+<div class="line">Federal University of São Carlos (UFSCar)</div>
+<div class="line">contact e-mail: victor.lima&#64;ufscar.br</div>
+</div>
+<p>If you find any mistakes in the scripts or have any suggestions, feel free to send me a message! :)</p>
+</section>
+<section id="funding">
+<h2>Funding<a class="headerlink" href="#funding" title="Link to this heading">¶</a></h2>
+<div class="line-block">
+<div class="line">The development of <strong>SkinOptics</strong> was only possible due to multiple sources of finance…</div>
+</div>
+<div class="line-block">
+<div class="line">1- Grants from Brazilian government funding agencies:</div>
+</div>
+<ul class="simple">
+<li><p>process number 88887.631088/2021-00 (PROEX - CAPES) [MSc scholarship, 2021 - 2023]</p></li>
+<li><p>process number 465360/2014-9 (<a class="reference external" href="https://www.ifsc.usp.br/cepof/">INCT</a> - CNPq) [Biophotonics Group]</p></li>
+<li><p>process number 2014/50857-8 (<a class="reference external" href="https://www.ifsc.usp.br/cepof/">INCT</a> - FAPESP) [Biophotonics Group]</p></li>
+<li><p>process number 2013/07276-1 (CePID <a class="reference external" href="https://www.ifsc.usp.br/cepof/">CePOF</a> - FAPESP) [Biophotonics Group]</p></li>
+</ul>
+<div class="line-block">
+<div class="line">2- My work with management, teaching, research and university extension as an employee of a higher education federal institution in Brazil:</div>
+</div>
+<ul class="simple">
+<li><p>currently at the Federal University of São Carlos (UFSCar)</p></li>
+<li><p>previously at the Federal Institute of Education, Science and Technology of Brasília (IFB)</p></li>
+</ul>
+</section>
+<section id="acknowledgments">
+<h2>Acknowledgments<a class="headerlink" href="#acknowledgments" title="Link to this heading">¶</a></h2>
+<p>I would like to thank…</p>
+<ul class="simple">
+<li><p>my MSc supervisor Lilian Tan Moriyama, who is guiding me throughout the amazing and intriguing field of Biophotonics and Biomedical Optics.</p></li>
+<li><p>some colleagues Thereza Fortunato, Otávio Palamoni, Sofia Santos, Semira Silva, Johan Tovar, Maria Júlia Marques and Alessandra Lima, as well as professors Cristina Kurachi and Vanderlei Bagnato, for all aid and discussions.</p></li>
+<li><p>my BSc supervisor Mariana Penna Lima Vitenti, who guided my first steps in the field of Scientific Computing.</p></li>
+<li><p>my friend Arthur Willian, who always helps me to deal with computer-related issues (and many others).</p></li>
+<li><p>all my friends, who I will not be able to list in full here without the risk of missing names and who bring joy even in the hard times.</p></li>
+<li><p>my boyfriend Brinatti, with whom I share home and future.</p></li>
+<li><p>my grandmas Maria and Eva, my grandpa Severo, my mom Rosana, my dad Silvério and my sister Amanda, who I love so much and who have always provided me with material conditions for living and studying.</p></li>
+</ul>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="modules.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">skinoptics</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2024, Victor Lima
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">SkinOptics documentation</a><ul>
+<li><a class="reference internal" href="#api-reference-toolbox">API reference (Toolbox)</a></li>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#prerequisite-packages">Prerequisite Packages</a></li>
+<li><a class="reference internal" href="#modules">Modules</a></li>
+<li><a class="reference internal" href="#jupyter-notebooks">Jupyter Notebooks</a></li>
+<li><a class="reference internal" href="#source-code">Source Code</a></li>
+<li><a class="reference internal" href="#license">License</a></li>
+<li><a class="reference internal" href="#citing-skinoptics">Citing SkinOptics</a></li>
+<li><a class="reference internal" href="#credits">Credits</a></li>
+<li><a class="reference internal" href="#references">References</a></li>
+<li><a class="reference internal" href="#author-information">Author Information</a></li>
+<li><a class="reference internal" href="#funding">Funding</a></li>
+<li><a class="reference internal" href="#acknowledgments">Acknowledgments</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=6840e26b"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=5fa4622c"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    </body>
+</html>
