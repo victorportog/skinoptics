@@ -14,13 +14,7 @@ install('furo')
 install('sphinxemoji')
 install('skinoptics')
 sys.path.insert(0, os.path.abspath('../..'))
-import numpy as np
-import scipy
-import pandas as pd
 import skinoptics
-print(np.__version__)
-print(scipy.__version__)
-print(pd.__version__)
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
