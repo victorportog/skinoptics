@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "skinoptics"
-version = "0.0.1b2"
+version = "0.0.1b3"
 authors = [
   { name="Victor Lima", email="victorporto@ifsc.usp.br"},
 ]
