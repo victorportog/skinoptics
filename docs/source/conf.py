@@ -14,6 +14,7 @@ install('furo')
 install('sphinxemoji')
 install('skinoptics')
 sys.path.insert(0, os.path.abspath('../..'))
+import skinoptics
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
@@ -21,7 +22,7 @@ sys.path.insert(0, os.path.abspath('../..'))
 project = 'SkinOptics'
 copyright = '2024, Victor Lima'
 author = 'Victor Lima'
-release = '0.0.1b1'
+release = skinoptics.__version__
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
