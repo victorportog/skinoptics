@@ -25,9 +25,5 @@ dependencies = [
 [project.urls]
 Homepage = "https://github.com/victorportog/skinoptics"
 
-[tool.setuptools.packages.find]
-where = ["."]
-
-[tool.setuptools.package-data]
-"datasets.colors" = ["*.txt"]
-"datasets.optical_properties" = ["*.txt"]
+[tool.setuptools]
+packages = ["skinoptics", "datasets"]
