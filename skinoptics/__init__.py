@@ -28,6 +28,7 @@ Copyright (C) 2024 Victor Lima
 | 0.0.1b2 - release date: 2024 October 18
 | 0.0.1b3 - release date: 2024 October 18
 | 0.0.1b4 - release date: 2024 October 18
+| 0.0.1b5 - release date: 2024 October 18
 '''
 
 __all__ = ['utils', 'dataframes',
@@ -38,7 +39,7 @@ __all__ = ['utils', 'dataframes',
 __version__major = '0'
 __version__minor = '0'
 __version__micro = '1'
-__version__suffix = 'b4'
+__version__suffix = 'b5'
 
 __author__ = "Victor Lima"
 __copyright__ = "Copyright (c) 2024 Victor Lima"
