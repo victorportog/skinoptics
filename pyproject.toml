@@ -26,4 +26,4 @@ dependencies = [
 Homepage = "https://github.com/victorportog/skinoptics"
 
 [tool.setuptools]
-packages = ["skinoptics", "datasets"]
+packages = ["skinoptics", "skinoptics.datasets"]
