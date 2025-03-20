@@ -64,26 +64,26 @@ from scipy.interpolate import interp1d
 from skinoptics.utils import *
 from skinoptics.dataframes import *
 
-def n_Cauchy(lambda0, A0, A1, A2, A3):
+def n_Cauchy(lambda0, A, B, C, D):
     r'''
     The Cauchy's equation.
     
-    :math:`n(\lambda) = A_0 + \frac{A_1}{\lambda^2} + \frac{A_2}{\lambda^4} + \frac{A_3}{\lambda^6}`
+    :math:`n(\lambda) = A + \frac{B}{\lambda^2} + \frac{C}{\lambda^4} + \frac{D}{\lambda^6}`
     
     :param lambda0: wavelength [nm]
     :type lambda0: float or np.ndarray
     
-    :param A0: coefficient :math:`A_0` [-]
-    :type A0: float
+    :param A: coefficient :math:`A` [-]
+    :type A: float
     
-    :param A1: coefficient :math:`A_1` [nm^2]
-    :type A1: float
+    :param B: coefficient :math:`B` [nm^2]
+    :type B: float
     
-    :param A2: coefficient :math:`A_2` [nm^4]
-    :type A2: float
+    :param C: coefficient :math:`C` [nm^4]
+    :type C: float
     
-    :param A3: coefficient :math:`A_3` [nm^6]
-    :type A3: float
+    :param D: coefficient :math:`D` [nm^6]
+    :type D: float
     
     :return: - **n** (*float or np.ndarray*) – refractive index [-]
     '''
