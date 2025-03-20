@@ -73,7 +73,11 @@ Some ipynb files with usage examples will be available soon.
 Source Code
 -----------
 
-**SkinOptics** scripts are publicly available in a `GitHub repository <https://github.com/victorportog/skinoptics>`_.
+**SkinOptics** scripts are publicly available on `GitHub <https://github.com/victorportog/skinoptics>`_.
+
+Release History
+---------------
+A list of all **SkinOptics** versions, ordered by release date, is available on `PyPI <https://pypi.org/project/skinoptics/#history>`_.
 
 License
 -------
@@ -100,7 +104,7 @@ If **SkinOptics** is being useful for a presentation, publication or other purpo
 
 Suggestion:
 
-   | V. P. G., Lima. “SkinOptics documentation,” (2024).
+   | LIMA, V. P. G. SkinOptics documentation. 2024.
    | Available at <https://skinoptics.readthedocs.io/>.
 
 BibTex entry:

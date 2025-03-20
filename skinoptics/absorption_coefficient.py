@@ -539,8 +539,7 @@ def mua_wat_Hale(lambda0):
     r'''
     | The absorption coefficient of WATER as a function of wavelength.
     | Linear interpolation of data from Hale & Querry 1973 [HQ73] collected and processed 
-    | by S. Jacques and S. Prahl and publicly available at
-    | <https://omlc.org/spectra/water/abs/index.html>.
+    | by S. Prahl and publicly available at <https://omlc.org/spectra/water/abs/index.html>.
     
     wavelength range: [200 nm, 200 μm]
     
@@ -560,8 +559,7 @@ def mua_wat_Segelstein(lambda0):
     r'''
     | The absorption coefficient of WATER as a function of wavelength.
     | Linear interpolation of data from D. J. Segelstein's M.S. Thesis 1981 [S81],
-    | collected by S. Jacques and S. Prahl and publicly available at
-    | <https://omlc.org/spectra/water/abs/index.html>.
+    | collected by S. Prahl and publicly available at <https://omlc.org/spectra/water/abs/index.html>.
     
     | wavelength range: [10 nm, 10 m].
         
