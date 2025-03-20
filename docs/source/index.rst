@@ -5,7 +5,7 @@ SkinOptics documentation
 | models for Monte Carlo simulations of light transport, as well as tools for analyzing simulation
 | outputs. It can also be used for teaching and exploring about Optical Properties and Colorimetry.
 
-**SkinOptics** is under continuos development.
+**SkinOptics** is under continuous development.
 
 New features may be available in the future.
 

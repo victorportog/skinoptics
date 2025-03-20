@@ -760,7 +760,7 @@ def costheta_CS(g):
     | scattering phase function.
     | For details please check Cornette & Shanks 1992 [CS92].
     
-    :math:`\langle \cos\theta \rangle_{CS}(g) = g\frac{3(4 + g^2)}{5(2 + g^2)}`
+    :math:`\langle \cos\theta \rangle_{CS}(g) = \frac{3(4 + g^2)}{5(2 + g^2)} \mbox{ } g`
 
     :param g: parameter :math:`g` [-] (must be in the range [-1, 1])
     :type g: float
@@ -788,7 +788,7 @@ def costheta_D(g, alpha):
     | scattering phase function.
     | For details please check Draine 2003 [D03].
     
-    :math:`\langle \cos\theta \rangle_{D}(g, \alpha) = g\frac{1 + \alpha(3 + 2g^2)/5}{1 + \alpha(1 + 2g^2)/3}`
+    :math:`\langle \cos\theta \rangle_{D}(g, \alpha) = \frac{1 + \alpha(3 + 2g^2)/5}{1 + \alpha(1 + 2g^2)/3} \mbox{ } g`
 
     :param g: parameter :math:`g` [-] (must be in the range [-1, 1])
     :type g: float
