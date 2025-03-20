@@ -88,7 +88,7 @@ def n_Cauchy(lambda0, A, B, C, D):
     :return: - **n** (*float or np.ndarray*) – refractive index [-]
     '''
     
-    return A0 + A1/np.power(lambda0, 2., dtype = 'float64') + A2/np.power(lambda0, 4., dtype = 'float64') + A3/np.power(lambda0, 6., dtype = 'float64')
+    return A + B/np.power(lambda0, 2., dtype = 'float64') + C/np.power(lambda0, 4., dtype = 'float64') + D/np.power(lambda0, 6., dtype = 'float64')
 
 def n_Cornu(lambda0, A, B, C):
     r'''
