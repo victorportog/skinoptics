@@ -482,8 +482,8 @@ def molarext_bil_Li(lambda0):
     r'''
     | The molar extinction coefficient of BILIRUBIN in chloroform as a function of wavelength.
     | Linear interpolation of experimental data obtained with a Cary 3 by J. Li on 1997,
-    | scaled to match 55,000 cm^-1 M^-1 at 450.8 nm [AF90] and publicly available by S. Jacques and
-    | S. Prahl at <https://omlc.org/spectra/PhotochemCAD/html/119.html>.
+    | scaled to match 55,000 cm^-1 M^-1 at 450.8 nm [AF90] and publicly available by S. Prahl
+    | at <https://omlc.org/spectra/PhotochemCAD/html/119.html>.
     | The data is also available at PhotochemCAD [TL23]
     | <https://www.photochemcad.com/databases/common-compounds/oligopyrroles/bilirubin>.
     

@@ -24,11 +24,7 @@ Copyright (C) 2024 Victor Lima
 | October 2024
 
 | Version History:
-| 0.0.1b1 - release date: 2024 October 10
-| 0.0.1b2 - release date: 2024 October 18
-| 0.0.1b3 - release date: 2024 October 18
-| 0.0.1b4 - release date: 2024 October 18
-| 0.0.1b5 - release date: 2024 October 18
+| available at <https://pypi.org/project/skinoptics/#history>
 '''
 
 __all__ = ['utils', 'dataframes',
@@ -42,7 +38,7 @@ __version__micro = '1'
 __version__suffix = 'b5'
 
 __author__ = "Victor Lima"
-__copyright__ = "Copyright (c) 2024 Victor Lima"
+__copyright__ = "Copyright (c) 2024-2025 Victor Lima"
 __license__ = "GNU General Public License v3.0"
 __maintainer__ = "Victor Lima"
 __version__ = '.'.join((__version__major, __version__minor, __version__micro)) + __version__suffix

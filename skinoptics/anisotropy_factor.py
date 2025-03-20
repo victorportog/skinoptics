@@ -22,7 +22,7 @@
 | Release Date:
 | October 2024
 | Last Modification:
-| October 2024
+| October 2025
 
 | References:
 
@@ -60,7 +60,7 @@
 
 | [D03] Draine 2003.
 | Scattering by Interstellar Dust Grains. I. Optical and Ultraviolet.
-| https://doi.org/10.48550/arXiv.astro-ph/0304060
+| https://doi.org/10.1086/379118
 
 | [F11] Frisvad 2011.
 | Importance sampling the Rayleigh phase function.
@@ -162,9 +162,9 @@ def ptheta_TTHG(theta, g1, g2, gamma):
     
     :math:`p_{TTHG}(\theta, g_1, g_2, \gamma) = \gamma \mbox{ } p_{HG}(\theta, g_1) + (1 - \gamma) \mbox{ } p_{HG}(\theta, g_2)`
 
-    :math:`g_1` characterises the shape and the strength of the forward scattering peak
+    :math:`g_1` characterizes the shape and the strength of the forward scattering peak
 
-    :math:`g_2` characterises the shape and the strength of the backward scattering peak
+    :math:`g_2` characterizes the shape and the strength of the backward scattering peak
 
     :param theta: scattering angle [degrees]
     :type theta: float or np.ndarray
@@ -234,9 +234,9 @@ def ptheta_TTRM(theta, g1, g2, alpha1, alpha2, gamma):
     
     :math:`p_{TTRM}(\theta, g_1, g_2, \alpha_1, \alpha_2, \gamma) =  \gamma \mbox{ } p_{RM}(\theta, g_1, \alpha_1) + (1 - \gamma) \mbox{ } p_{RM}(\theta, g_2, \alpha_2)`
 
-    :math:`g_1` characterises the shape and the strength of the forward scattering peak
+    :math:`g_1` characterizes the shape and the strength of the forward scattering peak
 
-    :math:`g_2` characterises the shape and the strength of the backward scattering peak
+    :math:`g_2` characterizes the shape and the strength of the backward scattering peak
 
     :param theta: scattering angle [degrees]
     :type theta: float or np.ndarray
@@ -308,7 +308,7 @@ def ptheta_D(theta, g, alpha):
     
     :math:`p_{D}(\theta, g, \alpha) = 3\frac{1 + \alpha \cos^2\theta}{3 + \alpha (1 + 2g^2)} \mbox{ } p_{HG}(\theta, g)`
     
-    | For :math:`\alpha = 1` and :math:`g = 0` it reduces to the Rayleigh phase function.
+    | For :math:`\alpha = 1` and :math:`g = 0` it reduces to the Rayleigh scattering phase function.
     | For :math:`\alpha = 0` it reduces to the Henyey-Greenstein scattering phase function.
     | For :math:`\alpha = 1` it reduces to the Cornette-Shanks scattering phase function
 
@@ -363,9 +363,9 @@ def ptheta_TTU2(theta, g1, g2, gamma):
     
     :math:`p_{TTU2}(\theta, g_1, g_2, \gamma) = \gamma \mbox{ } p_{U2}(\theta, g_1) + (1 - \gamma) \mbox{ } p_{U2}(\theta, g_2)`
 
-    :math:`g_1` characterises the shape and the strength of the forward scattering peak
+    :math:`g_1` characterizes the shape and the strength of the forward scattering peak
 
-    :math:`g_2` characterises the shape and the strength of the backward scattering peak
+    :math:`g_2` characterizes the shape and the strength of the backward scattering peak
 
     :param theta: scattering angle [degrees]
     :type theta: float or np.ndarray
@@ -535,9 +535,9 @@ def costheta_TTHG(g1, g2, gamma):
     
     :math:`\langle \cos\theta \rangle_{TTHG}(g_1, g_2, \gamma) = \gamma \mbox{ } g_1 + (1 - \gamma) \mbox { } g_2`
 
-    :math:`g_1` characterises the shape and the strength of the forward scattering peak
+    :math:`g_1` characterizes the shape and the strength of the forward scattering peak
 
-    :math:`g_2` characterises the shape and the strength of the backward scattering peak
+    :math:`g_2` characterizes the shape and the strength of the backward scattering peak
 
     :param g1: parameter :math:`g_1` [-] (must be in the range [0, 1])
     :type g1: float
@@ -670,9 +670,9 @@ def costheta_TTRM(g1, g2, alpha1, alpha2, gamma):
     
     :math:`\langle \cos\theta \rangle_{TTRM}(g_1, g_2, \alpha_1, \alpha_2, \gamma) = \gamma \mbox{ } \langle \cos\theta \rangle_{RM}(g_1, \alpha_1) + (1 - \gamma) \mbox{ } \langle \cos\theta \rangle_{RM}(g_2, \alpha_2)`
 
-    :math:`g_1` characterises the shape and the strength of the forward scattering peak
+    :math:`g_1` characterizes the shape and the strength of the forward scattering peak
 
-    :math:`g_2` characterises the shape and the strength of the backward scattering peak
+    :math:`g_2` characterizes the shape and the strength of the backward scattering peak
 
     :param g1: parameter :math:`g_1` [-] (must be in the range [0, 1])
     :type g1: float
@@ -849,9 +849,9 @@ def costheta_TTU2(g1, g2, gamma):
     
     :math:`\langle \cos\theta \rangle_{TTU2}(g_1, g_2, \gamma) = \gamma \mbox{ } \langle \cos\theta \rangle_{U2}(g_1) + (1 - \gamma) \mbox{ } \langle \cos\theta \rangle_{U2}(g_2)`
 
-    :math:`g_1` characterises the shape and the strength of the forward scattering peak
+    :math:`g_1` characterizes the shape and the strength of the forward scattering peak
 
-    :math:`g_2` characterises the shape and the strength of the backward scattering peak
+    :math:`g_2` characterizes the shape and the strength of the backward scattering peak
     
     :param g1: parameter :math:`g_1` [-] (must be in the range [0, 1])
     :type g1: float
