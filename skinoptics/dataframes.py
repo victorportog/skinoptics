@@ -22,7 +22,7 @@
 | Release Date:
 | October 2024
 | Last Modification:
-| October 2024
+| March 2025
 
 | Example:
 | Lab_Alaluf2002_dataframe (respective to datasets/colors/Lab_Alaluf2002.txt)
@@ -92,7 +92,6 @@ folder2 = os.path.join(folder0, 'datasets', 'colors')
 rspds_A_D50_D65_dataframe = pd.read_csv(os.path.join(folder2, 'rspds_A_D50_D65.txt'), sep = ' ')
 rspds_D55_D75_dataframe = pd.read_csv(os.path.join(folder2, 'rspds_D55_D75.txt'), sep = ' ')
 cmfs_dataframe = pd.read_csv(os.path.join(folder2, 'cmfs.txt'), sep = ' ')
-wps_dataframe = pd.read_csv(os.path.join(folder2, 'wps.txt'), sep = ' ')
 
 Lab_Alaluf2002_dataframe = pd.read_csv(os.path.join(folder2, 'Lab_Alaluf2002.txt'), sep = ' ')
 Lab_Xiao2017_dataframe = pd.read_csv(os.path.join(folder2, 'Lab_Xiao2017.txt'), sep = ' ')
