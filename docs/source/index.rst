@@ -68,8 +68,8 @@ Modules
 Jupyter Notebooks
 -----------------
 
-`Tutorial - optical properties <https://skinoptics.readthedocs.io/en/latest/_static/tutorial_optical_properties.html>`_
-`Tutorial - colors <https://skinoptics.readthedocs.io/en/latest/_static/tutorial_colors.html>`_
+- `Tutorial - optical properties <https://skinoptics.readthedocs.io/en/latest/_static/tutorial_optical_properties.html>`_
+- `Tutorial - colors <https://skinoptics.readthedocs.io/en/latest/_static/tutorial_colors.html>`_
 
 Source Code
 -----------

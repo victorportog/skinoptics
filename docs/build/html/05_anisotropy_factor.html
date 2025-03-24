@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="skinoptics.refractive_index" href="06_refractive_index.html" /><link rel="prev" title="skinoptics.scattering_coefficient module" href="04_scattering_coefficient.html" />
 
     <link rel="shortcut icon" href="_static/openmoji_1F506.svg"/><!-- Generated with Sphinx 8.0.2 and Furo 2024.08.06 -->
-        <title>skinoptics.anisotropy_factor module - SkinOptics documentation - version 0.0.1b1</title>
+        <title>skinoptics.anisotropy_factor module - SkinOptics documentation - version 0.0.1b6</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
@@ -166,7 +166,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">SkinOptics documentation - version 0.0.1b1</div></a>
+      <a href="index.html"><div class="brand">SkinOptics documentation - version 0.0.1b6</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -190,7 +190,7 @@
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
-  <span class="sidebar-brand-text">SkinOptics documentation - version 0.0.1b1</span>
+  <span class="sidebar-brand-text">SkinOptics documentation - version 0.0.1b6</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -282,7 +282,7 @@
 <div class="line">Release Date:</div>
 <div class="line">October 2024</div>
 <div class="line">Last Modification:</div>
-<div class="line">October 2024</div>
+<div class="line">October 2025</div>
 </div>
 <div class="line-block">
 <div class="line">References:</div>
@@ -330,7 +330,7 @@
 <div class="line-block">
 <div class="line">[D03] Draine 2003.</div>
 <div class="line">Scattering by Interstellar Dust Grains. I. Optical and Ultraviolet.</div>
-<div class="line"><a class="reference external" href="https://doi.org/10.48550/arXiv.astro-ph/0304060">https://doi.org/10.48550/arXiv.astro-ph/0304060</a></div>
+<div class="line"><a class="reference external" href="https://doi.org/10.1086/379118">https://doi.org/10.1086/379118</a></div>
 </div>
 <div class="line-block">
 <div class="line">[F11] Frisvad 2011.</div>
@@ -361,7 +361,7 @@
 <div class="line">scattering phase function.</div>
 <div class="line">For details please check Cornette &amp; Shanks 1992 [CS92].</div>
 </div>
-<p><span class="math notranslate nohighlight">\(\langle \cos\theta \rangle_{CS}(g) = g\frac{3(4 + g^2)}{5(2 + g^2)}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\langle \cos\theta \rangle_{CS}(g) = \frac{3(4 + g^2)}{5(2 + g^2)} \mbox{ } g\)</span></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>g</strong> (<em>float</em>) – parameter <span class="math notranslate nohighlight">\(g\)</span> [-] (must be in the range [-1, 1])</p>
@@ -383,7 +383,7 @@
 <div class="line">scattering phase function.</div>
 <div class="line">For details please check Draine 2003 [D03].</div>
 </div>
-<p><span class="math notranslate nohighlight">\(\langle \cos\theta \rangle_{D}(g, \alpha) = g\frac{1 + \alpha(3 + 2g^2)/5}{1 + \alpha(1 + 2g^2)/3}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\langle \cos\theta \rangle_{D}(g, \alpha) = \frac{1 + \alpha(3 + 2g^2)/5}{1 + \alpha(1 + 2g^2)/3} \mbox{ } g\)</span></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -469,8 +469,8 @@
 <div class="line">For details please check Baes, Camps &amp; Kapoor 2022 [BCK22].</div>
 </div>
 <p><span class="math notranslate nohighlight">\(\langle \cos\theta \rangle_{TTHG}(g_1, g_2, \gamma) = \gamma \mbox{ } g_1 + (1 - \gamma) \mbox { } g_2\)</span></p>
-<p><span class="math notranslate nohighlight">\(g_1\)</span> characterises the shape and the strength of the forward scattering peak</p>
-<p><span class="math notranslate nohighlight">\(g_2\)</span> characterises the shape and the strength of the backward scattering peak</p>
+<p><span class="math notranslate nohighlight">\(g_1\)</span> characterizes the shape and the strength of the forward scattering peak</p>
+<p><span class="math notranslate nohighlight">\(g_2\)</span> characterizes the shape and the strength of the backward scattering peak</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -497,8 +497,8 @@
 <div class="line">For details please check Reynolds &amp; McCormick 1980 [RM80] and Jacques &amp; McCormick 2023 [JM23].</div>
 </div>
 <p><span class="math notranslate nohighlight">\(\langle \cos\theta \rangle_{TTRM}(g_1, g_2, \alpha_1, \alpha_2, \gamma) = \gamma \mbox{ } \langle \cos\theta \rangle_{RM}(g_1, \alpha_1) + (1 - \gamma) \mbox{ } \langle \cos\theta \rangle_{RM}(g_2, \alpha_2)\)</span></p>
-<p><span class="math notranslate nohighlight">\(g_1\)</span> characterises the shape and the strength of the forward scattering peak</p>
-<p><span class="math notranslate nohighlight">\(g_2\)</span> characterises the shape and the strength of the backward scattering peak</p>
+<p><span class="math notranslate nohighlight">\(g_1\)</span> characterizes the shape and the strength of the forward scattering peak</p>
+<p><span class="math notranslate nohighlight">\(g_2\)</span> characterizes the shape and the strength of the backward scattering peak</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -527,8 +527,8 @@
 <div class="line">For details please check Baes, Camps &amp; Kapoor 2022 [BCK22].</div>
 </div>
 <p><span class="math notranslate nohighlight">\(\langle \cos\theta \rangle_{TTU2}(g_1, g_2, \gamma) = \gamma \mbox{ } \langle \cos\theta \rangle_{U2}(g_1) + (1 - \gamma) \mbox{ } \langle \cos\theta \rangle_{U2}(g_2)\)</span></p>
-<p><span class="math notranslate nohighlight">\(g_1\)</span> characterises the shape and the strength of the forward scattering peak</p>
-<p><span class="math notranslate nohighlight">\(g_2\)</span> characterises the shape and the strength of the backward scattering peak</p>
+<p><span class="math notranslate nohighlight">\(g_1\)</span> characterizes the shape and the strength of the forward scattering peak</p>
+<p><span class="math notranslate nohighlight">\(g_2\)</span> characterizes the shape and the strength of the backward scattering peak</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -651,7 +651,7 @@
 </div>
 <p><span class="math notranslate nohighlight">\(p_{D}(\theta, g, \alpha) = 3\frac{1 + \alpha \cos^2\theta}{3 + \alpha (1 + 2g^2)} \mbox{ } p_{HG}(\theta, g)\)</span></p>
 <div class="line-block">
-<div class="line">For <span class="math notranslate nohighlight">\(\alpha = 1\)</span> and <span class="math notranslate nohighlight">\(g = 0\)</span> it reduces to the Rayleigh phase function.</div>
+<div class="line">For <span class="math notranslate nohighlight">\(\alpha = 1\)</span> and <span class="math notranslate nohighlight">\(g = 0\)</span> it reduces to the Rayleigh scattering phase function.</div>
 <div class="line">For <span class="math notranslate nohighlight">\(\alpha = 0\)</span> it reduces to the Henyey-Greenstein scattering phase function.</div>
 <div class="line">For <span class="math notranslate nohighlight">\(\alpha = 1\)</span> it reduces to the Cornette-Shanks scattering phase function</div>
 </div>
@@ -787,8 +787,8 @@
 <div class="line">For details please check Baes, Camps &amp; Kapoor 2022 [BCK22].</div>
 </div>
 <p><span class="math notranslate nohighlight">\(p_{TTHG}(\theta, g_1, g_2, \gamma) = \gamma \mbox{ } p_{HG}(\theta, g_1) + (1 - \gamma) \mbox{ } p_{HG}(\theta, g_2)\)</span></p>
-<p><span class="math notranslate nohighlight">\(g_1\)</span> characterises the shape and the strength of the forward scattering peak</p>
-<p><span class="math notranslate nohighlight">\(g_2\)</span> characterises the shape and the strength of the backward scattering peak</p>
+<p><span class="math notranslate nohighlight">\(g_1\)</span> characterizes the shape and the strength of the forward scattering peak</p>
+<p><span class="math notranslate nohighlight">\(g_2\)</span> characterizes the shape and the strength of the backward scattering peak</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -815,8 +815,8 @@
 <div class="line">For details please check  Reynolds &amp; McCormick 1980 [RM80] and Jacques &amp; McCormick 2023 [JM23].</div>
 </div>
 <p><span class="math notranslate nohighlight">\(p_{TTRM}(\theta, g_1, g_2, \alpha_1, \alpha_2, \gamma) =  \gamma \mbox{ } p_{RM}(\theta, g_1, \alpha_1) + (1 - \gamma) \mbox{ } p_{RM}(\theta, g_2, \alpha_2)\)</span></p>
-<p><span class="math notranslate nohighlight">\(g_1\)</span> characterises the shape and the strength of the forward scattering peak</p>
-<p><span class="math notranslate nohighlight">\(g_2\)</span> characterises the shape and the strength of the backward scattering peak</p>
+<p><span class="math notranslate nohighlight">\(g_1\)</span> characterizes the shape and the strength of the forward scattering peak</p>
+<p><span class="math notranslate nohighlight">\(g_2\)</span> characterizes the shape and the strength of the backward scattering peak</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -845,8 +845,8 @@
 <div class="line">For details please check Baes, Camps &amp; Kapoor 2022 [BCK22].</div>
 </div>
 <p><span class="math notranslate nohighlight">\(p_{TTU2}(\theta, g_1, g_2, \gamma) = \gamma \mbox{ } p_{U2}(\theta, g_1) + (1 - \gamma) \mbox{ } p_{U2}(\theta, g_2)\)</span></p>
-<p><span class="math notranslate nohighlight">\(g_1\)</span> characterises the shape and the strength of the forward scattering peak</p>
-<p><span class="math notranslate nohighlight">\(g_2\)</span> characterises the shape and the strength of the backward scattering peak</p>
+<p><span class="math notranslate nohighlight">\(g_1\)</span> characterizes the shape and the strength of the forward scattering peak</p>
+<p><span class="math notranslate nohighlight">\(g_2\)</span> characterizes the shape and the strength of the backward scattering peak</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -1013,7 +1013,7 @@
         <div class="bottom-of-page">
           <div class="left-details">
             <div class="copyright">
-                Copyright &#169; 2024, Victor Lima
+                Copyright &#169; 2024-2025, Victor Lima
             </div>
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
             
@@ -1074,7 +1074,7 @@
       
     </aside>
   </div>
-</div><script src="_static/documentation_options.js?v=6840e26b"></script>
+</div><script src="_static/documentation_options.js?v=a3c972a6"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/furo.js?v=5fa4622c"></script>

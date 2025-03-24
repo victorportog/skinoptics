@@ -5,7 +5,7 @@ SkinOptics documentation
 | models for Monte Carlo simulations of light transport, as well as tools for analyzing simulation
 | outputs. It can also be used for teaching and exploring about Optical Properties and Colorimetry.
 
-**SkinOptics** is under continuos development.
+**SkinOptics** is under continuous development.
 
 New features may be available in the future.
 
@@ -68,12 +68,17 @@ Modules
 Jupyter Notebooks
 -----------------
 
-Some ipynb files with usage examples will be available soon.
+- `Tutorial - optical properties <https://skinoptics.readthedocs.io/en/latest/_static/tutorial_optical_properties.html>`_
+- `Tutorial - colors <https://skinoptics.readthedocs.io/en/latest/_static/tutorial_colors.html>`_
 
 Source Code
 -----------
 
-**SkinOptics** scripts are publicly available in a `GitHub repository <https://github.com/victorportog/skinoptics>`_.
+**SkinOptics** scripts are publicly available on `GitHub <https://github.com/victorportog/skinoptics>`_.
+
+Release History
+---------------
+A list of all **SkinOptics** versions, ordered by release date, is available on `PyPI <https://pypi.org/project/skinoptics/#history>`_.
 
 License
 -------
@@ -100,7 +105,7 @@ If **SkinOptics** is being useful for a presentation, publication or other purpo
 
 Suggestion:
 
-   | V. P. G., Lima. “SkinOptics documentation,” (2024).
+   | LIMA, V. P. G. SkinOptics documentation. 2024.
    | Available at <https://skinoptics.readthedocs.io/>.
 
 BibTex entry:
