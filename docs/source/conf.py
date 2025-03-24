@@ -40,3 +40,5 @@ html_static_path = ['_static']
 # svg file downloaded from https://openmoji.org/library/emoji-2728/
 html_favicon = '_static/openmoji_1F506.svg'
 html_title = 'SkinOptics documentation - version ' + release
+
+html_extra_path = ['_static/tutorial_optical_properties.html']
