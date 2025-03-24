@@ -23,7 +23,7 @@
 | Release date:
 | October 2024
 | Last modification:
-| October 2024
+| March 2025
 
 | References:
 
@@ -395,7 +395,7 @@ def ptheta_TTU2(theta, g1, g2, gamma):
     
     return gamma*ptheta_U2(theta = theta, g = g1) + (1 - gamma)*ptheta_U2(theta = theta, g = g2)
 
-def theta_R_from_RND(n_RND = int(1E6)):
+def theta_R_from_RND(n_RND = int(1E6), seed_RND = None):
     r'''
     | The scattering angle distribution as a function of a set of random numbers uniformly
     | distributed over the interval [0, 1), assuming the Rayleigh scattering phase function.
@@ -409,11 +409,15 @@ def theta_R_from_RND(n_RND = int(1E6)):
 
     :param n_RND: number of random numbers [-] (default to int(1E6))
     :type n_RND: int
+
+    :param seed_RND: seed for the random number generator np.random.default_rng() [-] (default to None)
+    :type seed_RND: int
     
     :return: - **theta** (*np.ndarray*) – scattering angle [degrees]
     '''
     
-    xi = np.random.rand(n_RND)
+    rng = np.random.default_rng(seed = seed_RND)
+    xi = rng.uniform(0., 1., size = n_RND)
     two_times_xi_minus_one = 2*xi - 1
     term1 = -2*two_times_xi_minus_one
     term2 = np.sqrt(4*two_times_xi_minus_one**2 + 1)
@@ -421,7 +425,7 @@ def theta_R_from_RND(n_RND = int(1E6)):
     return np.arccos(np.cbrt(term1 + term2) + np.cbrt(term1 - term2))*180/np.pi
 
 
-def theta_HG_from_RND(g, n_RND = int(1E6)):
+def theta_HG_from_RND(g, n_RND = int(1E6), seed_RND = None):
     r'''
     | The scattering angle distribution as a function of the anisotropy factor and a set of random
     | numbers uniformly distributed over the interval [0, 1), assuming the Henyey-Greenstein
@@ -443,6 +447,9 @@ def theta_HG_from_RND(g, n_RND = int(1E6)):
     
     :param n_RND: number of random numbers [-] (default to int(1E6))
     :type n_RND: int
+
+    :param seed_RND: seed for the random number generator np.random.default_rng() [-] (default to None)
+    :type seed_RND: int
     
     :return: - **theta** (*np.ndarray*) – scattering angle [degrees]
     '''
@@ -451,7 +458,8 @@ def theta_HG_from_RND(g, n_RND = int(1E6)):
         msg = 'The input g = {} is out of the range [-1, 1].'.format(g)
         raise Exception(msg)
     
-    xi = np.random.rand(n_RND)
+    rng = np.random.default_rng(seed = seed_RND)
+    xi = rng.uniform(0., 1., size = n_RND)
     if g == 0:    
         theta_HG = np.arccos(2*xi - 1)*180./np.pi
     else:
@@ -477,11 +485,15 @@ def theta_U2_from_RND(g, n_RND = int(1E6)):
     
     :param n_RND: number of random numbers [-] (default to int(1E6))
     :type n_RND: int
+
+    :param seed_RND: seed for the random number generator np.random.default_rng() [-] (default to None)
+    :type seed_RND: int
     
     :return: - **theta** (*np.ndarray*) – scattering angle [degrees]
     '''
     
-    xi = np.random.rand(n_RND)
+    rng = np.random.default_rng(seed = seed_RND)
+    xi = rng.uniform(0., 1., size = n_RND)
     
     return np.arccos(((1 + g)**2 - 2*xi*(1 + g**2))/((1 + g)**2 - 4*g*xi))*180./np.pi
 
