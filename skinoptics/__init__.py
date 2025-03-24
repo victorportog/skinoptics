@@ -36,12 +36,12 @@ __all__ = ['utils', 'dataframes',
 __version__major = '0'
 __version__minor = '0'
 __version__micro = '1'
-__version__suffix = 'b9'
+#__version__suffix = 'b1'
 
 __author__ = "Victor Lima"
 __copyright__ = "Copyright (c) 2024-2025 Victor Lima"
 __license__ = "GNU General Public License v3.0"
 __maintainer__ = "Victor Lima"
-__version__ = '.'.join((__version__major, __version__minor, __version__micro)) + __version__suffix
+__version__ = '.'.join((__version__major, __version__minor, __version__micro)) # + __version__suffix
 __email__ = "victorporto@ifsc.usp.br, victor.lima@ufscar.br"
 __status__ = "Development"
