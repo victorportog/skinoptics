@@ -68,7 +68,7 @@ Modules
 Jupyter Notebooks
 -----------------
 
-Some ipynb files with usage examples will be available soon.
+`Tutorial - optical properties <https://skinoptics.readthedocs.io/en/latest/_static/tutorial_optical_properties.html>`_
 
 Source Code
 -----------
