@@ -1,6 +1,6 @@
 '''
 | SkinOptics
-| Copyright (C) 2024 Victor Lima
+| Copyright (C) 2024-2025 Victor Lima
 
     | This program is free software: you can redistribute it and/or modify
     | it under the terms of the GNU General Public License as published by
@@ -18,10 +18,11 @@
 | Victor Lima
 | victorporto\@ifsc.usp.br
 | victor.lima\@ufscar.br
+| victorportog.github.io
 
-| Release Date:
+| Release date:
 | October 2024
-| Last Modification:
+| Last modification:
 | March 2025
 
 | Example:

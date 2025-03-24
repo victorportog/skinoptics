@@ -1,5 +1,5 @@
 '''
-Copyright (C) 2024 Victor Lima
+Copyright (C) 2024-2025 Victor Lima
 
     | This program is free software: you can redistribute it and/or modify
     | it under the terms of the GNU General Public License as published by
@@ -17,11 +17,12 @@ Copyright (C) 2024 Victor Lima
 | Victor Lima
 | victorporto\@ifsc.usp.br
 | victor.lima\@ufscar.br
+| victorportog.github.io
 
-| Release Date:
+| Release date:
 | October 2024
-| Last Modification:
-| October 2024
+| Last modification:
+| March 2025
 
 | Version History:
 | available at <https://pypi.org/project/skinoptics/#history>
@@ -35,7 +36,7 @@ __all__ = ['utils', 'dataframes',
 __version__major = '0'
 __version__minor = '0'
 __version__micro = '1'
-__version__suffix = 'b6'
+__version__suffix = 'b7'
 
 __author__ = "Victor Lima"
 __copyright__ = "Copyright (c) 2024-2025 Victor Lima"

@@ -4,9 +4,9 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "skinoptics"
-version = "0.0.1b6"
+version = "0.0.1b7"
 authors = [
-  { name="Victor Lima", email="victorporto@ifsc.usp.br"},
+  {name="Victor Lima", email="victorporto@ifsc.usp.br"},
 ]
 description = "SkinOptics: a python package with tools for building human skin computational models for Monte Carlo simulations of light transport"
 readme = "README.md"
