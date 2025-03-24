@@ -41,4 +41,4 @@ html_static_path = ['_static']
 html_favicon = '_static/openmoji_1F506.svg'
 html_title = 'SkinOptics documentation - version ' + release
 
-html_extra_path = ['_static/tutorial_optical_properties.html']
+html_extra_path = ['_static/tutorial_optical_properties.html', '_static/tutorial_colors.html']
