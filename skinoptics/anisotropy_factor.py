@@ -402,9 +402,9 @@ def theta_R_from_RND(n_RND = int(1E6)):
     
     | :math:`\theta_{R} = \mbox{arccos}(\sqrt[3]{u + v} + \sqrt[3]{u - v})`
     | with
-    | :math:`u = -2(2 \chi - 1)`
-    | :math:`v = \sqrt{4(2 \chi - 1)^2 + 1}`
-    | in which :math:`\chi` is a random number in the interval [0, 1)
+    | :math:`u = -2(2 \xi - 1)`
+    | :math:`v = \sqrt{4(2 \xi - 1)^2 + 1}`
+    | in which :math:`\xi` is a random number in the interval [0, 1)
 
     :param n_RND: number of random numbers [-] (default to int(1E6))
     :type n_RND: int
@@ -429,11 +429,11 @@ def theta_HG_from_RND(g, n_RND = int(1E6)):
     
     :math:`\theta_{HG} =  
     \left \{ \begin{matrix}
-    \mbox{arccos}(2 \chi - 1) , & \mbox{if } g = 0 \\
-    \mbox{arccos}\left\{\frac{1}{2g} \left[1 + g^2 - \left(\frac{1 - g^2}{1 - g + 2g \chi}\right)^2\right]\right\}, & \mbox{if } g \ne 0
+    \mbox{arccos}(2 \xi - 1) , & \mbox{if } g = 0 \\
+    \mbox{arccos}\left\{\frac{1}{2g} \left[1 + g^2 - \left(\frac{1 - g^2}{1 - g + 2g \xi}\right)^2\right]\right\}, & \mbox{if } g \ne 0
     \end{matrix} \right.` 
    
-    in which :math:`\chi` is a random number in the interval [0, 1)
+    in which :math:`\xi` is a random number in the interval [0, 1)
 
     In this particular model :math:`g` is the anisotropy factor.
 
@@ -465,9 +465,9 @@ def theta_U2_from_RND(g, n_RND = int(1E6)):
     | scattering phase function.
     | For details please check section 4.4.2 from Baes, Camps & Kapoor 2022 [BCK22].
     
-    :math:`\theta_{U2} = arccos\left[\frac{(1 + g)^2 - 2 \chi (1 + g^2)}{(1 + g)^2 - 4g \chi}\right]`
+    :math:`\theta_{U2} = arccos\left[\frac{(1 + g)^2 - 2 \xi (1 + g^2)}{(1 + g)^2 - 4g \xi}\right]`
 
-    in which :math:`\chi` is a random number in the interval [0, 1)
+    in which :math:`\xi` is a random number in the interval [0, 1)
 
     | In this model :math:`g` is NOT the anisotropy factor.
 
