@@ -467,7 +467,7 @@ def theta_HG_from_RND(g, n_RND = int(1E6), seed_RND = None):
         
     return theta_HG
 
-def theta_U2_from_RND(g, n_RND = int(1E6)):
+def theta_U2_from_RND(g, n_RND = int(1E6), seed_RND = None):
     r'''
     | The scattering angle distribution as a function of the g parameter and a set of random
     | numbers uniformly distributed over the interval [0, 1), assuming the Ultraspherical-2
