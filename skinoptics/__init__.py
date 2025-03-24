@@ -36,7 +36,7 @@ __all__ = ['utils', 'dataframes',
 __version__major = '0'
 __version__minor = '0'
 __version__micro = '1'
-__version__suffix = 'b8'
+__version__suffix = 'b9'
 
 __author__ = "Victor Lima"
 __copyright__ = "Copyright (c) 2024-2025 Victor Lima"
