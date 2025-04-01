@@ -70,6 +70,7 @@ Jupyter Notebooks
 
 - `Tutorial - optical properties <https://skinoptics.readthedocs.io/en/latest/_static/tutorial_optical_properties.html>`_
 - `Tutorial - colors <https://skinoptics.readthedocs.io/en/latest/_static/tutorial_colors.html>`_
+- `Crosscheck - skinoptics.colors and colour-science <https://skinoptics.readthedocs.io/en/latest/_static/crosscheck_colors.html>`_
 
 Source Code
 -----------
