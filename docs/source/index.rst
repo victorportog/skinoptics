@@ -23,11 +23,23 @@ Installation
 ------------
 
 | **SkinOptics** can be easily installed using ``pip`` (the package installer for Python).
-| To do so, write the following line in the command prompt:
+| First of all, please remember to update ``pip`` by running the following line in the command prompt:
+
+.. code-block:: console
+
+      $ pip install --upgrade pip
+
+| Then, to install **SkinOptics**, please use the following command:
 
 .. code-block:: console
 
       $ pip install skinoptics
+
+| If you have already installed the **SkinOptics** Python package and want to update it to the latest released version, please execute the line:
+
+.. code-block:: console
+
+      $ pip install skinoptics --upgrade
 
 Prerequisite Packages
 ---------------------
