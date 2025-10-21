@@ -151,10 +151,15 @@ Author Information
 | Brazilian |:green_square:| |:yellow_square:| |:blue_square:| |:white_large_square:|
 | Research, Development & Innovation
 
-| MSc student in Theoretical and Experimental Physics
+| Bachelor in Physics
+| Institute of Physics (IF)
+| University of Brasília (UnB)
+| contact e-mail: discontinued
+
+| MSc in Theoretical and Experimental Physics
 | São Carlos Institute of Physics (IFSC)
 | University of São Paulo (USP)
-| contact e-mail: victorporto\@ifsc.usp.br
+| contact e-mail: discontinued
 
 | Physicist (Technician)
 | Núcleo de Formação de Professores (NFP)

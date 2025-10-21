@@ -35,7 +35,7 @@ __all__ = ['utils', 'dataframes',
 
 __version__major = '0'
 __version__minor = '0'
-__version__micro = '1'
+__version__micro = '2'
 #__version__suffix = 'b1'
 
 __author__ = "Victor Lima"

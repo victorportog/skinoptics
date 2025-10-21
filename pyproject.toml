@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "skinoptics"
-version = "0.0.1"
+version = "0.0.2"
 authors = [
   {name="Victor Lima", email="victorporto@ifsc.usp.br"},
 ]
@@ -17,7 +17,7 @@ classifiers = [
     "Operating System :: Microsoft :: Windows :: Windows 10",
 ]
 dependencies = [
-  "numpy>=1.26.4,<2.0.0",
+  "numpy>=1.26.4,<3.0.0",
   "scipy>=1.13.0,<2.0.0",
   "pandas>=2.2.2,<3.0.0"
 ]
