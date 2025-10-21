@@ -50,8 +50,8 @@
 | Colorimetry, 3rd edition.
 | CIE 15:2004
 
-| [SWD04] Sharma, Wu & Dalal 2004. <br>
-| The CIEDE2000 Color-Difference Formula: Implementation Notes, Supplementary Test Data, and Mathematical Observations. <br>
+| [SWD04] Sharma, Wu & Dalal 2004.
+| The CIEDE2000 Color-Difference Formula: Implementation Notes, Supplementary Test Data, and Mathematical Observations.
 | https://doi.org/10.1002/col.20070
 
 | [D*06] Del Bino, Sok, Bessac & Bernerd 2006.
