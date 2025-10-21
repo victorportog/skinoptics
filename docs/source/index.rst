@@ -84,7 +84,7 @@ Jupyter Notebooks
 - `Tutorial - colors <https://skinoptics.readthedocs.io/en/latest/_static/tutorial_colors.html>`_
 - `Crosscheck - skinoptics.colors and colour-science <https://skinoptics.readthedocs.io/en/latest/_static/crosscheck_colors.html>`_
 - `Reproducing results - Delgado Atencio, Jacques & Vázquez y Montiel 2011 <https://skinoptics.readthedocs.io/en/latest/_static/reproducing_2011DelgadoAtencio.html>`_
-
+- `Validation - skinoptics.colors.Delta_E_00 <https://skinoptics.readthedocs.io/en/latest/_static/validation_Delta_E_00.html>`_
 
 Source Code
 -----------
