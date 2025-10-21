@@ -95,3 +95,4 @@ cmfs_dataframe = pd.read_csv(os.path.join(folder2, 'cmfs.txt'), sep = ' ')
 
 Lab_Alaluf2002_dataframe = pd.read_csv(os.path.join(folder2, 'Lab_Alaluf2002.txt'), sep = ' ')
 Lab_Xiao2017_dataframe = pd.read_csv(os.path.join(folder2, 'Lab_Xiao2017.txt'), sep = ' ')
+Sharma2004_TableI_dataframe = pd.read_csv(os.path.join(folder2, 'Sharma2004_TableI.txt', sep = ' ')
