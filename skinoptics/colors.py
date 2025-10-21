@@ -44,12 +44,15 @@
 | https://www.w3.org/Graphics/Color/sRGB.html
 
 | [IEC99] IEC 1999.
-| Multimedia systems and equipment - Colour measurement and management - Part 2-1: Colour management - Default RGB colour space - sRGB.
-| IEC 61966-2-1:1999
+| IEC 61966-2-1:1999 - Multimedia systems and equipment - Colour measurement and management - Part 2-1: Colour management - Default RGB colour space - sRGB.
 
 | [CIE04] CIE 2004.
 | Colorimetry, 3rd edition.
 | CIE 15:2004
+
+| [SWD04] Sharma, Wu & Dalal 2004. <br>
+| The CIEDE2000 Color-Difference Formula: Implementation Notes, Supplementary Test Data, and Mathematical Observations. <br>
+| https://doi.org/10.1002/col.20070
 
 | [D*06] Del Bino, Sok, Bessac & Bernerd 2006.
 | Relationship between skin response to ultraviolet exposure and skin color type.
@@ -58,6 +61,9 @@
 | [S07] Schanda (editor) 2007.
 | Colorimetry: Understanding the CIE System.
 | http://dx.doi.org/10.1002/9780470175637
+
+| [IC08] ISO/CIE 2008.
+| ISO 11664-4:2008 - CIE S 014-4/E:2007 - Colorimetry - Part 4: CIE 1976 L*a*b* Colour space.
 
 | [HP11] Hunt & Pointer 2011.
 | Measuring Colour.
@@ -70,6 +76,9 @@
 | [WSS13] Wyman, Sloan & Shirley 2013.
 | Simple Analytic Approximations to the CIE XYZ Color Matching Functions.
 | https://jcgt.org/published/0002/02/01/
+
+| [IC14] ISO/CIE 2014.
+| ISO/CIE 11664-6:2014 - Colorimetry - Part 6: CIEDE2000 Colour-difference formula.
 
 | [CIE18a] CIE 2018.
 | CIE standard illuminant A - 1 nm.
@@ -743,7 +752,7 @@ def Lab_from_XYZ(X, Y, Z, illuminant = 'D65', observer = '10o', K = 1.):
     r'''
     | Calculate CIE L*a*b* coordinates from CIE XYZ coordinates.
     | CIE XYZ and CIE L*a*b* coordinates must be for the same standard illuminant and standard observer.
-    | For detailts please check CIE [CIE04], Schanda 2006 [S06] and Hunt & Pointer 2011 [HP11].
+    | For detailts please check CIE [CIE04], Schanda 2006 [S06], ISO/CIE [IC08] and Hunt & Pointer 2011 [HP11].
     
     | :math:`L^* = 116 \mbox{ } f(Y/Y_n) - 16`
     | :math:`a^* = 500 \mbox{ } [f(X/X_n) - f(Y/Y_n)]`
@@ -958,7 +967,7 @@ def ITA(L, b, L0 = 50.):
     r'''
     | Calculate the Individual Typology Angle (ITA) from L* and b* coordinates.
     | For details please check Chardon, Cretois & Hourseau 1991 [CCH91], Del Bino et al. 2006 [D*06],
-    | Del Bino & Bernerd 2013 [DB13] and Ly et al. [L*20].
+    | Del Bino & Bernerd 2013 [DB13] and Ly et al. 2020 [L*20].
     
     :math:`\mbox{ITA} = \arctan\left(\frac{L^*-L_0^*}{b^*}\right) \times \frac{180}{\pi}`
     
@@ -1101,11 +1110,11 @@ def Delta_b(b0, b1):
 
 def Delta_E(L0, a0, b0, L1, a1, b1):
     r'''
-    Calculate the color difference :math:`\Delta E^*` between between
+    Calculate the CIELAB color difference :math:`\Delta E^*_{ab}` between
     a reference color (:math:`L^*_0`, :math:`a^*_0`, :math:`b^*_0`) and
     a test color (:math:`L^*_1`, :math:`a^*_1`, :math:`b^*_1`).
     
-    :math:`\Delta E^* = \sqrt{(L^*_1 - L^*_0)^2 + (a^*_1 - a^*_0)^2 + (b^*_1 - b^*_0)^2}`
+    :math:`\Delta E^*_{ab} = \sqrt{(L^*_1 - L^*_0)^2 + (a^*_1 - a^*_0)^2 + (b^*_1 - b^*_0)^2}`
     
     :param L0: reference color L* coordinate [-]
     :type L0: float or np.ndarray
@@ -1125,10 +1134,142 @@ def Delta_E(L0, a0, b0, L1, a1, b1):
     :param b1: test color b* coordinate [-]
     :type b1: float or np.ndarray
     
-    :return: - **delta_E** (*float or np.ndarray*) – color difference [-]
+    :return: - **delta_E** (*float or np.ndarray*) – CIELAB color difference [-]
     '''
     
     return np.sqrt(Delta_L(L0 = L0, L1 = L1)**2 + Delta_a(a0 = a0, a1 = a1)**2 + Delta_b(b0 = b0, b1 = b1)**2)
+
+def Delta_E_00(L0, a0, b0, L1, a1, b1, kL = 1., kC = 1., kH = 1.):
+    '''
+    Calculate the CIEDE2000 color difference :math:`\Delta E^*_{00}` between
+    a reference color (:math:`L^*_0`, :math:`a^*_0`, :math:`b^*_0`) and
+    a test color (:math:`L^*_1`, :math:`a^*_1`, :math:`b^*_1`).
+
+    :math:`\Delta E^*_{00} = \sqrt{\left(\frac{\Delta L'}{k_L S_L}\right)^2 + \left(\frac{\Delta C'}{k_C S_C}\right)^2 + \left(\frac{\Delta H'}{k_H S_H}\right)^2 + R_T \left(\frac{\Delta C'}{k_C S_C}\right) \left(\frac{\Delta H'}{k_H S_H}\right)}`
+
+    | For details please check Sharma, Wu & Dalal 2004 [SWD04] and ISO/CIE 2014 [IC14].
+
+    :param L0: reference color L* coordinate [-]
+    :type L0: float or np.ndarray
+    
+    :param a0: reference color a* coordinate [-]
+    :type a0: float or np.ndarray
+
+    :param b0: reference color b* coordinate [-]
+    :type b0: float or np.ndarray
+    
+    :param L1: test color L* coordinate [-]
+    :type L1: float or np.ndarray
+    
+    :param a1: test color a* coordinate [-]
+    :type a1: float or np.ndarray
+
+    :param b1: test color b* coordinate [-]
+    :type b1: float or np.ndarray
+
+    :param kL: lightness parametric factor [-] (default to 1.)
+    :type kL: float
+
+    :param kC: chroma parametric factor [-] (default to 1.)
+    :type kC: float
+
+    :param kH: hue parametric factor [-] (default to 1.)
+    :type kH: float
+    
+    :return: - **delta_E_00** (*float or np.ndarray*) – CIEDE2000 color difference [-]
+    '''
+    
+    C0 = chroma(a = a0, b = b0)
+    C1 = chroma(a = a1, b = b1)
+    
+    C_bar = np.mean((C0, C1))
+    
+    G = 0.5*(1 - np.sqrt(C_bar**7/(C_bar**7 + 25**7)))
+    
+    Ll0 = L0
+    al0 = (1 + G)*a0
+    bl0 = b0
+    Cl0 = chroma(a = al0, b = bl0)
+    hl0 = hue(a = al0, b = bl0)
+    
+    Ll1 = L1
+    al1 = (1 + G)*a1
+    bl1 = b1
+    Cl1 = chroma(a = al1, b = bl1)
+    hl1 = hue(a = al1, b = bl1)
+
+    abs_diff_hl = np.abs(hl1 - hl0)
+
+    Delta_Ll = Ll1 - Ll0
+    Delta_Cl = Cl1 - Cl0
+    if isinstance(abs_diff_hl, np.ndarray) == True:
+        Delta_hl = np.zeros(len(abs_diff_hl))
+        for i in range(len(Delta_hl)):
+            if Cl0[i]*Cl1[i] == 0:
+                Delta_hl[i] = 0
+            elif Cl0[i]*Cl1[i] != 0 and abs_diff_hl[i] <= 180:
+                Delta_hl[i] = hl1[i] - hl0[i]
+            elif Cl0[i]*Cl1[i] != 0 and hl1[i] - hl0[i] > 180:
+                Delta_hl[i] = hl1[i] - hl0[i] - 360
+            elif Cl0[i]*Cl1[i] != 0 and hl1[i] - hl0[i] < -180:
+                Delta_hl[i] = hl1[i] - hl0[i] + 360
+    elif isinstance(abs_diff_hl, (int, float)) == True:
+        if Cl0*Cl1 == 0:
+            Delta_hl = 0
+        elif Cl0*Cl1 != 0 and abs_diff_hl <= 180:
+            Delta_hl = hl1 - hl0
+        elif Cl0*Cl1 != 0 and hl1 - hl0 > 180:
+            Delta_hl = hl1 - hl0 - 360
+        elif Cl0*Cl1 != 0 and hl1 - hl0 < -180:
+            Delta_hl = hl1 - hl0 + 360
+    else:
+        msg = 'The input (L0, a0, b0, L1, a1, b1 = {} is not valid.'.format(np.array(L0, a0, b0, L1, a1, b1))
+        raise Exception(msg)
+    Delta_Hl = 2*np.sqrt(Cl0*Cl1)*np.sin(np.radians(Delta_hl/2))
+    
+    Ll_bar = np.mean((Ll0, Ll1))
+    Cl_bar = np.mean((Cl0, Cl1))
+    if isinstance(abs_diff_hl, np.ndarray) == True:
+        hl_bar = np.zeros(len(abs_diff_hl))
+        for i in range(len(hl_bar)):
+            if Cl0[i]*Cl1[i] == 0:
+                hl_bar[i] = hl0[i] + hl1[i]
+            elif Cl0[i]*Cl1[i] != 0 and abs_diff_hl[i] <= 180:
+                hl_bar[i] = np.mean((hl0[i], hl1[i]))
+            elif Cl0[i]*Cl1[i] != 0 and abs_diff_hl[i] > 180 and hl0[i] + hl1[i] < 360:
+                hl_bar[i] = (hl0[i] + hl1[i] + 360)/2
+            elif Cl0[i]*Cl1[i] != 0 and abs_diff_hl[i] > 180 and hl0[i] + hl1[i] >= 360:
+                hl_bar[i] = (hl0[i] + hl1[i] - 360)/2
+    elif isinstance(abs_diff_hl, (int, float)) == True:
+        if Cl0*Cl1 == 0:
+            hl_bar = hl0 + hl1
+        elif Cl0*Cl1 != 0 and abs_diff_hl <= 180:
+            hl_bar = np.mean((hl0, hl1))
+        elif Cl0*Cl1 != 0 and abs_diff_hl > 180 and hl0 + hl1 < 360:
+            hl_bar = (hl0 + hl1 + 360)/2
+        elif Cl0*Cl1 != 0 and abs_diff_hl > 180 and hl0 + hl1 >= 360:
+            hl_bar = (hl0 + hl1 - 360)/2
+    else:
+        msg = 'The input (L0, a0, b0, L1, a1, b1 = {} is not valid.'.format(np.array(L0, a0, b0, L1, a1, b1))
+        raise Exception(msg)
+    
+    T = 1 - 0.17*np.cos(np.radians(hl_bar - 30)) + 0.24*np.cos(np.radians(2*hl_bar)) \
+        + 0.32*np.cos(np.radians(3*hl_bar + 6)) - 0.2*np.cos(np.radians(4*hl_bar - 63))                                     
+    
+    SL = 1 + (0.015*(Ll_bar - 50)**2)/np.sqrt(20 + (Ll_bar - 50)**2)
+    SC = 1 + 0.045*Cl_bar
+    SH = 1 + 0.015*Cl_bar*T
+    
+    Delta_theta = 30*np.exp(-((hl_bar - 275)/25)**2)
+    RC = 2*np.sqrt(Cl_bar**7/(Cl_bar**7 + 25**7))
+    RT = - np.sin(np.radians(2*Delta_theta))*RC
+    
+    Delta_E_00_1st = (Delta_Ll/(kL*SL))**2
+    Delta_E_00_2nd = (Delta_Cl/(kC*SC))**2
+    Delta_E_00_3rd = (Delta_Hl/(kH*SH))**2
+    Delta_E_00_4th = RT*(Delta_Cl/(kC*SC))*(Delta_Hl/(kH*SH))
+    
+    return np.sqrt(Delta_E_00_1st + Delta_E_00_2nd + Delta_E_00_3rd + Delta_E_00_4th)
 
 def EI(R_green, R_red):
     r'''
