@@ -1140,7 +1140,7 @@ def Delta_E(L0, a0, b0, L1, a1, b1):
     return np.sqrt(Delta_L(L0 = L0, L1 = L1)**2 + Delta_a(a0 = a0, a1 = a1)**2 + Delta_b(b0 = b0, b1 = b1)**2)
 
 def Delta_E_00(L0, a0, b0, L1, a1, b1, kL = 1., kC = 1., kH = 1.):
-    '''
+    r'''
     Calculate the CIEDE2000 color difference :math:`\Delta E^*_{00}` between
     a reference color (:math:`L^*_0`, :math:`a^*_0`, :math:`b^*_0`) and
     a test color (:math:`L^*_1`, :math:`a^*_1`, :math:`b^*_1`).
