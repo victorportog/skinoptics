@@ -16,14 +16,13 @@
     | along with this program.  If not, see <https://www.gnu.org/licenses/>.
      
 | Victor Lima
-| victorporto\@ifsc.usp.br
 | victor.lima\@ufscar.br
 | victorportog.github.io
 
 | Release date:
 | October 2024
 | Last modification:
-| October 2024
+| October 2025
 
 | References:
 

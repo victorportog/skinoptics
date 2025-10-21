@@ -16,7 +16,6 @@
     | along with this program.  If not, see <https://www.gnu.org/licenses/>.
        
 | Victor Lima
-| victorporto\@ifsc.usp.br
 | victor.lima\@ufscar.br
 | victorportog.github.io
 
