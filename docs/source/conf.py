@@ -22,7 +22,7 @@ import skinoptics
 project = 'SkinOptics'
 copyright = '2024-2025, Victor Lima'
 author = 'Victor Lima'
-release = '0.0.6'
+release = '0.0.7'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration

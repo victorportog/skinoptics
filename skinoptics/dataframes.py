@@ -22,7 +22,7 @@
 | Release date:
 | October 2024
 | Last modification:
-| March 2025
+| October 2025
 
 | Example:
 | Lab_Alaluf2002_dataframe (respective to datasets/colors/Lab_Alaluf2002.txt)

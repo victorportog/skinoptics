@@ -47,8 +47,8 @@ Prerequisite Packages
 | **SkinOptics** is structured based on other Python packages.
 | In order to be able to properly run it, please also install all of the following:
 
-- `NumPy <https://numpy.org/>`_ (>=2.3.4, <3.0.0)
-- `SciPy <https://scipy.org/>`_ (>=1.13.0, <2.0.0)
+- `NumPy <https://numpy.org/>`_ (>=2.3.0, <3.0.0)
+- `SciPy <https://scipy.org/>`_ (>=1.16.0, <2.0.0)
 - `pandas <https://pandas.pydata.org/>`_ (>=2.2.2, <3.0.0)
 
 Modules
