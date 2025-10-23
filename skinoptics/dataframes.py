@@ -96,3 +96,10 @@ cmfs_dataframe = pd.read_csv(os.path.join(folder2, 'cmfs.txt'), sep = ' ')
 Lab_Alaluf2002_dataframe = pd.read_csv(os.path.join(folder2, 'Lab_Alaluf2002.txt'), sep = ' ')
 Lab_Xiao2017_dataframe = pd.read_csv(os.path.join(folder2, 'Lab_Xiao2017.txt'), sep = ' ')
 Sharma2004_TableI_dataframe = pd.read_csv(os.path.join(folder2, 'Sharma2004_TableI.txt'), sep = ' ')
+
+folder3 = os.path.join(folder0, 'datasets', 'spectra')
+
+Xiao2016_dataframe = pd.read_excel(os.path.join(folder2, 'Xiao2016', 'skindatabaseSpectra',
+                                                'ISSA_17_Jan_2025_Yan_Lu.xlsx'))
+Lu2025_dataframe = pd.read_excel(os.path.join(folder2, 'Lu2025', 'ISSA_17_Jan_2025_Yan_Lu.xlsx'),
+                                 sheet_name = 'ISSA', header = 0, skiprows = 11).replace('nan', np.nan)
