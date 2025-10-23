@@ -4,9 +4,9 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "skinoptics"
-version = "0.0.2"
+version = "0.0.3"
 authors = [
-  {name="Victor Lima", email="victorporto@ifsc.usp.br"},
+  {name="Victor Lima", email="victor.lima@ufscar.br"},
 ]
 description = "SkinOptics: a python package with tools for building human skin computational models for Monte Carlo simulations of light transport"
 readme = "README.md"
@@ -17,7 +17,7 @@ classifiers = [
     "Operating System :: Microsoft :: Windows :: Windows 10",
 ]
 dependencies = [
-  "numpy>=1.26.4,<3.0.0",
+  "numpy>=2.3.4,<3.0.0",
   "scipy>=1.13.0,<2.0.0",
   "pandas>=2.2.2,<3.0.0"
 ]
@@ -26,4 +26,6 @@ dependencies = [
 Homepage = "https://github.com/victorportog/skinoptics"
 
 [tool.setuptools]
-packages = ["skinoptics", "skinoptics.datasets", "skinoptics.datasets.optical_properties", "skinoptics.datasets.colors"]
+packages = ["skinoptics", "skinoptics.datasets", "skinoptics.datasets.optical_properties", "skinoptics.datasets.colors",
+            "skinoptics.datasets.spectra", "skinoptics.datasets.spectra.Xiao2016", "skinoptics.datasets.spectra.Xiao2016.skindatabaseSpectra",
+            "skinoptics.datasets.spectra.Lu2025"]
