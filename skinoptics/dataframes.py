@@ -53,6 +53,7 @@
 '''
 
 import os
+import numpy as np
 import pandas as pd
 
 folder0 = os.path.dirname(os.path.abspath(__file__))
