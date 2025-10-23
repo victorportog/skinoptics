@@ -84,11 +84,15 @@
 | https://doi.org/10.25039/CIE.DS.8jsxjrsn
 
 | [CIE18b] CIE 2018.
-| CIE standard illuminant D55.
-| https://doi.org/10.25039/CIE.DS.qewfb3kp
+| Relative spectral power distributions of CIE illuminant C.
+| https://doi.org/10.25039/CIE.DS.mjdd2enu
 
 | [CIE18c] CIE 2018.
-| CIE standard illuminant D75.
+| Relative spectral power distributions of CIE illuminant D55.
+| https://doi.org/10.25039/CIE.DS.qewfb3kp
+
+| [CIE18d] CIE 2018.
+| Relative spectral power distributions of CIE illuminant D75.
 | https://doi.org/10.25039/CIE.DS.9fvcmrk4
 
 | [CIE19a] CIE 2019.
@@ -123,23 +127,24 @@ def rspd(lambda0, illuminant):
     r'''
     | The relative spectral power distribution S(:math:`\lambda`) of a chosen standard illuminant
     | as a function of wavelength.
-    | Linear interpolation of data from CIE datasets [CIE18a] [CIE22a] [CIE18b] [CIE22b] [CIE18c].
+    | Linear interpolation of data from CIE datasets [CIE18a] [CIE18b] [CIE22a] [CIE18c] [CIE22b] [CIE18d].
     
     | wavelength range:
     | [300 nm, 830 nm] (at 1 nm intervals, for illuminant = 'A', 'D50' or 'D65')
-    | or [300 nm, 780 nm] (at 5 nm intervals, for illuminant = 'D55' or 'D75')
+    | or [300 nm, 780 nm] (at 5 nm intervals, for illuminant = 'C', 'D55' or 'D75')
     
     :param lambda0: wavelength [nm] (must be in range [300 nm, 830 nm] or [300 nm, 780 nm])
     :type lambda0: float or np.ndarray
     
-    :param illuminant: the user can choose one of the following... 'A', 'D50', 'D55', 'D65' or 'D75'
+    :param illuminant: the user can choose one of the following... 'A', 'C', 'D50', 'D55', 'D65' or 'D75'
     :type illuminant: str
 
     | 'A' refers to the CIE standard illuminant A
+    | 'C' refers to the CIE illuminant C
     | 'D50' refers to the CIE standard illuminant D50
-    | 'D55' refers to the CIE standard illuminant D55
+    | 'D55' refers to the CIE  illuminant D55
     | 'D65' refers to the CIE standard illuminant D65
-    | 'D75' refers to the CIE standard illuminant D75
+    | 'D75' refers to the CIE illuminant D75
     
     :return: - **rspd** (*float or np.ndarray*) – relative spectral power distribution [-]
     '''
@@ -153,7 +158,7 @@ def rspd(lambda0, illuminant):
             if lambda0 < 300 or lambda0 > 830:
                 msg = 'The input lambda0 = {} nm is out of the range [300 nm, 830 nm].'.format(lambda0)
                 raise Exception(msg)
-    elif illuminant == 'D55' or 'D75':
+    elif illuminant == 'C' or 'D55' or 'D75':
         if isinstance(lambda0, np.ndarray) == True:
             if np.any(lambda0 < 300) or np.any(lambda0 > 780):
                 msg = 'At least one element in the input lambda0 is out of the range [300 nm, 780 nm].'
@@ -166,18 +171,21 @@ def rspd(lambda0, illuminant):
     if illuminant == 'A': 
         rspd = interp1d(np.array(rspds_A_D50_D65_dataframe)[:,0],
                         np.array(rspds_A_D50_D65_dataframe)[:,1])(lambda0)
+    elif illuminant == 'C':
+        rspd = interp1d(np.array(rspds_C_D55_D75_dataframe)[:,0],
+                        np.array(rspds_C_D55_D75_dataframe)[:,1])(lambda0)
     elif illuminant == 'D50':
         rspd = interp1d(np.array(rspds_A_D50_D65_dataframe)[:,0],
                         np.array(rspds_A_D50_D65_dataframe)[:,2])(lambda0)
     elif illuminant == 'D55':
-        rspd = interp1d(np.array(rspds_D55_D75_dataframe)[:,0],
-                        np.array(rspds_D55_D75_dataframe)[:,1])(lambda0)
+        rspd = interp1d(np.array(rspds_C_D55_D75_dataframe)[:,0],
+                        np.array(rspds_C_D55_D75_dataframe)[:,2])(lambda0)
     elif illuminant == 'D65':
         rspd = interp1d(np.array(rspds_A_D50_D65_dataframe)[:,0],
                         np.array(rspds_A_D50_D65_dataframe)[:,3])(lambda0)
     elif illuminant == 'D75':
-        rspd = interp1d(np.array(rspds_D55_D75_dataframe)[:,0],
-                        np.array(rspds_D55_D75_dataframe)[:,2])(lambda0)
+        rspd = interp1d(np.array(rspds_C_D55_D75_dataframe)[:,0],
+                        np.array(rspds_C_D55_D75_dataframe)[:,3])(lambda0)
     else:
         msg = 'The input illuminant = {} is not valid.'.format(illuminant)
         raise Exception(msg)
@@ -1309,7 +1317,7 @@ def XYZ_from_spectrum(all_lambda, spectrum, lambda_min = 360., lambda_max = 830.
     | Calculate the CIE XYZ coordinates from the reflectance spectrum :math:`R(\lambda)` or the
     | transmittance spectrum :math:`T(\lambda)` for a chosen standard illuminant and standard observer.
     | Integration using the composite trapezoid rule from 360 nm to 830 nm (as default).
-    | If the wavelength array does not cover the whole region, a constant extrapolation is perfomed.
+    | If the wavelength array does not cover the entire region, a constant extrapolation is perfomed.
     | For details please check CIE [CIE04] (see their section 7).
     
     | :math:`X = \frac{K}{N} \int_\lambda \mbox{ } R(\lambda) \mbox{ } S(\lambda) \mbox{ } \bar{x}(\lambda) \mbox{ } d\lambda`
