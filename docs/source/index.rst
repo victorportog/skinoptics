@@ -39,7 +39,7 @@ Installation
 
 .. code-block:: console
 
-      $ pip install skinoptics --upgrade
+      $ pip install --upgrade skinoptics
 
 Prerequisite Packages
 ---------------------
@@ -47,9 +47,9 @@ Prerequisite Packages
 | **SkinOptics** is structured based on other Python packages.
 | In order to be able to properly run it, please also install all of the following:
 
-- `NumPy <https://numpy.org/>`_
-- `SciPy <https://scipy.org/>`_
-- `pandas <https://pandas.pydata.org/>`_
+- `NumPy <https://numpy.org/>`_ (>=1.26.4, <3.0.0)
+- `SciPy <https://scipy.org/>`_ (>=1.13.0, <2.0.0)
+- `pandas <https://pandas.pydata.org/>`_ (>=2.2.2, <3.0.0)
 
 Modules
 -------

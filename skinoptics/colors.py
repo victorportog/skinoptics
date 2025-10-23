@@ -1140,13 +1140,11 @@ def Delta_E(L0, a0, b0, L1, a1, b1):
 
 def Delta_E_00(L0, a0, b0, L1, a1, b1, kL = 1., kC = 1., kH = 1.):
     r'''
-    Calculate the CIEDE2000 color difference :math:`\Delta E^*_{00}` between
-    a reference color (:math:`L^*_0`, :math:`a^*_0`, :math:`b^*_0`) and
-    a test color (:math:`L^*_1`, :math:`a^*_1`, :math:`b^*_1`).
+    | Calculate the CIEDE2000 color difference :math:`\Delta E^*_{00}` between
+    | a reference color (:math:`L^*_0`, :math:`a^*_0`, :math:`b^*_0`) and a test color (:math:`L^*_1`, :math:`a^*_1`, :math:`b^*_1`).
+    | For details please check Sharma, Wu & Dalal 2004 [SWD04] and ISO/CIE 2014 [IC14].
 
     :math:`\Delta E^*_{00} = \sqrt{\left(\frac{\Delta L'}{k_L S_L}\right)^2 + \left(\frac{\Delta C'}{k_C S_C}\right)^2 + \left(\frac{\Delta H'}{k_H S_H}\right)^2 + R_T \left(\frac{\Delta C'}{k_C S_C}\right) \left(\frac{\Delta H'}{k_H S_H}\right)}`
-
-    | For details please check Sharma, Wu & Dalal 2004 [SWD04] and ISO/CIE 2014 [IC14].
 
     :param L0: reference color L* coordinate [-]
     :type L0: float or np.ndarray
