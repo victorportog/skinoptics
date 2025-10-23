@@ -330,7 +330,7 @@ def XYZ_wp(illuminant, observer, cmfs_model = 'CIE', K = 1.):
     r'''
     The white point CIE XYZ coordinates for a chosen standard illuminant and standard observer.
     
-    :param illuminant: the user can choose one of the following... 'A', 'D50', 'D55', 'D65' or 'D75'
+    :param illuminant: the user can choose one of the following... 'A', 'C', 'D50', 'D55', 'D65' or 'D75'
     :type illuminant: str
     
     :param observer: the user can choose one of the following... '2o' or '10o'
@@ -343,10 +343,11 @@ def XYZ_wp(illuminant, observer, cmfs_model = 'CIE', K = 1.):
     :type K: float
 
     | 'A' refers to the CIE standard illuminant A
+    | 'C' refers to the CIE illuminant C
     | 'D50' refers to the CIE standard illuminant D50
-    | 'D55' refers to the CIE standard illuminant D55
+    | 'D55' refers to the CIE illuminant D55
     | 'D65' refers to the CIE standard illuminant D65
-    | 'D75' refers to the CIE standard illuminant D75
+    | 'D75' refers to the CIE illuminant D75
 
     | '2o' refers to the CIE 1931 2 degree standard observer
     | '10o' refers to the CIE 1964 10 degree standard observer
@@ -363,7 +364,7 @@ def XYZ_wp(illuminant, observer, cmfs_model = 'CIE', K = 1.):
        - **Zn** (*float*) – white point Z coordinate [-]
     '''
     
-    if illuminant == 'D55' or illuminant == 'D75':
+    if illuminant == 'C' or illuminant == 'D55' or illuminant == 'D75':
         Xn, Yn, Zn = XYZ_from_spectrum(np.arange(360, 780, 1), np.ones(len(np.arange(360, 780, 1)))*100,
                                        lambda_max = 780, illuminant = illuminant, observer = observer, cmfs_model = cmfs_model, K = K)
     else:
@@ -377,17 +378,18 @@ def xy_wp(illuminant, observer):
     | The white point CIE xy chromaticities for a chosen standard illuminant and standard observer.
     | Calculated from the white point CIE XYZ coordinates (see function :meth:`skinoptics.colors.XYZ_wp`).
     
-    :param illuminant: the user can choose one of the following... 'A', 'D50', 'D55', 'D65' or 'D75'
+    :param illuminant: the user can choose one of the following... 'A', 'C', 'D50', 'D55', 'D65' or 'D75'
     :type illuminant: str
     
     :param observer: the user can choose one of the following... '2o' or '10o'
     :type observer: str
 
     | 'A' refers to the CIE standard illuminant A
+    | 'C' refers to the CIE illuminant C
     | 'D50' refers to the CIE standard illuminant D50
-    | 'D55' refers to the CIE standard illuminant D55
+    | 'D55' refers to the CIE illuminant D55
     | 'D65' refers to the CIE standard illuminant D65
-    | 'D75' refers to the CIE standard illuminant D75
+    | 'D75' refers to the CIE illuminant D75
 
     | '2o' refers to the CIE 1931 2 degree standard observer
     | '10o' refers to the CIE 1964 10 degree standard observer
@@ -782,7 +784,7 @@ def Lab_from_XYZ(X, Y, Z, illuminant = 'D65', observer = '10o', K = 1.):
     :param Z: Z coordinate [-]
     :type Z: float or np.ndarray
     
-    :param illuminant: the user can choose one of the following... 'A', 'D50', 'D55', 'D65' or 'D75'
+    :param illuminant: the user can choose one of the following... 'A', 'C', 'D50', 'D55', 'D65' or 'D75'
     :type illuminant: str
     
     :param observer: the user can choose one of the following... '2o' or '10o'
@@ -792,10 +794,11 @@ def Lab_from_XYZ(X, Y, Z, illuminant = 'D65', observer = '10o', K = 1.):
     :type K: float
 
     | 'A' refers to the CIE standard illuminant A
+    | 'C' refers to the CIE illuminant C
     | 'D50' refers to the CIE standard illuminant D50
-    | 'D55' refers to the CIE standard illuminant D55
+    | 'D55' refers to the CIE illuminant D55
     | 'D65' refers to the CIE standard illuminant D65
-    | 'D75' refers to the CIE standard illuminant D75
+    | 'D75' refers to the CIE illuminant D75
 
     | '2o' refers to the CIE 1931 2 degree standard observer
     | '10o' refers to the CIE 1964 10 degree standard observer
@@ -861,7 +864,7 @@ def XYZ_from_Lab(L, a, b, illuminant = 'D65', observer = '10o', K = 1.):
     :param b: b* coordinate [-]
     :type b: float or np.ndarray
     
-    :param illuminant: the user can choose one of the following... 'A', 'D50', 'D55', 'D65' or 'D75'
+    :param illuminant: the user can choose one of the following... 'A', 'C', 'D50', 'D55', 'D65' or 'D75'
     :type illuminant: str
     
     :param observer: the user can choose one of the following... '2o' or '10o'
@@ -871,10 +874,11 @@ def XYZ_from_Lab(L, a, b, illuminant = 'D65', observer = '10o', K = 1.):
     :type K: float
 
     | 'A' refers to the CIE standard illuminant A
+    | 'C' refers to the CIE illuminant C
     | 'D50' refers to the CIE standard illuminant D50
-    | 'D55' refers to the CIE standard illuminant D55
+    | 'D55' refers to the CIE illuminant D55
     | 'D65' refers to the CIE standard illuminant D65
-    | 'D75' refers to the CIE standard illuminant D75
+    | 'D75' refers to the CIE illuminant D75
 
     | '2o' refers to the CIE 1931 2 degree standard observer
     | '10o' refers to the CIE 1964 10 degree standard observer
@@ -1346,7 +1350,7 @@ def XYZ_from_spectrum(all_lambda, spectrum, lambda_min = 360., lambda_max = 830.
     :param lambda_step: summation interval (wavelength step) [nm] (default to 1.)
     :type lambda_step: float
     
-     :param illuminant: the user can choose one of the following... 'A', 'D50', 'D55', 'D65' or 'D75'
+     :param illuminant: the user can choose one of the following... 'A', 'C', 'D50', 'D55', 'D65' or 'D75'
     :type illuminant: str
     
     :param observer: the user can choose one of the following... '2o' or '10o'
@@ -1362,10 +1366,11 @@ def XYZ_from_spectrum(all_lambda, spectrum, lambda_min = 360., lambda_max = 830.
     :type interp1d_kind: str
 
     | 'A' refers to the CIE standard illuminant A
+    | 'C' refers to the CIE illuminant C
     | 'D50' refers to the CIE standard illuminant D50
-    | 'D55' refers to the CIE standard illuminant D55
+    | 'D55' refers to the CIE illuminant D55
     | 'D65' refers to the CIE standard illuminant D65
-    | 'D75' refers to the CIE standard illuminant D75
+    | 'D75' refers to the CIE illuminant D75
 
     | '2o' refers to the CIE 1931 2 degree standard observer
     | '10o' refers to the CIE 1964 10 degree standard observer
@@ -1480,7 +1485,7 @@ def Lab_from_spectrum(all_lambda, spectrum, lambda_min = 360, lambda_max = 830, 
     :param lambda_step: summation interval (wavelength step) [nm] (default to 1.)
     :type lambda_step: float
     
-     :param illuminant: the user can choose one of the following... 'A', 'D50', 'D55', 'D65' or 'D75'
+     :param illuminant: the user can choose one of the following... 'A', 'C', 'D50', 'D55', 'D65' or 'D75'
     :type illuminant: str
     
     :param observer: the user can choose one of the following... '2o' or '10o'
@@ -1493,10 +1498,11 @@ def Lab_from_spectrum(all_lambda, spectrum, lambda_min = 360, lambda_max = 830, 
     :type interp1d_kind: str
 
     | 'A' refers to the CIE standard illuminant A
+    | 'C' refers to the CIE illuminant C
     | 'D50' refers to the CIE standard illuminant D50
-    | 'D55' refers to the CIE standard illuminant D55
+    | 'D55' refers to the CIE illuminant D55
     | 'D65' refers to the CIE standard illuminant D65
-    | 'D75' refers to the CIE standard illuminant D75
+    | 'D75' refers to the CIE illuminant D75
 
     | '2o' refers to the CIE 1931 2 degree standard observer
     | '10o' refers to the CIE 1964 10 degree standard observer
